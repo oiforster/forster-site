@@ -139,17 +139,24 @@ img {
   color: var(--gray-800);
 }
 
-/* --- HERO --- */
+/* --- HERO (Typography-only version) --- */
 .hero {
   position: relative;
   height: 100vh;
   height: 100svh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--black);
   scroll-snap-align: start;
+}
+
+.hero--type {
+  background: var(--white);
+}
+
+.hero--video {
+  background: var(--black);
 }
 
 .hero__video-wrap {
@@ -157,21 +164,10 @@ img {
   inset: 0;
 }
 
-.hero__video-wrap video,
-.hero__placeholder {
+.hero__video-wrap video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero__placeholder {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0a0a0a 100%);
-  animation: heroShift 12s ease-in-out infinite alternate;
-}
-
-@keyframes heroShift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
 }
 
 .hero__overlay {
@@ -189,33 +185,58 @@ img {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 0 var(--gutter) 12vh;
+  padding: 0 var(--gutter);
 }
 
-.hero__eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 1.5rem;
-}
-
-.hero__title {
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
+/* Hero tipográfico */
+.hero__title-large {
+  font-size: clamp(4.5rem, 15vw, 12rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: var(--white);
-  text-wrap: balance;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--gray-800);
 }
 
-.hero__sub {
-  margin-top: 1.5rem;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+.hero__divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gray-400);
+  margin: 2rem auto;
+}
+
+.hero__tagline {
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
   font-weight: 400;
+  color: var(--gray-400);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Hero com vídeo (quando showreel estiver pronto) */
+.hero--video .hero__title-large {
+  color: var(--white);
+}
+
+.hero--video .hero__divider {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hero--video .hero__tagline {
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+}
+
+/* Nav branco quando hero é tipográfico */
+.hero--type ~ .nav .nav__logo,
+.nav--hero-light .nav__logo {
+  color: var(--gray-800);
+}
+
+.nav--hero-light .nav__links a {
+  color: var(--gray-600);
+}
+
+.nav--hero-light .nav__links a:hover {
+  color: var(--gray-800);
 }
 
 .hero__scroll-hint {
@@ -230,8 +251,12 @@ img {
   display: block;
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--gray-400);
   animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.hero--video .hero__scroll-hint span {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes scrollPulse {
@@ -257,7 +282,21 @@ img {
 .trabalhos__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.trabalho-card--featured {
+  grid-column: 1 / -1;
+}
+
+.trabalho-card--featured .trabalho-card__img {
+  aspect-ratio: 21 / 9;
+}
+
+.trabalho-card__placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--gray-200);
 }
 
 .trabalho-card {
@@ -342,6 +381,12 @@ img {
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 4 / 5;
+}
+
+.sobre__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--gray-200);
 }
 
 .sobre__roles {

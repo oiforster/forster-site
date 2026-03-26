@@ -5,6 +5,7 @@
 // --- Nav scroll behavior ---
 const nav = document.getElementById('nav');
 const hero = document.getElementById('hero');
+const isTypeHero = hero.classList.contains('hero--type');
 
 function updateNav() {
   const scrollY = window.scrollY;
@@ -13,18 +14,21 @@ function updateNav() {
   if (scrollY > heroHeight * 0.8) {
     nav.classList.add('nav--scrolled');
     nav.classList.remove('nav--hero');
+    nav.classList.remove('nav--hero-light');
   } else {
     nav.classList.remove('nav--scrolled');
     nav.classList.add('nav--hero');
+    if (isTypeHero) {
+      nav.classList.add('nav--hero-light');
+    }
   }
 }
 
 nav.classList.add('nav--hero');
+if (isTypeHero) nav.classList.add('nav--hero-light');
 window.addEventListener('scroll', updateNav, { passive: true });
 
 // --- Scroll reveal ---
-const revealElements = document.querySelectorAll('.reveal');
-
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -37,14 +41,11 @@ const revealObserver = new IntersectionObserver((entries) => {
   rootMargin: '0px 0px -50px 0px'
 });
 
-revealElements.forEach(el => revealObserver.observe(el));
-
 // --- Auto-add reveal class to sections ---
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.trabalhos, .sobre, .contato');
 
   sections.forEach(section => {
-    // Add reveal to eyebrows, titles, and content blocks
     const elements = section.querySelectorAll(
       '.section-eyebrow, .section-title, .sobre__body, .sobre__body--subtle, ' +
       '.sobre__image, .sobre__roles, .trabalho-card, .contato__title, ' +
