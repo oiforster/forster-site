@@ -28,6 +28,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -148,6 +149,7 @@ img {
   justify-content: center;
   overflow: hidden;
   background: var(--black);
+  scroll-snap-align: start;
 }
 
 .hero__video-wrap {
@@ -239,8 +241,13 @@ img {
 
 /* --- TRABALHOS --- */
 .trabalhos {
+  min-height: 100vh;
   padding: clamp(5rem, 10vw, 8rem) 0;
   background: var(--white);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .trabalhos .section-title {
@@ -297,8 +304,13 @@ img {
 
 /* --- SOBRE --- */
 .sobre {
+  min-height: 100vh;
   padding: clamp(5rem, 10vw, 8rem) 0;
   background: var(--gray-100);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sobre__layout {
@@ -354,9 +366,14 @@ img {
 
 /* --- CONTATO --- */
 .contato {
+  min-height: 100vh;
   padding: clamp(5rem, 10vw, 8rem) 0;
   background: var(--gray-900);
   color: var(--white);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contato__inner {
@@ -457,6 +474,16 @@ img {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .trabalhos,
+  .sobre,
+  .contato {
+    min-height: auto;
+  }
+
   .nav__links {
     gap: 1.25rem;
   }
