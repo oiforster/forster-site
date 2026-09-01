@@ -41,9 +41,19 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 .kick { font-variation-settings: 'opsz' 20, 'wght' 520; letter-spacing: 0.28em; font-size: 12px; color: #3A4638; }
 .krow { display: flex; align-items: center; gap: 12px; }
 .kbar { width: 20px; height: 2px; background: #B0553B; flex: 0 0 auto; }
-.topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; padding: 20px clamp(20px, 8.3vw, 120px); border-bottom: 1px solid rgba(38,34,32,0.12); }
-.navlinks { display: flex; align-items: center; gap: 12px 26px; flex-wrap: wrap; }
+.topbar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding: 20px clamp(20px, 8.3vw, 120px); border-bottom: 1px solid rgba(38,34,32,0.12); }
+.navwrap { display: flex; align-items: center; gap: 22px; }
+.navlinks { display: flex; align-items: center; gap: 12px 26px; }
 .navlink { font-size: 14px; color: #262220; }
+.menu-btn { display: none; background: none; border: 0; padding: 8px; margin: -8px; color: #262220; cursor: pointer; }
+@media (max-width: 900px) {
+  .menu-btn { display: flex; }
+  .navlinks { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 20; flex-direction: column; align-items: stretch; gap: 0; background: #F7F3EC; border-bottom: 1px solid rgba(38,34,32,0.12); padding: 6px clamp(20px, 8.3vw, 120px) 14px; }
+  .navlinks.open { display: flex; }
+  .navlink { font-size: 16px; padding: 13px 0; border-bottom: 1px solid rgba(38,34,32,0.08); }
+  .navlink:last-child { border-bottom: 0; }
+  .nav-on { border-bottom: 1px solid rgba(38,34,32,0.08); color: #B0553B; }
+}
 .nav-on { border-bottom: 2px solid #B0553B; padding-bottom: 3px; }
 .btn { background: #B0553B; color: #F7F3EC; border-radius: 6px; display: inline-block; transition: transform .15s cubic-bezier(.22,1,.36,1), background .2s ease; }
 .btn:hover { color: #F7F3EC; }
@@ -122,6 +132,18 @@ JS = """if ('IntersectionObserver' in window) {
   }, { rootMargin: '0px 0px -10% 0px' });
   document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
 }
+var mb = document.querySelector('.menu-btn');
+if (mb) {
+  var menu = document.getElementById('menu');
+  mb.addEventListener('click', function () {
+    var aberto = menu.classList.toggle('open');
+    mb.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    mb.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { menu.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+}
 document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-yt], [data-video]');
   if (!el) return;
@@ -180,9 +202,12 @@ def nav(active=""):
     links = "".join(
         f'<a class="navlink t5{" nav-on" if key == active else ""}" href="{href}">{label}</a>'
         for key, label, href in NAV_ITEMS)
+    burger = ('<button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">'
+              '<svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">'
+              '<path d="M1 1.5h20M1 8h20M1 14.5h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>')
     return (f'<nav class="topbar"><a href="/" style="color: #262220;" aria-label="FORSTER, p&aacute;gina inicial">{lockup("20px", "currentColor")}</a>'
-            f'<div class="navlinks">{links}'
-            f'<a class="tb btn btn-sm" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar</a></div></nav>')
+            f'<div class="navwrap"><div class="navlinks" id="menu">{links}</div>'
+            f'<a class="tb btn btn-sm" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar</a>{burger}</div></nav>')
 
 def kicker(text, extra_cls=""):
     return f'<div class="krow{extra_cls}"><div class="kbar"></div><div class="kick">{text}</div></div>'

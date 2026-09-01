@@ -7,6 +7,18 @@ if ('IntersectionObserver' in window) {
   }, { rootMargin: '0px 0px -10% 0px' });
   document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
 }
+var mb = document.querySelector('.menu-btn');
+if (mb) {
+  var menu = document.getElementById('menu');
+  mb.addEventListener('click', function () {
+    var aberto = menu.classList.toggle('open');
+    mb.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    mb.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { menu.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
+  });
+}
 document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-yt], [data-video]');
   if (!el) return;
