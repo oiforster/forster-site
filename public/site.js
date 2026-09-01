@@ -1,3 +1,12 @@
+if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('vis'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+}
 document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-yt], [data-video]');
   if (!el) return;

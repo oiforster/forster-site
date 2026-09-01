@@ -77,6 +77,10 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 .qf-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .foot { background: #3A4638; padding: 44px clamp(20px, 8.3vw, 120px); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .note { font-size: 13px; font-style: italic; color: #8A817A; }
+.conf { display: flex; flex-wrap: wrap; gap: 18px 40px; font-size: 17px; }
+@media (min-width: 1200px) {
+  .conf { flex-wrap: nowrap; justify-content: space-between; gap: 16px; font-size: 15px; }
+}
 @media (hover: hover) and (pointer: fine) {
   .btn:hover { transform: translateY(-1px); background: #9D4A33; }
   .lka:hover svg { transform: translateX(4px); }
@@ -103,15 +107,21 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
   .heroS.sdraw path { animation-duration: 2s; animation-delay: .35s; }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-  @supports (animation-timeline: view()) {
-    .rv { animation: rise .7s cubic-bezier(.22,1,.36,1) both; animation-timeline: view(); animation-range: entry 5% entry 35%; }
-    .rulex { transform-origin: left; animation: growx .9s cubic-bezier(.25,1,.5,1) both; animation-timeline: view(); animation-range: entry 0% entry 28%; }
-    @keyframes growx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  }
+  html.js .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+  html.js .rv.vis { opacity: 1; transform: none; }
 }
 """
 
-JS = """document.addEventListener('click', function (e) {
+JS = """if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('js');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('vis'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+}
+document.addEventListener('click', function (e) {
   var el = e.target.closest('[data-yt], [data-video]');
   if (!el) return;
   e.preventDefault();
@@ -158,7 +168,8 @@ def play(color):
             f'<circle cx="27" cy="27" r="25.5" stroke="{color}" stroke-width="2"></circle>'
             f'<path d="M22 18.5v17l14-8.5z" fill="{color}"></path></svg>')
 
-NAV_ITEMS = [("trabalhos", "Trabalhos", "/trabalhos"),
+NAV_ITEMS = [("inicio", "In&iacute;cio", "/"),
+             ("trabalhos", "Trabalhos", "/trabalhos"),
              ("acompanhamento", "Acompanhamento", "/acompanhamento"),
              ("mentoria", "Mentoria", "/mentoria"),
              ("sites", "Sites", "/sites"),
@@ -170,7 +181,7 @@ def nav(active=""):
         for key, label, href in NAV_ITEMS)
     return (f'<nav class="topbar"><a href="/" style="color: #262220;" aria-label="FORSTER, p&aacute;gina inicial">{lockup("20px", "currentColor")}</a>'
             f'<div class="navlinks">{links}'
-            f'<a class="tb btn btn-sm" href="{WA_SAMUEL}">Conversar</a></div></nav>')
+            f'<a class="tb btn btn-sm" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar</a></div></nav>')
 
 def kicker(text, extra_cls=""):
     return f'<div class="krow{extra_cls}"><div class="kbar"></div><div class="kick">{text}</div></div>'
@@ -192,7 +203,7 @@ def hero_page(kick, h1, sup, cta_label="Conversar no WhatsApp", cta_href=WA_SAMU
             f'<h1 class="h h1p in in1" style="margin: 26px 0 0;">{h1}</h1>'
             f'<p class="t sup in in2" style="margin: 24px 0 0;">{sup}</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 36px; flex-wrap: wrap;">'
-            f'<a class="tb btn btn-lg" href="{cta_href}">{cta_label}</a>{ver}</div></header>')
+            f'<a class="tb btn btn-lg" href="{cta_href}" target="_blank" rel="noopener">{cta_label}</a>{ver}</div></header>')
 
 def tile(cls_size, bg, label, light=True, dashed=False, href="", img="", alt="", yt="", video=""):
     if dashed:
@@ -218,7 +229,7 @@ def convite(heading, text, cta_label, cta_href):
     return (f'<div class="sec"><div class="rv">'
             f'<h2 class="h" style="font-size: clamp(32px, 4vw, 44px);">{heading}</h2>'
             f'<p class="t" style="font-size: 18px; line-height: 1.6; margin: 18px 0 0; max-width: 520px;">{text}</p>'
-            f'<a class="tb btn btn-lg" href="{cta_href}" style="margin-top: 28px;">{cta_label}</a>'
+            f'<a class="tb btn btn-lg" href="{cta_href}" target="_blank" rel="noopener" style="margin-top: 28px;">{cta_label}</a>'
             f'</div></div>')
 
 CONVITE_PADRAO = convite("Vamos conversar?",
@@ -248,7 +259,7 @@ def page_home():
             f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO</h1>'
             f'<p class="t sup in in2" style="margin: 40px 0 0;">Estrat&eacute;gia, textos e v&iacute;deo feitos &agrave; m&atilde;o para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
-            f'<a class="tb btn btn-lg" href="{WA_SAMUEL}">Conversar no WhatsApp</a>'
+            f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
             f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
             f'</div></div></header>')
 
@@ -261,7 +272,7 @@ def page_home():
                      "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
                      "/mentoria")
               + door("03", "Sites",
-                     "Um site simples, r&aacute;pido e feito &agrave; m&atilde;o, que conta a sua hist&oacute;ria e aparece na busca.",
+                     "Um site simples, r&aacute;pido e sob medida, que conta a sua hist&oacute;ria e aparece na busca.",
                      "/sites")
               + door("04", "Sob encomenda",
                      "Um v&iacute;deo com come&ccedil;o, meio e fim: institucional, v&iacute;deo de produto, a hist&oacute;ria da sua empresa bem contada.",
@@ -285,11 +296,10 @@ def page_home():
                f'</div></div></div>')
 
     nomes = ["&Oacute;ticas Casa Marco", "Fyber Show Piscinas", "Catarata Center", "Prisma Especialidades",
-             "Col&eacute;gio Luterano Redentor", "Vanessa Mainardi", "Joele Ler&iacute;pio",
-             "Micheline Twigger", "Martina Schneider", "Baviera Tecnologia"]
+             "Col&eacute;gio Luterano Redentor", "Psic&oacute;loga Martina Schneider", "Teclib - GLPI"]
     confianca = (f'<div class="sec" style="padding-top: 64px; padding-bottom: 72px;"><div class="rv">{kicker("QUEM CONFIA NA FORSTER")}'
-                 '<div style="display: flex; flex-wrap: wrap; gap: 18px 44px; margin-top: 30px;">'
-                 + "".join(f'<div class="h" style="font-size: 17px; color: rgba(38,34,32,0.55);">{n}</div>' for n in nomes)
+                 '<div class="conf" style="margin-top: 30px;">'
+                 + "".join(f'<div class="h" style="color: rgba(38,34,32,0.55); white-space: nowrap;">{n}</div>' for n in nomes)
                  + '</div></div></div>')
 
     return hero + portas + trabalhos + quemfaz + confianca
@@ -385,7 +395,7 @@ def page_mentoria():
     return hero + silvana + quem + como + video
 
 def page_sites():
-    hero = hero_page("SITES", "Um site feito &agrave; m&atilde;o, do texto ao c&oacute;digo.",
+    hero = hero_page("SITES", "Um site sob medida, do texto ao c&oacute;digo.",
                      "Leve, r&aacute;pido e escrito por quem conhece a sua hist&oacute;ria: um site que carrega em segundos, aparece na busca e fala do jeito que voc&ecirc; fala.", ver_trabalhos=False)
     dif = (f'<div class="sec"><div class="rv">{kicker("O QUE FAZ A DIFEREN&Ccedil;A")}</div>'
            + steps_grid([
@@ -515,7 +525,7 @@ PAGES = {
     },
     "sites.html": {
         "active": "sites", "fn": page_sites, "convite": CONVITE_PADRAO, "path": "/sites",
-        "title": "Criação de sites feitos à mão | FORSTER",
+        "title": "Criação de sites sob medida | FORSTER",
         "desc": "Sites leves, rápidos e escritos por quem conhece a sua história: páginas que carregam em segundos, aparecem no Google e falam do seu jeito. Feitos em Igrejinha, RS.",
         "ld": service_ld("Criação de sites", "Sites institucionais leves e rápidos, do texto ao código, publicados no domínio do cliente.", "/sites"),
     },
