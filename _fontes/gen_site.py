@@ -11,6 +11,7 @@ SITE = "https://somosforster.com.br"
 
 WA_SAMUEL = "https://wa.me/5551981578225"
 WA_SILVANA = "https://wa.me/5551980603512"
+MEDIA = "https://media.somosforster.com.br/video"
 
 S_PATH = "M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92"
 
@@ -240,7 +241,7 @@ CONVITE_MENTORIA = convite("Se esse &eacute; o teu momento",
                            "Falar com a Silvana pelo WhatsApp", WA_SILVANA)
 
 FOOTER = (f'<footer class="foot"><div>{lockup("19px", "#F7F3EC")}'
-          '<div class="t" style="font-size: 13px; color: #D9C29A; margin-top: 10px;">Conte&uacute;do feito &agrave; m&atilde;o.</div></div>'
+          '<div class="t" style="font-size: 13px; color: #D9C29A; margin-top: 10px;">Conte&uacute;do feito a quatro m&atilde;os.</div></div>'
           '<div class="t" style="font-size: 14px; color: rgba(247,243,236,0.9);"><a href="https://www.instagram.com/somosforster" style="color: rgba(247,243,236,0.9);">@somosforster</a> &middot; Igrejinha, Rio Grande do Sul</div></footer>')
 
 # ---------------------------------------------------------------- paginas
@@ -257,7 +258,7 @@ def page_home():
             f'<div style="position: relative;">'
             f'<div class="in">{lockup("clamp(64px, 9.2vw, 132px)", "#262220", s_cls="sdraw")}</div>'
             f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO</h1>'
-            f'<p class="t sup in in2" style="margin: 40px 0 0;">Estrat&eacute;gia, textos e v&iacute;deo feitos &agrave; m&atilde;o para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
+            f'<p class="t sup in in2" style="margin: 40px 0 0;">Estrat&eacute;gia, textos e v&iacute;deo feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
             f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
             f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
@@ -282,7 +283,7 @@ def page_home():
     trabalhos = (f'<div class="sec"><div class="rv" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">{kicker("TRABALHOS")}'
                  f'<a class="tb lka" href="/trabalhos" style="font-size: 14px;">Ver todos os trabalhos {ARROW}</a></div>'
                  f'<div class="mosaic rv" style="margin-top: 44px;">'
-                 + tile("t169", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", href=YT["pelizzer"][1], yt=YT["pelizzer"][0], img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
+                 + tile("t169", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
                  + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; &Oacute;ticas Casa Marco", video="/video/reel-oticas-casa-marco.mp4", img="capa-reel-oticas-casa-marco.jpg", alt="Reel de produto das &Oacute;ticas Casa Marco")
                  + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Fyber Show Piscinas", video="/video/reel-fyber-show.mp4", img="capa-reel-fyber-show.jpg", alt="Reel institucional da Fyber Show Piscinas")
                  + '</div></div>')
@@ -441,8 +442,8 @@ def page_encomenda():
             ]) + '</div>')
     trab = (f'<div class="sec"><div class="rv">{kicker("TRABALHOS SOB ENCOMENDA")}</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", href=YT["pelizzer"][1], yt=YT["pelizzer"][0], img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
-            + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", href=YT["redentor"][1], yt=YT["redentor"][0], img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
+            + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
+            + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
             + '</div></div>')
     return hero + tipos + como + trab
 
@@ -452,20 +453,20 @@ def page_trabalhos():
                      ver_trabalhos=False)
     inst = (f'<div class="sec"><div class="rv">{kicker("INSTITUCIONAIS")}</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", href=YT["pelizzer"][1], yt=YT["pelizzer"][0], img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
-            + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", href=YT["redentor"][1], yt=YT["redentor"][0], img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
-            + tile("thalf", "#D9C29A", "Institucional &middot; Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es", href=YT["fug"][1], yt=YT["fug"][0], img="thumb-institucional-fundacao-ulysses-guimaraes.jpg", alt="V&iacute;deo Escola do Futuro, da Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es")
+            + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
+            + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
+            + tile("thalf", "#D9C29A", "Institucional &middot; Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es", video=f"{MEDIA}/institucional-fundacao-ulysses-guimaraes.mp4", img="thumb-institucional-fundacao-ulysses-guimaraes.jpg", alt="V&iacute;deo Escola do Futuro, da Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es")
             + '</div></div>')
     prod = (f'<div class="sec"><div class="rv">{kicker("PUBLICIT&Aacute;RIOS")}</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#2B2724", "Publicit&aacute;rio &middot; SAIF &middot; Pipoca no Ch&atilde;o", href=YT["saif1"][1], yt=YT["saif1"][0], img="thumb-publicitario-saif-pipoca-no-chao.jpg", alt="Campanha publicit&aacute;ria SAIF, filme Pipoca no Ch&atilde;o")
-            + tile("thalf", "#3A4638", "Publicit&aacute;rio &middot; SAIF &middot; O Jeito de Come&ccedil;ar o Dia", href=YT["saif2"][1], yt=YT["saif2"][0], img="thumb-publicitario-saif-jeito-de-comecar-o-dia.jpg", alt="Campanha publicit&aacute;ria SAIF, filme O Jeito SAIF de Come&ccedil;ar o Dia")
-            + tile("thalf", "#D9C29A", "Publicit&aacute;rio &middot; Emp&oacute;rio Essenza &middot; Hist&oacute;ria de Natal", href=YT["natal"][1], yt=YT["natal"][0], img="thumb-publicitario-emporio-essenza-natal.jpg", alt="Filme de Natal do Emp&oacute;rio Essenza")
+            + tile("thalf", "#2B2724", "Publicit&aacute;rio &middot; SAIF &middot; Pipoca no Ch&atilde;o", video=f"{MEDIA}/publicitario-saif-pipoca-no-chao.mp4", img="thumb-publicitario-saif-pipoca-no-chao.jpg", alt="Campanha publicit&aacute;ria SAIF, filme Pipoca no Ch&atilde;o")
+            + tile("thalf", "#3A4638", "Publicit&aacute;rio &middot; SAIF &middot; O Jeito de Come&ccedil;ar o Dia", video=f"{MEDIA}/publicitario-saif-jeito-de-comecar-o-dia.mp4", img="thumb-publicitario-saif-jeito-de-comecar-o-dia.jpg", alt="Campanha publicit&aacute;ria SAIF, filme O Jeito SAIF de Come&ccedil;ar o Dia")
+            + tile("thalf", "#D9C29A", "Publicit&aacute;rio &middot; Emp&oacute;rio Essenza &middot; Hist&oacute;ria de Natal", video=f"{MEDIA}/publicitario-emporio-essenza-natal.mp4", img="thumb-publicitario-emporio-essenza-natal.jpg", alt="Filme de Natal do Emp&oacute;rio Essenza")
             + '</div></div>')
     outras = (f'<div class="sec"><div class="rv">{kicker("OUTRAS ENCOMENDAS")}</div>'
               f'<div class="mosaic rv" style="margin-top: 44px;">'
-              + tile("thalf", "#3A4638", "Curso &middot; Dra Karol Hoppen &middot; Fada do Dente", href=YT["curso"][1], yt=YT["curso"][0], img="thumb-curso-fada-do-dente.jpg", alt="V&iacute;deo aula Fada do Dente, da Dra Karol Hoppen")
-              + tile("thalf", "#2B2724", "Clipe musical &middot; Fam&iacute;lia Rolim &middot; Casa de Pedra", href=YT["clipe"][1], yt=YT["clipe"][0], img="thumb-clipe-casa-de-pedra.jpg", alt="Clipe musical Casa de Pedra, da Fam&iacute;lia Rolim")
+              + tile("thalf", "#3A4638", "Curso &middot; Dra Karol Hoppen &middot; Fada do Dente", video=f"{MEDIA}/curso-fada-do-dente.mp4", img="thumb-curso-fada-do-dente.jpg", alt="V&iacute;deo aula Fada do Dente, da Dra Karol Hoppen")
+              + tile("thalf", "#2B2724", "Clipe musical &middot; Fam&iacute;lia Rolim &middot; Casa de Pedra", video=f"{MEDIA}/clipe-casa-de-pedra.mp4", img="thumb-clipe-casa-de-pedra.jpg", alt="Clipe musical Casa de Pedra, da Fam&iacute;lia Rolim")
               + '</div></div>')
     mensal = (f'<div class="sec"><div class="rv">{kicker("CONTE&Uacute;DO MENSAL")}</div>'
               f'<div class="mosaic rv" style="margin-top: 44px;">'
@@ -484,7 +485,7 @@ ORG = {
     "@id": ORG_ID,
     "name": "FORSTER",
     "alternateName": "Forster Ateliê de Conteúdo",
-    "slogan": "Conteúdo feito à mão.",
+    "slogan": "Conteúdo feito a quatro mãos.",
     "url": SITE + "/",
     "logo": SITE + "/img/forster-lockup.png",
     "image": SITE + "/img/og-forster.jpg",
@@ -508,7 +509,7 @@ PAGES = {
     "index.html": {
         "active": "", "fn": page_home, "convite": CONVITE_PADRAO, "path": "/",
         "title": "FORSTER · Ateliê de Conteúdo em Igrejinha, RS",
-        "desc": "Estratégia, textos e vídeo feitos à mão. Acompanhamento mensal de conteúdo, mentoria de comunicação, criação de sites e produção de vídeo em Igrejinha, Rio Grande do Sul.",
+        "desc": "Estratégia, textos e vídeo feitos a quatro mãos. Acompanhamento mensal de conteúdo, mentoria de comunicação, criação de sites e produção de vídeo em Igrejinha, Rio Grande do Sul.",
         "ld": [ORG],
     },
     "acompanhamento.html": {
