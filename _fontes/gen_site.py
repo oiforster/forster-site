@@ -389,9 +389,9 @@ def page_mentoria():
                 ("Revis&atilde;o e autonomia", "Revisar o caminho, ajustar o calend&aacute;rio e criar a tua rotina sustent&aacute;vel."),
             ], grid="g3") + '</div>')
     video = (f'<div class="sec"><div class="rv" style="max-width: 720px;">{kicker("A PARTE DE V&Iacute;DEO")}'
-             f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Extrair o m&aacute;ximo do que tu j&aacute; tem nas m&atilde;os.</h2>'
-             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Quando tu dominar exposi&ccedil;&atilde;o e equil&iacute;brio de branco, e souber usar a luz que j&aacute; tem, d&aacute; para tirar do teu celular um resultado muito pr&oacute;ximo ao de c&acirc;mera profissional. A partir da&iacute; tu ganha crit&eacute;rio para decidir se vale investir em equipamento ou se o que tu j&aacute; tem &eacute; o ideal para as tuas entregas.</p>'
-             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">Nos encontros pr&aacute;ticos com o Samuel entram c&acirc;mera, &acirc;ngulos, dire&ccedil;&atilde;o de quem est&aacute; sendo gravado e o fluxo de edi&ccedil;&atilde;o, do arquivo bruto &agrave; exporta&ccedil;&atilde;o, com revis&atilde;o junto at&eacute; ficar do jeito que tu quer entregar.</p></div></div>')
+             f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Gravar bem com o que tu tem em casa.</h2>'
+             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Um encontro pr&aacute;tico com o Samuel, com as dicas de luz, enquadramento e cen&aacute;rio pensadas para o que tu j&aacute; tem em casa, mais presen&ccedil;a em v&iacute;deo, teleprompter na pr&aacute;tica, gravar por blocos e o que fazer quando trava.</p>'
+             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">Tu recebe retorno direto sobre um v&iacute;deo que gravou, sai com o plano de grava&ccedil;&atilde;o do primeiro lote e segue com suporte pelo WhatsApp.</p></div></div>')
     return hero + silvana + quem + como + video
 
 def page_sites():
