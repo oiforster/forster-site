@@ -754,10 +754,6 @@ urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod>
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
-/style.css
-  Cache-Control: public, max-age=0, must-revalidate
-/site.js
-  Cache-Control: public, max-age=0, must-revalidate
 /img/*
   Cache-Control: public, max-age=31536000, immutable
 /video/*
