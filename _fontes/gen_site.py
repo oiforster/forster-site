@@ -391,7 +391,7 @@ def page_home():
             f'<div style="position: relative;">'
             f'<div class="in">{lockup("clamp(64px, 9.2vw, 132px)", "#262220", s_cls="sdraw")}</div>'
             f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO</h1>'
-            f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamento, textos e v&iacute;deo feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
+            f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamento, textos e v&iacute;deos feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
             f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
             f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
