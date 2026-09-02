@@ -391,7 +391,7 @@ def page_home():
             f'<div style="position: relative;">'
             f'<div class="in">{lockup("clamp(64px, 9.2vw, 132px)", "#262220", s_cls="sdraw")}</div>'
             f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO</h1>'
-            f'<p class="t sup in in2" style="margin: 40px 0 0;">Estrat&eacute;gia, textos e v&iacute;deo feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
+            f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamento, textos e v&iacute;deo feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
             f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
             f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
@@ -400,7 +400,7 @@ def page_home():
     portas = (f'<div class="sec"><div class="rv" style="margin-bottom: 44px;">{kicker("O QUE A GENTE FAZ")}</div>'
               f'<div class="g4 rv">'
               + door("01", "Acompanhamento mensal",
-                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto: estrat&eacute;gia, roteiros, edi&ccedil;&atilde;o e gest&atilde;o. Prefere gravar do seu jeito? A gente assessora, edita e cuida dos textos.",
+                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto: planejamento, roteiros, edi&ccedil;&atilde;o e gest&atilde;o. Prefere gravar do seu jeito? A gente assessora, edita e cuida dos textos.",
                      "/acompanhamento")
               + door("02", "Mentoria",
                      "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
@@ -425,7 +425,7 @@ def page_home():
                f'<div class="qf-photo"><img src="/img/samuel-silvana-familia-corrida.jpg" alt="Samuel, Silvana e os filhos na chegada de uma prova de corrida" loading="lazy"></div>'
                f'<div style="padding-top: 26px;">{kicker("QUEM FAZ")}'
                f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Quem atende &eacute; quem cria.</h2>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 520px;">Forster &eacute; sobrenome: o de Samuel e o de Silvana. O ateli&ecirc; funciona na nossa casa, em Igrejinha, e cada trabalho passa pelas m&atilde;os dos dois, da estrat&eacute;gia &agrave; entrega.</p>'
+               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 520px;">Forster &eacute; sobrenome: o de Samuel e o de Silvana. O ateli&ecirc; funciona na nossa casa, em Igrejinha, e cada trabalho passa pelas m&atilde;os dos dois, do planejamento &agrave; entrega.</p>'
                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">A Forster &eacute; feita por quem acredita que o trabalho se adapta &agrave; filosofia de vida, e n&atilde;o o contr&aacute;rio. Nosso sobrenome vem do alem&atilde;o e quer dizer guardi&atilde;o: &eacute; assim que a gente cuida da comunica&ccedil;&atilde;o de quem confia na Forster.</p>'
                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">A gente atende Igrejinha, o Vale do Paranhana, Novo Hamburgo, Gramado e Canela, e vai at&eacute; voc&ecirc; para gravar.</p>'
                f'</div></div></div>')
@@ -440,8 +440,8 @@ def page_home():
     return hero + portas + trabalhos + quemfaz + confianca
 
 def page_acompanhamento():
-    hero = hero_page("ACOMPANHAMENTO MENSAL", "Estrat&eacute;gia, produ&ccedil;&atilde;o e const&acirc;ncia.",
-                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto, da estrat&eacute;gia &agrave; publica&ccedil;&atilde;o nas suas redes sociais. Quanto mais tempo trabalharmos juntos, mais natural fica produzir e melhor fica o conte&uacute;do.")
+    hero = hero_page("ACOMPANHAMENTO MENSAL", "Planejamento, produ&ccedil;&atilde;o e const&acirc;ncia.",
+                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto, do planejamento &agrave; publica&ccedil;&atilde;o nas suas redes sociais. Quanto mais tempo trabalharmos juntos, mais natural fica produzir e melhor fica o conte&uacute;do.")
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente cria.</h2></div>'
             + steps_grid([
@@ -658,7 +658,7 @@ PAGES = {
         "active": "acompanhamento", "fn": page_acompanhamento, "convite": CONVITE_PADRAO, "path": "/acompanhamento",
         "title": "Gestão de redes sociais e conteúdo mensal em Igrejinha, RS | FORSTER",
         "desc": "Você grava uma vez por mês e a gente cuida do resto: roteiro, gravação, edição, publicação e relatório. Conteúdo e gestão de redes sociais para empresas de Igrejinha, do Vale do Paranhana e região.",
-        "ld": service_ld("Acompanhamento mensal de conteúdo", "Estratégia, produção e gestão de conteúdo todo mês, com gravação da Forster ou orientação para gravar por conta.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
+        "ld": service_ld("Acompanhamento mensal de conteúdo", "Planejamento, produção e gestão de conteúdo todo mês, com gravação da Forster ou orientação para gravar por conta.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
     },
     "mentoria.html": {
         "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
