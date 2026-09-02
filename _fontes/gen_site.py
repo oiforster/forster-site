@@ -431,7 +431,7 @@ def page_home():
                f'</div></div></div>')
 
     nomes = ["&Oacute;ticas Casa Marco", "Fyber Show Piscinas", "Catarata Center", "Prisma Especialidades",
-             "Col&eacute;gio Luterano Redentor", "Psic&oacute;loga Martina Schneider", "Teclib - GLPI"]
+             "Col&eacute;gio Luterano Redentor", "Psic&oacute;loga Martina Schneider", "Vanessa Mainardi", "Teclib - GLPI"]
     confianca = (f'<div class="sec" style="padding-top: 64px; padding-bottom: 72px;"><div class="rv">{kicker("QUEM CONFIA NA FORSTER")}'
                  '<div class="conf" style="margin-top: 30px;">'
                  + "".join(f'<div class="h" style="color: rgba(38,34,32,0.55); white-space: nowrap;">{n}</div>' for n in nomes)
