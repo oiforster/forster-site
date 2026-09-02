@@ -704,6 +704,9 @@ def ga4():
     gtag('config', '{GA4_ID}');
   </script>'''
 
+import hashlib
+VER = hashlib.md5((CSS + JS).encode('utf-8')).hexdigest()[:8]
+
 def head(p):
     ld = json.dumps({"@context": "https://schema.org", "@graph": p["ld"]}, ensure_ascii=False)
     return f'''<meta charset="utf-8">
@@ -724,13 +727,13 @@ def head(p):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/style.css?v={VER}">
   <script type="application/ld+json">{ld}</script>{ga4()}'''
 
 def page_html(p):
     body = f'<div class="page">{nav(p["active"])}{p["fn"]()}{p["convite"]}</div>{FOOTER}'
     return (f'<!doctype html>\n<html lang="pt-BR">\n<head>\n  {head(p)}\n</head>\n<body>\n'
-            f'{body}\n<script src="/site.js" defer></script>\n</body>\n</html>\n')
+            f'{body}\n<script src="/site.js?v={VER}" defer></script>\n</body>\n</html>\n')
 
 PUB.mkdir(exist_ok=True)
 for fname, p in PAGES.items():
@@ -751,6 +754,10 @@ urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod>
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
+/style.css
+  Cache-Control: public, max-age=0, must-revalidate
+/site.js
+  Cache-Control: public, max-age=0, must-revalidate
 /img/*
   Cache-Control: public, max-age=31536000, immutable
 /video/*
