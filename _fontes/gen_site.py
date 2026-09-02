@@ -498,7 +498,7 @@ def page_mentoria():
                      cta_label="Falar com a Silvana pelo WhatsApp", cta_href=WA_SILVANA, ver_trabalhos=False)
     silvana = (f'<div class="sec"><div class="qf rv">'
                f'<div style="flex: 0 0 380px; height: 500px; overflow: hidden; border: 1px solid rgba(38,34,32,0.15);">'
-               f'<img src="/img/silvana-forster.jpg" alt="Silvana Forster" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>'
+               f'<img src="/img/silvana-forster.jpg" alt="Silvana Forster" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block;"></div>'
                f'<div style="padding-top: 26px;">{kicker("QUEM CONDUZ")}'
                f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Ol&aacute;! Eu sou a Silvana.</h2>'
                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 520px;">Trabalho para que a tua comunica&ccedil;&atilde;o seja leve, coerente e sustent&aacute;vel, sem f&oacute;rmulas prontas e sem perder a tua ess&ecirc;ncia.</p>'
