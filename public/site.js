@@ -41,4 +41,46 @@ document.addEventListener('click', function (e) {
   }
   box.appendChild(m);
   el.replaceWith(box);
+  var rotulo = el.querySelector('.tlabel');
+  medir('play_video', { video: el.dataset.yt || el.dataset.video, titulo: rotulo ? rotulo.textContent.trim() : '' });
 });
+// Medicao (Google Analytics 4): so faz algo quando a tag esta na pagina.
+var PESSOAS = {"5551981578225": "samuel", "5551980603512": "silvana"};
+function medir(nome, dados) {
+  if (typeof gtag === 'function') gtag('event', nome, dados || {});
+}
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[href]');
+  if (!a || a.dataset.yt || a.dataset.video) return;
+  var href = a.getAttribute('href') || '';
+  var texto = (a.textContent || '').trim().slice(0, 60);
+  if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
+    var pessoa = 'outro';
+    for (var num in PESSOAS) { if (href.indexOf(num) !== -1) pessoa = PESSOAS[num]; }
+    medir('clique_whatsapp', { pessoa: pessoa, texto: texto });
+  } else if (href.indexOf('instagram.com') !== -1) {
+    medir('clique_instagram', { texto: texto });
+  } else if (href.indexOf('tel:') === 0) {
+    medir('clique_telefone', { numero: href.slice(4) });
+  } else if (href.indexOf('mailto:') === 0) {
+    medir('clique_email', { email: href.slice(7) });
+  } else if (/^https?:/.test(href) && a.hostname !== location.hostname) {
+    medir('clique_externo', { destino: a.hostname, texto: texto });
+  }
+});
+if (typeof gtag === 'function') {
+  var visto = null;
+  try { visto = localStorage.getItem('aviso-medicao'); } catch (err) {}
+  if (!visto) {
+    var av = document.createElement('div');
+    av.className = 'aviso';
+    av.setAttribute('role', 'status');
+    av.innerHTML = '<span class="t">Este site usa o Google Analytics para medir visitas. Os dados são agregados e não identificam você.</span>'
+      + '<button class="aviso-ok" type="button">Entendi</button>';
+    document.body.appendChild(av);
+    av.querySelector('button').addEventListener('click', function () {
+      try { localStorage.setItem('aviso-medicao', '1'); } catch (err) {}
+      av.remove();
+    });
+  }
+}
