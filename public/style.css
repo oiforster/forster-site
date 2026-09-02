@@ -85,6 +85,9 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 @media (max-width: 560px) {
   .g4, .g3, .g2 { grid-template-columns: 1fr; }
 }
+.aviso { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 30; max-width: 440px; margin-left: auto; display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: #262220; color: #F7F3EC; border-radius: 6px; box-shadow: 0 8px 28px rgba(38,34,32,0.28); font-size: 13px; line-height: 1.5; }
+.aviso-ok { flex: 0 0 auto; font: inherit; font-variation-settings: 'opsz' 12, 'wght' 600; background: #B0553B; color: #F7F3EC; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+.aviso-ok:hover { background: #9D4A33; }
 @media (prefers-reduced-motion: no-preference) {
   .in { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
   .in1 { animation-delay: .05s; } .in2 { animation-delay: .12s; }

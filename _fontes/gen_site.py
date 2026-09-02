@@ -11,6 +11,9 @@ SITE = "https://somosforster.com.br"
 
 WA_SAMUEL = "https://wa.me/5551981578225"
 WA_SILVANA = "https://wa.me/5551980603512"
+# Google Analytics 4: ID da propriedade (formato G-XXXXXXXXXX). Vazio = nenhuma medicao no site.
+# Criar em analytics.google.com > Administrador > Criar propriedade > fluxo de dados Web.
+GA4_ID = "G-0PH3FJRH7W"
 MEDIA = "https://media.somosforster.com.br/video"
 
 S_PATH = "M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92"
@@ -113,6 +116,9 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 @media (max-width: 560px) {
   .g4, .g3, .g2 { grid-template-columns: 1fr; }
 }
+.aviso { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 30; max-width: 440px; margin-left: auto; display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: #262220; color: #F7F3EC; border-radius: 6px; box-shadow: 0 8px 28px rgba(38,34,32,0.28); font-size: 13px; line-height: 1.5; }
+.aviso-ok { flex: 0 0 auto; font: inherit; font-variation-settings: 'opsz' 12, 'wght' 600; background: #B0553B; color: #F7F3EC; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+.aviso-ok:hover { background: #9D4A33; }
 @media (prefers-reduced-motion: no-preference) {
   .in { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
   .in1 { animation-delay: .05s; } .in2 { animation-delay: .12s; }
@@ -169,8 +175,51 @@ document.addEventListener('click', function (e) {
   }
   box.appendChild(m);
   el.replaceWith(box);
+  var rotulo = el.querySelector('.tlabel');
+  medir('play_video', { video: el.dataset.yt || el.dataset.video, titulo: rotulo ? rotulo.textContent.trim() : '' });
 });
+// Medicao (Google Analytics 4): so faz algo quando a tag esta na pagina.
+var PESSOAS = __PESSOAS__;
+function medir(nome, dados) {
+  if (typeof gtag === 'function') gtag('event', nome, dados || {});
+}
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('a[href]');
+  if (!a || a.dataset.yt || a.dataset.video) return;
+  var href = a.getAttribute('href') || '';
+  var texto = (a.textContent || '').trim().slice(0, 60);
+  if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
+    var pessoa = 'outro';
+    for (var num in PESSOAS) { if (href.indexOf(num) !== -1) pessoa = PESSOAS[num]; }
+    medir('clique_whatsapp', { pessoa: pessoa, texto: texto });
+  } else if (href.indexOf('instagram.com') !== -1) {
+    medir('clique_instagram', { texto: texto });
+  } else if (href.indexOf('tel:') === 0) {
+    medir('clique_telefone', { numero: href.slice(4) });
+  } else if (href.indexOf('mailto:') === 0) {
+    medir('clique_email', { email: href.slice(7) });
+  } else if (/^https?:/.test(href) && a.hostname !== location.hostname) {
+    medir('clique_externo', { destino: a.hostname, texto: texto });
+  }
+});
+if (typeof gtag === 'function') {
+  var visto = null;
+  try { visto = localStorage.getItem('aviso-medicao'); } catch (err) {}
+  if (!visto) {
+    var av = document.createElement('div');
+    av.className = 'aviso';
+    av.setAttribute('role', 'status');
+    av.innerHTML = '<span class="t">Este site usa o Google Analytics para medir visitas. Os dados s\u00e3o agregados e n\u00e3o identificam voc\u00ea.</span>'
+      + '<button class="aviso-ok" type="button">Entendi</button>';
+    document.body.appendChild(av);
+    av.querySelector('button').addEventListener('click', function () {
+      try { localStorage.setItem('aviso-medicao', '1'); } catch (err) {}
+      av.remove();
+    });
+  }
+}
 """
+JS = JS.replace("__PESSOAS__", json.dumps({WA_SAMUEL.rsplit("/", 1)[1]: "samuel", WA_SILVANA.rsplit("/", 1)[1]: "silvana"}))
 
 def s_svg(stroke, sw="14", cls="", inline_size=True):
     size = ' style="overflow: visible; width: 0.70em; height: 0.756em; position: relative; top: 0.042em;"' if inline_size else ''
@@ -637,6 +686,21 @@ PAGES = {
     },
 }
 
+def ga4():
+    if not GA4_ID:
+        return ""
+    # Consent Mode: so analytics; nada de anuncios nem personalizacao.
+    return f'''
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('consent', 'default', {{ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted'}});
+    gtag('js', new Date());
+    gtag('config', '{GA4_ID}');
+  </script>'''
+
 def head(p):
     ld = json.dumps({"@context": "https://schema.org", "@graph": p["ld"]}, ensure_ascii=False)
     return f'''<meta charset="utf-8">
@@ -658,7 +722,7 @@ def head(p):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
   <link rel="stylesheet" href="/style.css">
-  <script type="application/ld+json">{ld}</script>'''
+  <script type="application/ld+json">{ld}</script>{ga4()}'''
 
 def page_html(p):
     body = f'<div class="page">{nav(p["active"])}{p["fn"]()}{p["convite"]}</div>{FOOTER}'
