@@ -268,6 +268,62 @@ CONVITE_MENTORIA = convite("Se esse &eacute; o teu momento",
                            "Manda uma mensagem e vamos conversar para entender o que faz sentido pra ti.",
                            "Falar com a Silvana pelo WhatsApp", WA_SILVANA)
 
+REGIAO = (f'<div class="sec"><div class="rv" style="max-width: 720px;">{kicker("ONDE A GENTE ATENDE")}'
+          f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">De Igrejinha para o Vale do Paranhana, Novo Hamburgo, Gramado e Canela.</h2>'
+          f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">O ateliê fica em Igrejinha, e a maior parte dos nossos clientes está por perto: Três Coroas, Taquara, Parobé, Rolante, Novo Hamburgo, Gramado e Canela. Para gravar, a gente vai até você com toda a estrutura. Para um site, a conversa pode ser por chamada de vídeo, e o trabalho chega por link.</p></div></div>')
+
+def faq(items):
+    rows = "".join(
+        f'<div class="col"><div class="rule rulex"></div>'
+        f'<h3 class="h" style="font-size: 22px; margin-top: 22px;">{q}</h3>'
+        f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin: 14px 0 0;">{a}</p></div>'
+        for q, a in items)
+    return (f'<div class="sec"><div class="rv">{kicker("PERGUNTAS FREQUENTES")}</div>'
+            f'<div class="g2 rv" style="margin-top: 44px;">{rows}</div></div>')
+
+def faq_ld(items):
+    return {"@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in items]}
+
+FAQ_ACOMP = [
+    ("Preciso aparecer nos vídeos?",
+     "Na maior parte dos casos, sim, e é isso que faz a diferença: quem confia em você quer ver você. A gente prepara o roteiro, liga o teleprompter e cuida da luz, então você só precisa aparecer. Quando faz sentido, o conteúdo também mostra a equipe, o produto ou o lugar."),
+    ("Quanto conteúdo sai por mês?",
+     "Depende do plano. A base é uma sessão de gravação de até quatro horas, que rende um conjunto de vídeos curtos e de posts com legenda, mais o calendário editorial e a reunião de avaliação. A gente monta o plano com você na conversa inicial."),
+    ("Vocês também publicam?",
+     "Sim. Com tudo aprovado por link, a gente publica os vídeos, os posts e as legendas nos seus perfis. Você fica livre para cuidar do seu negócio."),
+    ("Como começa?",
+     "Com um mês de diagnóstico. Antes de gravar qualquer coisa, a gente entende o seu negócio, o seu público e o que faz sentido comunicar, e monta os pilares de conteúdo e o calendário do primeiro trimestre. Só depois o ciclo mensal começa."),
+]
+FAQ_MENT = [
+    ("Quanto tempo dura?",
+     "Três meses, com seis encontros quinzenais de uma hora e meia e suporte leve pelo WhatsApp entre eles, no teu ritmo."),
+    ("Preciso já publicar conteúdo?",
+     "Não. O acompanhamento começa pelo teu momento e pela tua história. Se tu já publica, a gente organiza o que existe. Se ainda não, a gente constrói do zero, com um calendário que cabe na tua rotina."),
+    ("Como funciona a parte de vídeo?",
+     "É um encontro prático com o Samuel: luz, enquadramento e cenário com o que tu já tem em casa, presença em vídeo, teleprompter e gravação por blocos. Tu recebe retorno sobre um vídeo que gravou e sai com o plano do primeiro lote."),
+]
+FAQ_SITES = [
+    ("Preciso ter o texto pronto?",
+     "Não. O texto nasce da nossa conversa: você conta a sua história e os seus serviços, e a gente escreve. Você revisa tudo antes de publicar."),
+    ("Quanto tempo leva?",
+     "Depende do tamanho do site e do quanto já existe de material. A gente combina o prazo na conversa inicial, e o que mais pesa é o texto, porque é ali que o site ganha a sua cara."),
+    ("O site fica no meu domínio?",
+     "Sim. O site é publicado no seu endereço, e o domínio fica no seu nome. Se você ainda não tem um, a gente ajuda a registrar."),
+    ("O site vai aparecer no Google?",
+     "O site sai com a estrutura que o Google precisa para entender quem você é, o que faz e onde atende: títulos, descrições, dados da empresa e mapa do site. Aparecer bem nas buscas da sua região é um trabalho que continua depois, e a gente orienta como."),
+]
+FAQ_ENC = [
+    ("Quanto tempo leva um vídeo institucional?",
+     "A gravação costuma caber em uma sessão de até quatro horas, da montagem ao desmonte. Antes dela vêm o briefing e o roteiro, e depois a edição e a sua aprovação por link. O prazo total a gente combina no briefing, de acordo com o tamanho do filme."),
+    ("O roteiro está incluso?",
+     "Sim. A gente conversa, escreve o roteiro e manda para você aprovar antes da sessão. No dia, o teleprompter faz o resto: ninguém precisa decorar nada."),
+    ("Vocês gravam com drone?",
+     "Sim, quando a história pede. As imagens aéreas entram no filme para mostrar a fábrica, a sede, a paisagem ou o tamanho do que você faz."),
+    ("Onde posso usar o vídeo?",
+     "No site, nas redes sociais, em apresentações para clientes, em feiras e em anúncios. A gente entrega o filme pronto nos formatos que você precisa."),
+]
+
 FOOTER = (f'<footer class="foot"><div>{lockup("19px", "#F7F3EC")}'
           '<div class="t" style="font-size: 13px; color: #D9C29A; margin-top: 10px;">Conte&uacute;do feito a quatro m&atilde;os.</div></div>'
           '<div class="t" style="font-size: 14px; color: rgba(247,243,236,0.9);"><a href="https://www.instagram.com/somosforster" style="color: rgba(247,243,236,0.9);">@somosforster</a> &middot; Igrejinha, Rio Grande do Sul</div></footer>')
@@ -322,6 +378,7 @@ def page_home():
                f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Quem atende &eacute; quem cria.</h2>'
                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 520px;">Forster &eacute; sobrenome: o de Samuel e o de Silvana. O ateli&ecirc; funciona na nossa casa, em Igrejinha, e cada trabalho passa pelas m&atilde;os dos dois, da estrat&eacute;gia &agrave; entrega.</p>'
                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">A Forster &eacute; feita por quem acredita que o trabalho se adapta &agrave; filosofia de vida, e n&atilde;o o contr&aacute;rio. Nosso sobrenome vem do alem&atilde;o e quer dizer guardi&atilde;o: &eacute; assim que a gente cuida da comunica&ccedil;&atilde;o de quem confia na Forster.</p>'
+               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">A gente atende Igrejinha, o Vale do Paranhana, Novo Hamburgo, Gramado e Canela, e vai at&eacute; voc&ecirc; para gravar.</p>'
                f'</div></div></div>')
 
     nomes = ["&Oacute;ticas Casa Marco", "Fyber Show Piscinas", "Catarata Center", "Prisma Especialidades",
@@ -335,7 +392,7 @@ def page_home():
 
 def page_acompanhamento():
     hero = hero_page("ACOMPANHAMENTO MENSAL", "Estrat&eacute;gia, produ&ccedil;&atilde;o e const&acirc;ncia.",
-                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto. Quanto mais tempo trabalharmos juntos, mais natural fica produzir e melhor fica o conte&uacute;do.")
+                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto, da estrat&eacute;gia &agrave; publica&ccedil;&atilde;o nas suas redes sociais. Quanto mais tempo trabalharmos juntos, mais natural fica produzir e melhor fica o conte&uacute;do.")
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente cria.</h2></div>'
             + steps_grid([
@@ -384,7 +441,7 @@ def page_acompanhamento():
     trab = (f'<div class="sec"><div class="rv">{kicker("PERFIS QUE A GENTE CUIDA COM CONST&Acirc;NCIA")}</div>'
             f'<div class="g4 rv" style="margin-top: 44px;">{cards}</div>'
             f'<a class="tb lka rv" href="/trabalhos" style="font-size: 14px; margin-top: 28px;">Ver os trabalhos destes perfis {ARROW}</a></div>')
-    return hero + como + pratica + seugeito + incluso + trab
+    return hero + como + pratica + seugeito + incluso + trab + REGIAO + faq(FAQ_ACOMP)
 
 def page_mentoria():
     hero = hero_page("MENTORIA", "Da teoria &agrave; pr&aacute;tica.",
@@ -421,10 +478,10 @@ def page_mentoria():
              f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Gravar bem com o que tu tem em casa.</h2>'
              f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Um encontro pr&aacute;tico com o Samuel, com as dicas de luz, enquadramento e cen&aacute;rio pensadas para o que tu j&aacute; tem em casa, mais presen&ccedil;a em v&iacute;deo, teleprompter na pr&aacute;tica, gravar por blocos e o que fazer quando trava.</p>'
              f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">Tu recebe retorno direto sobre um v&iacute;deo que gravou, sai com o plano de grava&ccedil;&atilde;o do primeiro lote e segue com suporte pelo WhatsApp.</p></div></div>')
-    return hero + silvana + quem + como + video
+    return hero + silvana + quem + como + video + faq(FAQ_MENT)
 
 def page_sites():
-    hero = hero_page("SITES", "Um site sob medida, do texto ao c&oacute;digo.",
+    hero = hero_page("CRIA&Ccedil;&Atilde;O DE SITES", "Um site sob medida, do texto ao c&oacute;digo.",
                      "Leve, r&aacute;pido e escrito por quem conhece a sua hist&oacute;ria: um site que carrega em segundos, aparece na busca e fala do jeito que voc&ecirc; fala.", ver_trabalhos=False)
     dif = (f'<div class="sec"><div class="rv">{kicker("O QUE FAZ A DIFEREN&Ccedil;A")}</div>'
            + steps_grid([
@@ -452,7 +509,7 @@ def page_sites():
         for f, l, u in sites_data)
     ex = (f'<div class="sec"><div class="rv">{kicker("SITES NO AR")}</div>'
           f'<div class="g3 rv" style="margin-top: 44px;">{cards}</div></div>')
-    return hero + dif + como + ex
+    return hero + dif + como + ex + REGIAO + faq(FAQ_SITES)
 
 def page_encomenda():
     hero = hero_page("SOB ENCOMENDA", "Um filme com come&ccedil;o, meio e fim.",
@@ -461,7 +518,8 @@ def page_encomenda():
              + steps_grid([
                  ("V&iacute;deo institucional", "A sua empresa apresentada com verdade: quem &eacute;, o que faz e por que faz. Para o site, para vender, para apresentar."),
                  ("V&iacute;deo de produto", "O seu produto em cena, bem iluminado e bem contado, pronto para campanha, loja e redes."),
-             ], grid="g2") + '</div>')
+                 ("V&iacute;deo publicit&aacute;rio", "Um filme de campanha, com ideia, roteiro e dire&ccedil;&atilde;o: para lan&ccedil;ar, para datas especiais e para a sua marca ser lembrada."),
+             ], grid="g3") + '</div>')
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente grava.</h2></div>'
             + steps_grid([
@@ -475,7 +533,7 @@ def page_encomenda():
             + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
             + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
             + '</div></div>')
-    return hero + tipos + como + trab
+    return hero + tipos + como + trab + REGIAO + faq(FAQ_ENC)
 
 def page_trabalhos():
     hero = hero_page("TRABALHOS", "O que sai do ateli&ecirc;.",
@@ -509,6 +567,10 @@ def page_trabalhos():
 
 # ---------------------------------------------------------------- SEO e montagem
 
+AREA = ([{"@type": "City", "name": c} for c in
+         ["Igrejinha", "Três Coroas", "Taquara", "Parobé", "Rolante", "Novo Hamburgo", "Gramado", "Canela"]]
+        + [{"@type": "AdministrativeArea", "name": "Vale do Paranhana"},
+           {"@type": "AdministrativeArea", "name": "Rio Grande do Sul"}])
 ORG_ID = SITE + "/#org"
 ORG = {
     "@type": "ProfessionalService",
@@ -522,7 +584,7 @@ ORG = {
     "telephone": "+55-51-98157-8225",
     "address": {"@type": "PostalAddress", "addressLocality": "Igrejinha",
                 "addressRegion": "RS", "addressCountry": "BR"},
-    "areaServed": "Rio Grande do Sul",
+    "areaServed": AREA,
     "sameAs": ["https://www.instagram.com/somosforster"],
     "founder": [{"@type": "Person", "name": "Samuel Forster"},
                 {"@type": "Person", "name": "Silvana Forster"}],
@@ -530,7 +592,7 @@ ORG = {
 
 def service_ld(name, desc, path):
     return [{"@type": "Service", "name": name, "description": desc,
-             "url": SITE + path, "provider": {"@id": ORG_ID}, "areaServed": "Rio Grande do Sul"},
+             "url": SITE + path, "provider": {"@id": ORG_ID}, "areaServed": AREA},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Início", "item": SITE + "/"},
                 {"@type": "ListItem", "position": 2, "name": name, "item": SITE + path}]}]
@@ -539,36 +601,36 @@ PAGES = {
     "index.html": {
         "active": "", "fn": page_home, "convite": CONVITE_PADRAO, "path": "/",
         "title": "FORSTER · Ateliê de Conteúdo em Igrejinha, RS",
-        "desc": "Estratégia, textos e vídeo feitos a quatro mãos. Acompanhamento mensal de conteúdo, mentoria de comunicação, criação de sites e produção de vídeo em Igrejinha, Rio Grande do Sul.",
+        "desc": "Vídeo, conteúdo para redes sociais, sites e mentoria de comunicação feitos a quatro mãos em Igrejinha, RS, para empresas e profissionais do Vale do Paranhana, Novo Hamburgo, Gramado e Canela.",
         "ld": [ORG],
     },
     "acompanhamento.html": {
         "active": "acompanhamento", "fn": page_acompanhamento, "convite": CONVITE_PADRAO, "path": "/acompanhamento",
-        "title": "Acompanhamento mensal de conteúdo | FORSTER",
-        "desc": "Você grava uma vez por mês e a gente cuida de todo o resto: calendário editorial, roteiros, gravação, edição, publicação e relatório mensal. Conteúdo com constância para Instagram e YouTube.",
-        "ld": service_ld("Acompanhamento mensal de conteúdo", "Estratégia, produção e gestão de conteúdo todo mês, com gravação da Forster ou orientação para gravar por conta.", "/acompanhamento"),
+        "title": "Gestão de redes sociais e conteúdo mensal em Igrejinha, RS | FORSTER",
+        "desc": "Você grava uma vez por mês e a gente cuida do resto: roteiro, gravação, edição, publicação e relatório. Conteúdo e gestão de redes sociais para empresas de Igrejinha, do Vale do Paranhana e região.",
+        "ld": service_ld("Acompanhamento mensal de conteúdo", "Estratégia, produção e gestão de conteúdo todo mês, com gravação da Forster ou orientação para gravar por conta.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
     },
     "mentoria.html": {
         "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
-        "title": "Mentoria Comunicação Consciente | FORSTER",
-        "desc": "Acompanhamento individual em Comunicação Consciente com Silvana Forster: três meses para transformar o que tu já sabe em presença real, com a parte de vídeo conduzida por Samuel.",
-        "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, seis encontros quinzenais e suporte leve pelo WhatsApp.", "/mentoria"),
+        "title": "Mentoria de comunicação individual | Comunicação Consciente | FORSTER",
+        "desc": "Mentoria de comunicação individual com Silvana Forster: três meses de Acompanhamento em Comunicação Consciente para transformar o que tu já sabe em presença real, com a parte de vídeo conduzida por Samuel.",
+        "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, seis encontros quinzenais e suporte leve pelo WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
     },
     "sites.html": {
         "active": "sites", "fn": page_sites, "convite": CONVITE_PADRAO, "path": "/sites",
-        "title": "Criação de sites sob medida | FORSTER",
-        "desc": "Sites leves, rápidos e escritos por quem conhece a sua história: páginas que carregam em segundos, aparecem no Google e falam do seu jeito. Feitos em Igrejinha, RS.",
-        "ld": service_ld("Criação de sites", "Sites institucionais leves e rápidos, do texto ao código, publicados no domínio do cliente.", "/sites"),
+        "title": "Criação de sites em Igrejinha e Vale do Paranhana | FORSTER",
+        "desc": "Criação de sites sob medida, do texto ao código: leves, rápidos e prontos para o Google. Feitos em Igrejinha para empresas e profissionais do Vale do Paranhana, Novo Hamburgo, Gramado e Canela.",
+        "ld": service_ld("Criação de sites", "Sites institucionais leves e rápidos, do texto ao código, publicados no domínio do cliente.", "/sites") + [faq_ld(FAQ_SITES)],
     },
     "sob-encomenda.html": {
         "active": "encomenda", "fn": page_encomenda, "convite": CONVITE_PADRAO, "path": "/sob-encomenda",
-        "title": "Produtora de vídeo em Igrejinha, RS | FORSTER",
-        "desc": "Vídeo institucional e vídeo de produto sob encomenda, do roteiro à entrega: captação própria, iluminação profissional, teleprompter e drone. Produção de vídeo no Vale do Paranhana.",
-        "ld": service_ld("Produção de vídeo sob encomenda", "Vídeo institucional e vídeo de produto, do roteiro à entrega, sem compromisso de recorrência.", "/sob-encomenda"),
+        "title": "Produtora de vídeo institucional em Igrejinha, RS | FORSTER",
+        "desc": "Vídeo institucional, de produto e publicitário sob encomenda, do roteiro à entrega: captação própria, luz profissional, teleprompter e drone. Produtora de vídeo em Igrejinha, no Vale do Paranhana.",
+        "ld": service_ld("Produção de vídeo sob encomenda", "Vídeo institucional e vídeo de produto, do roteiro à entrega, sem compromisso de recorrência.", "/sob-encomenda") + [faq_ld(FAQ_ENC)],
     },
     "trabalhos.html": {
         "active": "trabalhos", "fn": page_trabalhos, "convite": CONVITE_PADRAO, "path": "/trabalhos",
-        "title": "Trabalhos em vídeo e conteúdo | FORSTER",
+        "title": "Portfólio de vídeos e conteúdo | FORSTER",
         "desc": "Uma seleção do que sai do ateliê: vídeos institucionais, publicitários, curso, clipe e o conteúdo mensal que a Forster produz para os clientes.",
         "ld": service_ld("Trabalhos da Forster", "Seleção de vídeos institucionais, publicitários e de conteúdo mensal produzidos pela Forster.", "/trabalhos"),
     },
@@ -612,7 +674,7 @@ for fname, p in PAGES.items():
 
 (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
-LASTMOD = "2026-09-01"
+LASTMOD = "2026-09-02"
 urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod></url>\n" for p in PAGES.values())
 (PUB / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n', encoding="utf-8")
