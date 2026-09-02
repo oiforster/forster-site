@@ -13,7 +13,7 @@ WA_SAMUEL = "https://wa.me/5551981578225"
 WA_SILVANA = "https://wa.me/5551980603512"
 # Google Analytics 4: ID da propriedade (formato G-XXXXXXXXXX). Vazio = nenhuma medicao no site.
 # Criar em analytics.google.com > Administrador > Criar propriedade > fluxo de dados Web.
-GA4_ID = ""
+GA4_ID = "G-0PH3FJRH7W"
 MEDIA = "https://media.somosforster.com.br/video"
 
 S_PATH = "M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92"
