@@ -441,7 +441,9 @@ def page_sites():
     sites_data = [("site-catarata-center.jpg", "Site &middot; Catarata Center",
                    "https://forster-cataratacenter.pages.dev/57ba045fc63a4875/"),
                   ("site-prisma-especialidades.jpg", "Site &middot; Prisma Especialidades",
-                   "https://forster-prisma.pages.dev/cee72c886be78b82/")]
+                   "https://forster-prisma.pages.dev/cee72c886be78b82/"),
+                  ("site-fyber-show.jpg", "Site &middot; Fyber Show Piscinas",
+                   "https://forster-fybershow.pages.dev/cf4258df45becb2d/")]
     cards = "".join(
         f'<a href="{u}" target="_blank" rel="noopener" style="display: block; color: #262220;">'
         f'<div style="aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(38,34,32,0.15);">'
@@ -449,7 +451,7 @@ def page_sites():
         f'<div class="t5" style="font-size: 14px; margin-top: 12px;">{l}</div></a>'
         for f, l, u in sites_data)
     ex = (f'<div class="sec"><div class="rv">{kicker("SITES NO AR")}</div>'
-          f'<div class="g2 rv" style="margin-top: 44px;">{cards}</div></div>')
+          f'<div class="g3 rv" style="margin-top: 44px;">{cards}</div></div>')
     return hero + dif + como + ex
 
 def page_encomenda():
