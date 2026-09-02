@@ -117,8 +117,8 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
   .in { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
   .in1 { animation-delay: .05s; } .in2 { animation-delay: .12s; }
   .in3 { animation-delay: .19s; } .in4 { animation-delay: .26s; }
-  .sdraw path { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw 1.1s cubic-bezier(.25,1,.5,1) .25s forwards; }
-  .heroS.sdraw path { animation-duration: 2s; animation-delay: .35s; }
+  .sdraw path { stroke-dasharray: 400; stroke-dashoffset: 400; animation: draw 2.4s cubic-bezier(.45,.05,.55,.95) .5s forwards; }
+  .heroS.sdraw path { animation-duration: 3.6s; animation-delay: .7s; }
   @keyframes draw { to { stroke-dashoffset: 0; } }
   @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
   html.js .rv { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
