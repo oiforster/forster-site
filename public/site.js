@@ -68,19 +68,20 @@ document.addEventListener('click', function (e) {
     medir('clique_externo', { destino: a.hostname, texto: texto });
   }
 });
-if (typeof gtag === 'function') {
-  var visto = null;
-  try { visto = localStorage.getItem('aviso-medicao'); } catch (err) {}
-  if (!visto) {
-    var av = document.createElement('div');
-    av.className = 'aviso';
-    av.setAttribute('role', 'status');
-    av.innerHTML = '<span class="t">Este site usa o Google Analytics para medir visitas. Os dados são agregados e não identificam você.</span>'
-      + '<button class="aviso-ok" type="button">Entendi</button>';
-    document.body.appendChild(av);
-    av.querySelector('button').addEventListener('click', function () {
-      try { localStorage.setItem('aviso-medicao', '1'); } catch (err) {}
-      av.remove();
-    });
+var ob = document.querySelector('[data-optout]');
+if (ob) {
+  var oid = ob.dataset.optout, ost = document.getElementById('optout-st');
+  function semMedicao() { try { return localStorage.getItem('sem-medicao') === '1'; } catch (err) { return false; } }
+  function pintar() {
+    var off = semMedicao();
+    ob.textContent = off ? 'Voltar a contar minhas visitas' : 'Não contar minhas visitas';
+    ost.textContent = off ? 'Feito. Suas visitas não são contadas neste navegador.' : 'Suas visitas neste navegador estão sendo contadas.';
   }
+  ob.addEventListener('click', function () {
+    var off = !semMedicao();
+    try { off ? localStorage.setItem('sem-medicao', '1') : localStorage.removeItem('sem-medicao'); } catch (err) {}
+    window['ga-disable-' + oid] = off;
+    pintar();
+  });
+  pintar();
 }
