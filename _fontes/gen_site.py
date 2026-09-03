@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Gerador do site da FORSTER (somosforster.com.br).
 # Fonte da verdade de design: projeto "Site Forster design" no Claude Design.
-# Este script emite a versao publicada em ../public: 6 paginas + style.css + site.js
+# Este script emite a versao publicada em ../public: 7 paginas + style.css + site.js
 # + robots/sitemap/_headers + redirect da raiz (forsterfilmes.com via GitHub Pages).
 import json, pathlib
 
@@ -119,9 +119,12 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 @media (max-width: 560px) {
   .g4, .g3, .g2 { grid-template-columns: 1fr; }
 }
-.aviso { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 30; max-width: 440px; margin-left: auto; display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: #262220; color: #F7F3EC; border-radius: 6px; box-shadow: 0 8px 28px rgba(38,34,32,0.28); font-size: 13px; line-height: 1.5; }
-.aviso-ok { flex: 0 0 auto; font: inherit; font-variation-settings: 'opsz' 12, 'wght' 600; background: #B0553B; color: #F7F3EC; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
-.aviso-ok:hover { background: #9D4A33; }
+.prosa { max-width: 680px; }
+.prosa p { font-size: 17px; line-height: 1.65; margin: 22px 0 0; }
+.prosa h2 { font-size: 24px; margin-top: 44px; }
+.optout { font: inherit; font-variation-settings: 'opsz' 12, 'wght' 600; background: none; color: #262220; border: 1px solid rgba(38,34,32,0.4); border-radius: 6px; padding: 12px 20px; font-size: 15px; cursor: pointer; margin-top: 26px; }
+.optout:hover { border-color: #B0553B; color: #B0553B; }
+.optout-st { font-size: 14px; color: #8A817A; margin-top: 12px; }
 @media (prefers-reduced-motion: no-preference) {
   .in { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
   .in1 { animation-delay: .05s; } .in2 { animation-delay: .12s; }
@@ -205,21 +208,22 @@ document.addEventListener('click', function (e) {
     medir('clique_externo', { destino: a.hostname, texto: texto });
   }
 });
-if (typeof gtag === 'function') {
-  var visto = null;
-  try { visto = localStorage.getItem('aviso-medicao'); } catch (err) {}
-  if (!visto) {
-    var av = document.createElement('div');
-    av.className = 'aviso';
-    av.setAttribute('role', 'status');
-    av.innerHTML = '<span class="t">Este site usa o Google Analytics para medir visitas. Os dados s\u00e3o agregados e n\u00e3o identificam voc\u00ea.</span>'
-      + '<button class="aviso-ok" type="button">Entendi</button>';
-    document.body.appendChild(av);
-    av.querySelector('button').addEventListener('click', function () {
-      try { localStorage.setItem('aviso-medicao', '1'); } catch (err) {}
-      av.remove();
-    });
+var ob = document.querySelector('[data-optout]');
+if (ob) {
+  var oid = ob.dataset.optout, ost = document.getElementById('optout-st');
+  function semMedicao() { try { return localStorage.getItem('sem-medicao') === '1'; } catch (err) { return false; } }
+  function pintar() {
+    var off = semMedicao();
+    ob.textContent = off ? 'Voltar a contar minhas visitas' : 'N\u00e3o contar minhas visitas';
+    ost.textContent = off ? 'Feito. Suas visitas n\u00e3o s\u00e3o contadas neste navegador.' : 'Suas visitas neste navegador est\u00e3o sendo contadas.';
   }
+  ob.addEventListener('click', function () {
+    var off = !semMedicao();
+    try { off ? localStorage.setItem('sem-medicao', '1') : localStorage.removeItem('sem-medicao'); } catch (err) {}
+    window['ga-disable-' + oid] = off;
+    pintar();
+  });
+  pintar();
 }
 """
 JS = JS.replace("__PESSOAS__", json.dumps({WA_SAMUEL.rsplit("/", 1)[1]: "samuel", WA_SILVANA.rsplit("/", 1)[1]: "silvana"}))
@@ -378,7 +382,7 @@ FAQ_ENC = [
 
 FOOTER = (f'<footer class="foot"><div>{lockup("19px", "#F7F3EC")}'
           '<div class="t" style="font-size: 13px; color: #D9C29A; margin-top: 10px;">Conte&uacute;do feito a quatro m&atilde;os.</div></div>'
-          '<div class="t" style="font-size: 14px; color: rgba(247,243,236,0.9);"><a href="https://www.instagram.com/somosforster" style="color: rgba(247,243,236,0.9);">@somosforster</a> &middot; Igrejinha, Rio Grande do Sul</div></footer>')
+          '<div class="t" style="font-size: 14px; color: rgba(247,243,236,0.9);"><a href="https://www.instagram.com/somosforster" style="color: rgba(247,243,236,0.9);">@somosforster</a> &middot; Igrejinha, Rio Grande do Sul &middot; <a href="/privacidade" style="color: rgba(247,243,236,0.7);">Privacidade</a></div></footer>')
 
 # ---------------------------------------------------------------- paginas
 
@@ -643,6 +647,22 @@ ORG = {
                 {"@type": "Person", "name": "Silvana Forster"}],
 }
 
+def page_privacidade():
+    botao = (f'<button class="optout" type="button" data-optout="{GA4_ID}">N&atilde;o contar minhas visitas</button>'
+             f'<p class="t optout-st" id="optout-st"></p>') if GA4_ID else ''
+    return (f'<header class="heroP">{kicker("PRIVACIDADE", " in")}'
+            f'<h1 class="h h1p in in1" style="margin: 26px 0 0;">O que a gente mede neste site.</h1></header>'
+            f'<div class="sec" style="padding-top: 0; border-top: 0;"><div class="prosa rv">'
+            f'<p class="t" style="margin-top: 0;">Este site usa o Google Analytics para contar visitas: quantas pessoas entram, de onde v&ecirc;m, quais p&aacute;ginas abrem e se clicam no bot&atilde;o de conversar. &Eacute; o que a gente precisa para saber se o site est&aacute; cumprindo o papel dele.</p>'
+            f'<p class="t">Os n&uacute;meros s&atilde;o agregados. A gente v&ecirc; que trinta pessoas vieram do Google esta semana, n&atilde;o quem s&atilde;o. Nenhum dado &eacute; usado para an&uacute;ncios, para montar perfil de quem visita ou cruzado com outras bases. O Google recebe esses dados como nosso fornecedor de medi&ccedil;&atilde;o e os guarda por 14 meses.</p>'
+            f'<p class="t">Para reconhecer que duas visitas s&atilde;o da mesma pessoa, o Google Analytics grava um pequeno arquivo no seu navegador, o cookie. Ele n&atilde;o cont&eacute;m nome, e-mail nem telefone. Voc&ecirc; pode apag&aacute;-lo a qualquer momento nas configura&ccedil;&otilde;es do navegador.</p>'
+            f'<p class="t">Se preferir n&atilde;o ser contado, &eacute; s&oacute; usar o bot&atilde;o abaixo. A escolha fica salva neste navegador e vale para todas as p&aacute;ginas do site.</p>'
+            f'{botao}'
+            f'<h2 class="h">Quando voc&ecirc; fala com a gente</h2>'
+            f'<p class="t">Os bot&otilde;es de conversar abrem o WhatsApp. O que voc&ecirc; escrever ali fica entre voc&ecirc; e a FORSTER, e a gente usa s&oacute; para responder e, se virar trabalho, para fazer o trabalho. Nada vai para lista de e-mail nem para terceiros.</p>'
+            f'<p class="t">Qualquer d&uacute;vida sobre os seus dados, &eacute; s&oacute; escrever para o Samuel pelo WhatsApp ou pelo Instagram. Respons&aacute;vel: FORSTER Ateli&ecirc; de Conte&uacute;do, Igrejinha, RS.</p>'
+            f'</div></div>')
+
 def service_ld(name, desc, path):
     return [{"@type": "Service", "name": name, "description": desc,
              "url": SITE + path, "provider": {"@id": ORG_ID}, "areaServed": AREA},
@@ -681,6 +701,14 @@ PAGES = {
         "desc": "Vídeo institucional, de produto e publicitário sob encomenda, do roteiro à entrega: captação própria, luz profissional, teleprompter e drone. Produtora de vídeo em Igrejinha, no Vale do Paranhana.",
         "ld": service_ld("Produção de vídeo sob encomenda", "Vídeo institucional e vídeo de produto, do roteiro à entrega, sem compromisso de recorrência.", "/sob-encomenda") + [faq_ld(FAQ_ENC)],
     },
+    "privacidade.html": {
+        "active": "", "fn": page_privacidade, "convite": "", "path": "/privacidade",
+        "title": "Privacidade | FORSTER",
+        "desc": "O que o site da FORSTER mede, por quanto tempo, e como pedir para não ser contado.",
+        "ld": [{"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Início", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Privacidade", "item": SITE + "/privacidade"}]}],
+    },
     "trabalhos.html": {
         "active": "trabalhos", "fn": page_trabalhos, "convite": CONVITE_PADRAO, "path": "/trabalhos",
         "title": "Portfólio de vídeos e conteúdo | FORSTER",
@@ -695,6 +723,7 @@ def ga4():
     # Consent Mode: so analytics; nada de anuncios nem personalizacao.
     return f'''
   <link rel="preconnect" href="https://www.googletagmanager.com">
+  <script>try{{if(localStorage.getItem('sem-medicao')==='1')window['ga-disable-{GA4_ID}']=true;}}catch(e){{}}</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -745,7 +774,7 @@ for fname, p in PAGES.items():
 
 (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
-LASTMOD = "2026-09-02"
+LASTMOD = "2026-09-03"
 urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod></url>\n" for p in PAGES.values())
 (PUB / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n', encoding="utf-8")
