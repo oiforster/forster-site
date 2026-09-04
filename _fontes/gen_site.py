@@ -603,7 +603,7 @@ def page_trabalhos():
             + '</div></div>')
     prod = (f'<div class="sec"><div class="rv">{kicker("PUBLICIT&Aacute;RIOS")}</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#2B2724", "Publicit&aacute;rio &middot; SAIF &middot; Pipoca no Ch&atilde;o", video=f"{MEDIA}/publicitario-saif-pipoca-no-chao.mp4", img="thumb-publicitario-saif-pipoca-no-chao.jpg", alt="Campanha publicit&aacute;ria SAIF, filme Pipoca no Ch&atilde;o")
+            + tile("thalf", "#2B2724", "Publicit&aacute;rio &middot; Oli Im&oacute;veis &middot; Webs&eacute;rie Tra&ccedil;os, com Em&iacute;lio Finger", video=f"{MEDIA}/publicitario-oli-imoveis-webserie-tracos.mp4", img="thumb-publicitario-oli-imoveis-webserie-tracos.jpg", alt="Webs&eacute;rie Tra&ccedil;os, epis&oacute;dio com Em&iacute;lio Finger, da Oli Im&oacute;veis")
             + tile("thalf", "#3A4638", "Publicit&aacute;rio &middot; SAIF &middot; O Jeito de Come&ccedil;ar o Dia", video=f"{MEDIA}/publicitario-saif-jeito-de-comecar-o-dia.mp4", img="thumb-publicitario-saif-jeito-de-comecar-o-dia.jpg", alt="Campanha publicit&aacute;ria SAIF, filme O Jeito SAIF de Come&ccedil;ar o Dia")
             + tile("thalf", "#D9C29A", "Publicit&aacute;rio &middot; Emp&oacute;rio Essenza &middot; Hist&oacute;ria de Natal", video=f"{MEDIA}/publicitario-emporio-essenza-natal.mp4", img="thumb-publicitario-emporio-essenza-natal.jpg", alt="Filme de Natal do Emp&oacute;rio Essenza")
             + '</div></div>')
@@ -611,6 +611,7 @@ def page_trabalhos():
               f'<div class="mosaic rv" style="margin-top: 44px;">'
               + tile("thalf", "#3A4638", "Curso &middot; Dra Karol Hoppen &middot; Fada do Dente", video=f"{MEDIA}/curso-fada-do-dente.mp4", img="thumb-curso-fada-do-dente.jpg", alt="V&iacute;deo aula Fada do Dente, da Dra Karol Hoppen")
               + tile("thalf", "#2B2724", "Clipe musical &middot; Fam&iacute;lia Rolim &middot; Casa de Pedra", video=f"{MEDIA}/clipe-casa-de-pedra.mp4", img="thumb-clipe-casa-de-pedra.jpg", alt="Clipe musical Casa de Pedra, da Fam&iacute;lia Rolim")
+              + tile("thalf", "#D9C29A", "Filme &middot; Kety e Serena &middot; Uma hist&oacute;ria de amor", video=f"{MEDIA}/filme-kety-e-serena.mp4", img="thumb-filme-kety-e-serena.jpg", alt="Kety e Serena, uma hist&oacute;ria de amor: filme sobre uma menina e a &eacute;gua que ela ama")
               + '</div></div>')
     mensal = (f'<div class="sec"><div class="rv">{kicker("CONTE&Uacute;DO MENSAL")}</div>'
               f'<div class="mosaic rv" style="margin-top: 44px;">'
