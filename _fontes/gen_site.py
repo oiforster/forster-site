@@ -89,8 +89,8 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 .qf { display: flex; gap: 64px; align-items: flex-start; }
 .qf-photo { flex: 0 0 440px; height: 560px; overflow: hidden; border: 1px solid rgba(38,34,32,0.15); }
 .qf-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.silv-photo { flex: 0 0 380px; height: 500px; overflow: hidden; border: 1px solid rgba(38,34,32,0.15); }
-.silv-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; }
+.silv-photo { flex: 0 0 300px; border: 1px solid rgba(38,34,32,0.15); }
+.silv-photo img { width: 100%; height: auto; display: block; }
 .foot { background: #3A4638; padding: 44px clamp(20px, 8.3vw, 120px); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .note { font-size: 13px; font-style: italic; color: #8A817A; }
 .conf { display: flex; flex-wrap: wrap; gap: 18px 40px; font-size: 17px; }
@@ -110,7 +110,7 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
   .g4, .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .qf { flex-direction: column; gap: 36px; }
   .qf-photo { flex: none; width: 100%; height: 440px; }
-  .silv-photo { flex: none; width: min(300px, 78%); height: auto; aspect-ratio: 9 / 16; }
+  .silv-photo { flex: none; width: min(300px, 78%); }
   .t169 { width: 100%; height: auto; aspect-ratio: 16 / 9; }
   .t916 { width: calc(50% - 12px); height: auto; aspect-ratio: 9 / 16; }
   .thalf { flex: none; width: 100%; }
