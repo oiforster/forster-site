@@ -826,20 +826,4 @@ urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod>
   Cache-Control: public, max-age=31536000, immutable
 """, encoding="utf-8")
 
-# Redirect da raiz do repo: forsterfilmes.com (GitHub Pages) aponta para o site novo
-(BASE.parent / "index.html").write_text('''<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <title>FORSTER · Ateliê de Conteúdo</title>
-  <meta http-equiv="refresh" content="0; url=https://somosforster.com.br/">
-  <link rel="canonical" href="https://somosforster.com.br/">
-  <meta name="robots" content="noindex">
-</head>
-<body>
-  <p>O site da FORSTER mudou para <a href="https://somosforster.com.br">somosforster.com.br</a>.</p>
-</body>
-</html>
-''', encoding="utf-8")
-
-print("ok style.css site.js robots sitemap _headers redirect")
+print("ok style.css site.js robots sitemap _headers")
