@@ -622,6 +622,28 @@ def page_trabalhos():
               + '</div></div>')
     return hero + inst + prod + outras + mensal
 
+def page_404():
+    hero = hero_page("ERRO 404",
+                     "Essa p&aacute;gina n&atilde;o existe.",
+                     "Pode ser um endere&ccedil;o digitado errado, ou uma p&aacute;gina que mudou de lugar. "
+                     "O que voc&ecirc; procura provavelmente est&aacute; em um dos caminhos abaixo.")
+    portas = (f'<div class="sec"><div class="rv" style="margin-bottom: 44px;">{kicker("O QUE A GENTE FAZ")}</div>'
+              f'<div class="g4 rv">'
+              + door("01", "Acompanhamento mensal",
+                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto: planejamento, roteiros, edi&ccedil;&atilde;o e gest&atilde;o.",
+                     "/acompanhamento")
+              + door("02", "Mentoria",
+                     "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
+                     "/mentoria")
+              + door("03", "Sites",
+                     "Um site simples, r&aacute;pido e sob medida, que conta a sua hist&oacute;ria e aparece na busca.",
+                     "/sites")
+              + door("04", "Sob encomenda",
+                     "Um v&iacute;deo com come&ccedil;o, meio e fim: institucional, v&iacute;deo de produto, a hist&oacute;ria da sua empresa bem contada.",
+                     "/sob-encomenda")
+              + '</div></div>')
+    return hero + portas
+
 # ---------------------------------------------------------------- SEO e montagem
 
 AREA = ([{"@type": "City", "name": c} for c in
@@ -716,6 +738,14 @@ PAGES = {
         "desc": "Uma seleção do que sai do ateliê: vídeos institucionais, publicitários, curso, clipe e o conteúdo mensal que a Forster produz para os clientes.",
         "ld": service_ld("Trabalhos da Forster", "Seleção de vídeos institucionais, publicitários e de conteúdo mensal produzidos pela Forster.", "/trabalhos"),
     },
+    # Servida pelo Cloudflare Pages em qualquer rota sem correspondencia.
+    # noindex: fica fora do sitemap e sem canonical, porque nao tem URL propria.
+    "404.html": {
+        "active": "", "fn": page_404, "convite": CONVITE_PADRAO, "path": "/404", "noindex": True,
+        "title": "Página não encontrada | FORSTER",
+        "desc": "O endereço que você abriu não existe no site da FORSTER.",
+        "ld": [],
+    },
 }
 
 def ga4():
@@ -738,13 +768,16 @@ import hashlib
 VER = hashlib.md5((CSS + JS).encode('utf-8')).hexdigest()[:8]
 
 def head(p):
-    ld = json.dumps({"@context": "https://schema.org", "@graph": p["ld"]}, ensure_ascii=False)
+    ld = (f'\n  <script type="application/ld+json">'
+          + json.dumps({"@context": "https://schema.org", "@graph": p["ld"]}, ensure_ascii=False)
+          + "</script>") if p["ld"] else ""
+    canonical = "" if p.get("noindex") else f'\n  <link rel="canonical" href="{SITE}{p["path"]}">'
+    robots = "noindex, nofollow" if p.get("noindex") else "index, follow, max-image-preview:large"
     return f'''<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{p["title"]}</title>
-  <meta name="description" content="{p["desc"]}">
-  <link rel="canonical" href="{SITE}{p["path"]}">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="description" content="{p["desc"]}">{canonical}
+  <meta name="robots" content="{robots}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="FORSTER · Ateliê de Conteúdo">
   <meta property="og:title" content="{p["title"]}">
@@ -757,8 +790,7 @@ def head(p):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
-  <link rel="stylesheet" href="/style.css?v={VER}">
-  <script type="application/ld+json">{ld}</script>{ga4()}'''
+  <link rel="stylesheet" href="/style.css?v={VER}">{ld}{ga4()}'''
 
 def page_html(p):
     body = f'<div class="page">{nav(p["active"])}{p["fn"]()}{p["convite"]}</div>{FOOTER}'
@@ -773,10 +805,14 @@ for fname, p in PAGES.items():
 (PUB / "style.css").write_text(CSS, encoding="utf-8")
 (PUB / "site.js").write_text(JS, encoding="utf-8")
 
+# ATENCAO: este arquivo nao chega ao ar. A zona somosforster.com.br tem o robots.txt
+# gerenciado da Cloudflare ligado (AI Crawl Control), e ele sobrescreve o do Pages.
+# Para mudar o robots.txt de verdade, e no painel da Cloudflare, nao aqui.
 (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
 LASTMOD = "2026-09-03"
-urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod></url>\n" for p in PAGES.values())
+urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod></url>\n"
+               for p in PAGES.values() if not p.get("noindex"))
 (PUB / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n', encoding="utf-8")
 
