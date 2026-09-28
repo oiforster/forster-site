@@ -345,11 +345,11 @@ FAQ_ACOMP = [
     ("Preciso aparecer nos vídeos?",
      "Na maior parte dos casos, sim, e é isso que faz a diferença: quem confia em você quer ver você. A gente prepara o roteiro, liga o teleprompter e cuida da luz, então você só precisa aparecer. Quando faz sentido, o conteúdo também mostra a equipe, o produto ou o lugar."),
     ("Quanto conteúdo sai por mês?",
-     "Depende do plano. A base é uma sessão de gravação de até quatro horas, que rende um conjunto de vídeos curtos e de posts com legenda, mais o calendário editorial e a reunião de avaliação. A gente monta o plano com você na conversa inicial."),
+     "Depende do plano. A base é uma sessão de gravação de até quatro horas, que rende um conjunto de vídeos curtos, além dos posts do mês com legenda. A gente monta o plano com você na conversa inicial."),
     ("Vocês também publicam?",
-     "Sim. Com tudo aprovado por link, a gente publica os vídeos, os posts e as legendas nos seus perfis. Você fica livre para cuidar do seu negócio."),
+     "Sim. A gente publica os vídeos, os posts e as legendas nos seus perfis. Você fica livre para cuidar do seu negócio."),
     ("Como começa?",
-     "Com um mês de diagnóstico. Antes de gravar qualquer coisa, a gente entende o seu negócio, o seu público e o que faz sentido comunicar, e monta os pilares de conteúdo e o calendário do primeiro trimestre. Só depois o ciclo mensal começa."),
+     "Com um mês de diagnóstico. Antes de gravar qualquer coisa, a gente estuda tudo o que você já publicou, o seu mercado e os seus concorrentes, e monta o documento com as diretrizes do trabalho. Só depois o ciclo mensal começa."),
 ]
 FAQ_MENT = [
     ("Quanto tempo dura?",
@@ -710,7 +710,7 @@ PAGES = {
         "active": "acompanhamento", "fn": page_acompanhamento, "convite": CONVITE_PADRAO, "path": "/acompanhamento",
         "title": "Gestão de redes sociais e conteúdo mensal em Igrejinha, RS | FORSTER",
         "desc": "Você grava uma vez por mês e a gente cuida do resto: roteiro, gravação, edição, publicação e relatório. Conteúdo e gestão de redes sociais para empresas de Igrejinha, do Vale do Paranhana e região.",
-        "ld": service_ld("Acompanhamento mensal de conteúdo", "Planejamento, produção e gestão de conteúdo todo mês, com gravação da Forster ou orientação para gravar por conta.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
+        "ld": service_ld("Acompanhamento mensal de conteúdo", "A base da sua comunicação digital por conta da Forster: estudo do seu perfil, do seu mercado e dos seus concorrentes, diretrizes, roteiros, gravação, produção e publicação dos conteúdos, site, perfil no Google e relatório mensal.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
     },
     "mentoria.html": {
         "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
