@@ -407,7 +407,7 @@ def page_home():
     portas = (f'<div class="sec"><div class="rv" style="margin-bottom: 44px;">{kicker("O QUE A GENTE FAZ")}</div>'
               f'<div class="g4 rv">'
               + door("01", "Acompanhamento mensal",
-                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto: planejamento, roteiros, edi&ccedil;&atilde;o e gest&atilde;o. Prefere gravar do seu jeito? A gente assessora, edita e cuida dos textos.",
+                     "A gente estuda o seu perfil, o seu mercado e os seus concorrentes e, a partir disso, cuida da sua comunica&ccedil;&atilde;o digital: roteiros, v&iacute;deos, postagens, site e perfil no Google. Voc&ecirc; grava, e o resto &eacute; com a gente.",
                      "/acompanhamento")
               + door("02", "Mentoria",
                      "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
@@ -452,12 +452,12 @@ def page_acompanhamento():
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente cria.</h2></div>'
             + steps_grid([
-                ("Planejamento", "Antes de qualquer cria&ccedil;&atilde;o, a gente senta junto com voc&ecirc;: o seu momento, os temas do m&ecirc;s, o que est&aacute; acontecendo no seu neg&oacute;cio. S&oacute; depois a gente define o que vai ser produzido, e quando."),
-                ("Roteiro", "Voc&ecirc; n&atilde;o precisa improvisar nada na frente da c&acirc;mera: o roteiro chega antes da sess&atilde;o para voc&ecirc; aprovar, e na grava&ccedil;&atilde;o tem teleprompter."),
+                ("Estudo", "Antes de qualquer conte&uacute;do, a gente estuda tudo o que voc&ecirc; j&aacute; publicou, o seu mercado e os seus concorrentes: o que funcionou, o que n&atilde;o funcionou, os assuntos que eles abordam e o espa&ccedil;o que ainda est&aacute; livre para voc&ecirc;."),
+                ("Diretrizes", "Desse estudo sai um documento com as diretrizes do seu trabalho: os assuntos, a linguagem e os servi&ccedil;os que merecem destaque. &Eacute; ele que guia cada roteiro, cada post e cada v&iacute;deo."),
+                ("Roteiro", "Os roteiros dos v&iacute;deos do m&ecirc;s nascem dessas diretrizes. No dia da grava&ccedil;&atilde;o eles j&aacute; est&atilde;o prontos no teleprompter, ent&atilde;o voc&ecirc; n&atilde;o precisa decorar nem improvisar nada."),
                 ("Grava&ccedil;&atilde;o", "A gente vai at&eacute; voc&ecirc; com tudo que &eacute; necess&aacute;rio. Voc&ecirc; s&oacute; precisa aparecer."),
-                ("Edi&ccedil;&atilde;o e entrega", "Cada v&iacute;deo e cada post com a sua identidade visual e o seu tom de voz. Pronto, voc&ecirc; recebe um link para ver tudo, aprovar e baixar. Sem complica&ccedil;&atilde;o."),
-                ("Publica&ccedil;&atilde;o", "Com tudo aprovado, a gente cuida da publica&ccedil;&atilde;o: v&iacute;deos, posts, legendas. Voc&ecirc; fica livre para cuidar do seu neg&oacute;cio."),
-                ("E come&ccedil;a de novo", "Todo m&ecirc;s, com consist&ecirc;ncia, e com um relat&oacute;rio mensal explicando o que os n&uacute;meros dizem."),
+                ("Produ&ccedil;&atilde;o e publica&ccedil;&atilde;o", "Cada v&iacute;deo, carrossel e post sai com a sua identidade visual e o seu tom de voz, e a gente publica nas suas redes. Voc&ecirc; fica livre para cuidar do seu neg&oacute;cio."),
+                ("E come&ccedil;a de novo", "Ao longo do m&ecirc;s, a gente segue pesquisando not&iacute;cias e estudos da sua &aacute;rea e troca ideias com voc&ecirc; sempre que aparece algo novo. Todo m&ecirc;s, um relat&oacute;rio mostra os n&uacute;meros e o que precisa ser ajustado."),
             ], grid="g3") + '</div>')
     pratica = (f'<div class="sec"><div class="qf rv" style="gap: 80px; align-items: flex-start;">'
                f'<div style="max-width: 560px;">{kicker("COMO &Eacute; NA PR&Aacute;TICA")}'
@@ -475,12 +475,18 @@ def page_acompanhamento():
                 f'<img src="/img/manual-de-campo-mentoria.jpg" alt="Manual de campo de grava&ccedil;&atilde;o feito pela Forster" loading="lazy" style="width: 100%; display: block;"></div>'
                 f'<p class="t note" style="margin: 12px 0 0;">Manual de campo sob medida, feito para quem grava por conta.</p></div>'
                 f'</div></div>')
-    incluso_itens = ["Calend&aacute;rio editorial mensal", "Roteiriza&ccedil;&atilde;o com orienta&ccedil;&otilde;es de fala",
-                     "Sess&atilde;o de grava&ccedil;&atilde;o (a gente vai at&eacute; voc&ecirc;) ou orienta&ccedil;&atilde;o para a sua",
-                     "Edi&ccedil;&atilde;o com identidade visual, legendas e capas",
-                     "Aprova&ccedil;&atilde;o por link, publica&ccedil;&atilde;o e gest&atilde;o",
-                     "Reuni&atilde;o de avalia&ccedil;&atilde;o e relat&oacute;rio mensal de resultados"]
-    incluso = (f'<div class="sec"><div class="rv">{kicker("O QUE EST&Aacute; INCLUSO")}</div>'
+    incluso_itens = ["Estudo de tudo o que voc&ecirc; j&aacute; publicou",
+                     "Pesquisa do seu mercado e dos seus concorrentes",
+                     "Documento com as diretrizes que guiam todo o trabalho",
+                     "Roteiros dos v&iacute;deos para o Instagram e o YouTube",
+                     "Grava&ccedil;&atilde;o e produ&ccedil;&atilde;o dos v&iacute;deos",
+                     "Identidade visual e produ&ccedil;&atilde;o dos carross&eacute;is, posts e cards",
+                     "Publica&ccedil;&atilde;o nas suas redes",
+                     "Pesquisa cont&iacute;nua de not&iacute;cias e estudos da sua &aacute;rea",
+                     "Cria&ccedil;&atilde;o e cuidado do site",
+                     "Cuidado com o seu perfil no Google Meu Neg&oacute;cio",
+                     "Relat&oacute;rio mensal com os n&uacute;meros e o que precisa ser ajustado"]
+    incluso = (f'<div class="sec"><div class="rv">{kicker("DO QUE A GENTE CUIDA")}<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">O conjunto de cada cliente &eacute; definido na proposta.</p></div>'
                '<div class="g3 rv" style="margin-top: 40px;">'
                + "".join(f'<div><div class="rule rulex" style="height: 1px; background: rgba(38,34,32,0.35);"></div>'
                          f'<p class="t5" style="font-size: 16px; margin: 16px 0 0;">{i}</p></div>' for i in incluso_itens)
@@ -630,7 +636,7 @@ def page_404():
     portas = (f'<div class="sec"><div class="rv" style="margin-bottom: 44px;">{kicker("O QUE A GENTE FAZ")}</div>'
               f'<div class="g4 rv">'
               + door("01", "Acompanhamento mensal",
-                     "Voc&ecirc; grava uma vez por m&ecirc;s e a gente cuida de todo o resto: planejamento, roteiros, edi&ccedil;&atilde;o e gest&atilde;o.",
+                     "A gente estuda o seu perfil, o seu mercado e os seus concorrentes e, a partir disso, cuida da sua comunica&ccedil;&atilde;o digital: roteiros, v&iacute;deos, postagens, site e perfil no Google. Voc&ecirc; grava, e o resto &eacute; com a gente.",
                      "/acompanhamento")
               + door("02", "Mentoria",
                      "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
