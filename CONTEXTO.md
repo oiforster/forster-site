@@ -55,3 +55,5 @@ morto não enganar ninguém depois. Para mudar o robots.txt de verdade, é no pa
 - O Search Console também listou "Não encontrado (404)" para somosforster. Não deu para reproduzir
   nenhum 404 por fora, porque até hoje o site respondia 200 em tudo. Vale abrir o relatório de
   indexação para ver quais URLs são.
+
+- (28/09/2026) Abertura da página /acompanhamento trocada pelo texto que o Samuel reescreveu ("No nosso acompanhamento mensal, a base da sua comunicação digital fica por nossa conta..."), sem ajuste. É o mesmo texto que vai descrever o serviço na ficha do Google. Os resumos curtos da página inicial e da 404 ficaram como estavam. A lista "O que está incluso" da página ainda não cita site nem Perfil da Empresa no Google, que o texto novo inclui.
