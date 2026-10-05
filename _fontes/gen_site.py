@@ -122,6 +122,9 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 .prosa { max-width: 680px; }
 .prosa p { font-size: 17px; line-height: 1.65; margin: 22px 0 0; }
 .prosa h2 { font-size: 24px; margin-top: 44px; }
+.prosa ul { font-size: 17px; line-height: 1.65; margin: 22px 0 0; padding-left: 22px; }
+.prosa li + li { margin-top: 8px; }
+.prosa a { color: #262220; }
 .optout { font: inherit; font-variation-settings: 'opsz' 12, 'wght' 600; background: none; color: #262220; border: 1px solid rgba(38,34,32,0.4); border-radius: 6px; padding: 12px 20px; font-size: 15px; cursor: pointer; margin-top: 26px; }
 .optout:hover { border-color: #B0553B; color: #B0553B; }
 .optout-st { font-size: 14px; color: #8A817A; margin-top: 12px; }
@@ -382,7 +385,7 @@ FAQ_ENC = [
 
 FOOTER = (f'<footer class="foot"><div>{lockup("19px", "#F7F3EC")}'
           '<div class="t" style="font-size: 13px; color: #D9C29A; margin-top: 10px;">Conte&uacute;do feito a quatro m&atilde;os.</div></div>'
-          '<div class="t" style="font-size: 14px; color: rgba(247,243,236,0.9);"><a href="https://www.instagram.com/somosforster" style="color: rgba(247,243,236,0.9);">@somosforster</a> &middot; Igrejinha, Rio Grande do Sul &middot; <a href="/privacidade" style="color: rgba(247,243,236,0.7);">Privacidade</a></div></footer>')
+          '<div class="t" style="font-size: 14px; color: rgba(247,243,236,0.9);"><a href="https://www.instagram.com/somosforster" style="color: rgba(247,243,236,0.9);">@somosforster</a> &middot; Igrejinha, Rio Grande do Sul &middot; <a href="/blog/" style="color: rgba(247,243,236,0.9);">Blog</a> &middot; <a href="/privacidade" style="color: rgba(247,243,236,0.7);">Privacidade</a></div></footer>')
 
 # ---------------------------------------------------------------- paginas
 
@@ -397,7 +400,7 @@ def page_home():
     hero = (f'<header class="heroH"><div class="heroS">{s_svg("#D9C29A", sw="3", cls="sdraw", inline_size=False)}</div>'
             f'<div style="position: relative;">'
             f'<div class="in">{lockup("clamp(64px, 9.2vw, 132px)", "#262220", s_cls="sdraw")}</div>'
-            f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO</h1>'
+            f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO EM IGREJINHA, RS</h1>'
             f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamento, textos e v&iacute;deos feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
             f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
@@ -493,7 +496,7 @@ def page_acompanhamento():
                + '</div></div>')
     perfis_data = [("perfil-instagram-oticas-casa-marco.jpg", "@oticas_casamarco"),
                    ("perfil-instagram-catarata-center.jpg", "@cataratacenter"),
-                   ("perfil-instagram-fyber-show.jpg", "@fybershowpiscinas"),
+                   ("perfil-instagram-fyber-show.jpg", "@fybershow"),
                    ("perfil-instagram-colegio-redentor.jpg", "@colegioredentor")]
     cards = "".join(
         f'<div><div style="aspect-ratio: 9 / 16; overflow: hidden; border: 1px solid rgba(38,34,32,0.15);">'
@@ -558,11 +561,11 @@ def page_sites():
                 ("Publicar", "Site no ar, no seu dom&iacute;nio, com tudo conferido: velocidade, celular e busca."),
             ], grid="g3") + '</div>')
     sites_data = [("site-catarata-center.jpg", "Site &middot; Catarata Center",
-                   "https://forster-cataratacenter.pages.dev/57ba045fc63a4875/"),
+                   "https://cataratacenter.com.br/"),
                   ("site-prisma-especialidades.jpg", "Site &middot; Prisma Especialidades",
-                   "https://forster-prisma.pages.dev/cee72c886be78b82/"),
+                   "https://prismaespecialidades.com.br/"),
                   ("site-fyber-show.jpg", "Site &middot; Fyber Show Piscinas",
-                   "https://forster-fybershow.pages.dev/cf4258df45becb2d/")]
+                   "https://fybershow.com.br/")]
     cards = "".join(
         f'<a href="{u}" target="_blank" rel="noopener" style="display: block; color: #262220;">'
         f'<div style="aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(38,34,32,0.15);">'
@@ -703,31 +706,31 @@ PAGES = {
     "index.html": {
         "active": "", "fn": page_home, "convite": CONVITE_PADRAO, "path": "/",
         "title": "FORSTER · Ateliê de Conteúdo em Igrejinha, RS",
-        "desc": "Vídeo, conteúdo para redes sociais, sites e mentoria de comunicação feitos a quatro mãos em Igrejinha, RS, para empresas e profissionais do Vale do Paranhana, Novo Hamburgo, Gramado e Canela.",
+        "desc": "Vídeo, conteúdo para redes sociais, sites e mentoria de comunicação feitos a quatro mãos em Igrejinha, RS, para empresas do Vale do Paranhana e região.",
         "ld": [ORG],
     },
     "acompanhamento.html": {
         "active": "acompanhamento", "fn": page_acompanhamento, "convite": CONVITE_PADRAO, "path": "/acompanhamento",
         "title": "Gestão de redes sociais e conteúdo mensal em Igrejinha, RS | FORSTER",
-        "desc": "Você grava uma vez por mês e a gente cuida do resto: roteiro, gravação, edição, publicação e relatório. Conteúdo e gestão de redes sociais para empresas de Igrejinha, do Vale do Paranhana e região.",
+        "desc": "Você grava uma vez por mês e a gente cuida do resto: roteiro, gravação, edição, publicação e relatório. Para empresas de Igrejinha e do Vale do Paranhana.",
         "ld": service_ld("Acompanhamento mensal de conteúdo", "A base da sua comunicação digital por conta da Forster: estudo do seu perfil, do seu mercado e dos seus concorrentes, diretrizes, roteiros, gravação, produção e publicação dos conteúdos, site, perfil no Google e relatório mensal.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
     },
     "mentoria.html": {
         "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
         "title": "Mentoria de comunicação individual | Comunicação Consciente | FORSTER",
-        "desc": "Mentoria de comunicação individual com Silvana Forster: três meses de Acompanhamento em Comunicação Consciente para transformar o que tu já sabe em presença real, com a parte de vídeo conduzida por Samuel.",
+        "desc": "Mentoria de comunicação individual com Silvana Forster: três meses para transformar o que tu já sabe em presença real, com a parte de vídeo com o Samuel.",
         "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, seis encontros quinzenais e suporte leve pelo WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
     },
     "sites.html": {
         "active": "sites", "fn": page_sites, "convite": CONVITE_PADRAO, "path": "/sites",
         "title": "Criação de sites em Igrejinha e Vale do Paranhana | FORSTER",
-        "desc": "Criação de sites sob medida, do texto ao código: leves, rápidos e prontos para o Google. Feitos em Igrejinha para empresas e profissionais do Vale do Paranhana, Novo Hamburgo, Gramado e Canela.",
+        "desc": "Sites sob medida, do texto ao código: leves, rápidos e prontos para o Google. Feitos em Igrejinha para empresas do Vale do Paranhana e região.",
         "ld": service_ld("Criação de sites", "Sites institucionais leves e rápidos, do texto ao código, publicados no domínio do cliente.", "/sites") + [faq_ld(FAQ_SITES)],
     },
     "sob-encomenda.html": {
         "active": "encomenda", "fn": page_encomenda, "convite": CONVITE_PADRAO, "path": "/sob-encomenda",
         "title": "Produtora de vídeo institucional em Igrejinha, RS | FORSTER",
-        "desc": "Vídeo institucional, de produto e publicitário sob encomenda, do roteiro à entrega: captação própria, luz profissional, teleprompter e drone. Produtora de vídeo em Igrejinha, no Vale do Paranhana.",
+        "desc": "Vídeo institucional, de produto e publicitário, do roteiro à entrega, com luz profissional, teleprompter e drone. Produtora de vídeo em Igrejinha, RS.",
         "ld": service_ld("Produção de vídeo sob encomenda", "Vídeo institucional e vídeo de produto, do roteiro à entrega, sem compromisso de recorrência.", "/sob-encomenda") + [faq_ld(FAQ_ENC)],
     },
     "privacidade.html": {
@@ -753,6 +756,70 @@ PAGES = {
         "ld": [],
     },
 }
+
+# ---------------------------------------------------------------- blog (desde 05/10/2026)
+# Camada do repo, fora do Claude Design: artigos em _fontes/blog_artigos.py.
+import sys as _sys
+_sys.path.insert(0, str(BASE))
+from blog_artigos import ARTIGOS
+
+MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto",
+         "setembro", "outubro", "novembro", "dezembro"]
+
+def data_por_extenso(iso):
+    ano, mes, dia = iso.split("-")
+    return f"{int(dia)} de {MESES[int(mes) - 1]} de {ano}"
+
+def page_artigo_fn(a):
+    def fn():
+        outros = [o for o in ARTIGOS if o["slug"] != a["slug"]][:3]
+        servico, href = a["servico"]
+        leia = "".join(f'<li><a href="/blog/{o["slug"]}">{o["titulo"]}</a></li>' for o in outros)
+        return (f'<header class="heroP">{kicker("BLOG", " in")}'
+                f'<h1 class="h h1p in in1" style="margin: 26px 0 0;">{a["titulo"]}</h1>'
+                f'<p class="t note in in2" style="margin: 20px 0 0;">{data_por_extenso(a["data"])}</p></header>'
+                f'<div class="sec" style="padding-top: 0; border-top: 0;"><article class="prosa rv">{a["corpo"]}'
+                f'<p><a class="tb lka" href="{href}" style="font-size: 16px;">{servico} na FORSTER {ARROW}</a></p>'
+                f'</article></div>'
+                + faq(a["faq"])
+                + (f'<div class="sec"><div class="prosa rv">{kicker("LEIA TAMBÉM")}<ul>{leia}</ul></div></div>' if leia else ''))
+    return fn
+
+def page_blog():
+    itens = "".join(
+        f'<div class="col"><div class="rule rulex"></div>'
+        f'<div class="t note" style="margin-top: 22px;">{data_por_extenso(a["data"])}</div>'
+        f'<h2 class="h" style="font-size: 24px; margin-top: 12px;"><a href="/blog/{a["slug"]}" style="color: #262220;">{a["titulo"]}</a></h2>'
+        f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin: 14px 0 0;">{a["desc"]}</p>'
+        f'<a class="tb lka" href="/blog/{a["slug"]}" style="font-size: 14px; margin-top: auto; padding-top: 18px;">Ler o artigo {ARROW}</a></div>'
+        for a in ARTIGOS)
+    return (f'<header class="heroP">{kicker("BLOG", " in")}'
+            f'<h1 class="h h1p in in1" style="margin: 26px 0 0;">O que a gente aprende fazendo.</h1>'
+            f'<p class="t sup in in2" style="margin: 24px 0 0;">Artigos sobre vídeo, redes sociais, sites e presença no Google, para empresas de Igrejinha e do Vale do Paranhana.</p></header>'
+            f'<div class="sec"><div class="g2 rv">{itens}</div></div>')
+
+def breadcrumb(*nivel):
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "item": SITE + c} for i, (n, c) in enumerate(nivel, 1)]}
+
+PAGES["blog/index.html"] = {
+    "active": "", "fn": page_blog, "convite": CONVITE_PADRAO, "path": "/blog/",
+    "title": "Blog | FORSTER, Ateliê de Conteúdo em Igrejinha, RS",
+    "desc": "Artigos sobre vídeo, redes sociais, sites e presença no Google para empresas de Igrejinha e do Vale do Paranhana.",
+    "ld": [breadcrumb(("Início", "/"), ("Blog", "/blog/"))],
+}
+for _a in ARTIGOS:
+    _path = f"/blog/{_a['slug']}"
+    PAGES[f"blog/{_a['slug']}.html"] = {
+        "active": "", "fn": page_artigo_fn(_a), "convite": CONVITE_PADRAO, "path": _path,
+        "title": f"{_a['titulo']} | FORSTER", "desc": _a["desc"],
+        "ld": [{"@type": "BlogPosting", "headline": _a["titulo"], "description": _a["desc"],
+                "datePublished": _a["data"], "dateModified": _a["data"], "inLanguage": "pt-BR",
+                "mainEntityOfPage": SITE + _path, "image": SITE + "/img/og-forster.jpg",
+                "author": {"@id": ORG_ID}, "publisher": {"@id": ORG_ID}},
+               faq_ld(_a["faq"]),
+               breadcrumb(("Início", "/"), ("Blog", "/blog/"), (_a["titulo"], _path))],
+    }
 
 def ga4():
     if not GA4_ID:
@@ -805,6 +872,7 @@ def page_html(p):
 
 PUB.mkdir(exist_ok=True)
 for fname, p in PAGES.items():
+    (PUB / fname).parent.mkdir(parents=True, exist_ok=True)
     (PUB / fname).write_text(page_html(p), encoding="utf-8")
     print("ok", fname)
 
@@ -816,12 +884,12 @@ for fname, p in PAGES.items():
 # Para mudar o robots.txt de verdade, e no painel da Cloudflare, nao aqui.
 (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
-def data_da_pagina(path):
+def data_da_pagina(fname):
     """Data da última mudança real da página, para o <lastmod> do sitemap. Antes era uma data
     fixa (03/09/2026) e o Google não tinha sinal de que as páginas mudaram (05/10/2026).
     Página com mudança ainda não gravada no git: hoje. Sem mudança: data do último commit dela."""
     import datetime, subprocess
-    arquivo = PUB / ("index.html" if path == "/" else path.strip("/") + ".html")
+    arquivo = PUB / fname
     raiz = PUB.parent
     mudou = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", str(arquivo)], cwd=raiz).returncode != 0
     if not mudou:
@@ -831,8 +899,8 @@ def data_da_pagina(path):
             return data
     return datetime.date.today().isoformat()
 
-urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{data_da_pagina(p['path'])}</lastmod></url>\n"
-               for p in PAGES.values() if not p.get("noindex"))
+urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{data_da_pagina(f)}</lastmod></url>\n"
+               for f, p in PAGES.items() if not p.get("noindex"))
 (PUB / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n', encoding="utf-8")
 
