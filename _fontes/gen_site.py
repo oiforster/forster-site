@@ -816,8 +816,22 @@ for fname, p in PAGES.items():
 # Para mudar o robots.txt de verdade, e no painel da Cloudflare, nao aqui.
 (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
-LASTMOD = "2026-09-03"
-urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{LASTMOD}</lastmod></url>\n"
+def data_da_pagina(path):
+    """Data da última mudança real da página, para o <lastmod> do sitemap. Antes era uma data
+    fixa (03/09/2026) e o Google não tinha sinal de que as páginas mudaram (05/10/2026).
+    Página com mudança ainda não gravada no git: hoje. Sem mudança: data do último commit dela."""
+    import datetime, subprocess
+    arquivo = PUB / ("index.html" if path == "/" else path.strip("/") + ".html")
+    raiz = PUB.parent
+    mudou = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", str(arquivo)], cwd=raiz).returncode != 0
+    if not mudou:
+        data = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(arquivo)], cwd=raiz,
+                              capture_output=True, text=True).stdout.strip()
+        if data:
+            return data
+    return datetime.date.today().isoformat()
+
+urls = "".join(f"  <url><loc>{SITE}{p['path']}</loc><lastmod>{data_da_pagina(p['path'])}</lastmod></url>\n"
                for p in PAGES.values() if not p.get("noindex"))
 (PUB / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n', encoding="utf-8")
