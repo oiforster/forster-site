@@ -600,29 +600,43 @@ def page_encomenda():
             + '</div></div>')
     return hero + tipos + como + trab + REGIAO + faq(FAQ_ENC)
 
+def intro_grupo(texto, link_texto="", href=""):
+    # Uma frase sob o titulo de cada grupo do Portfolio (05/10/2026): a pagina tinha so os
+    # cartoes de video, e o Google tinha pouco texto para entender o que ela mostra.
+    link = f' <a class="tb lka" href="{href}" style="font-size: 15px;">{link_texto} {ARROW}</a>' if href else ''
+    return f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 640px;">{texto}{link}</p>'
+
 def page_trabalhos():
     hero = hero_page("TRABALHOS", "O que sai do ateli&ecirc;.",
                      "Uma sele&ccedil;&atilde;o dos trabalhos, por tipo de encomenda. Toque num cart&atilde;o para assistir aqui mesmo.",
                      ver_trabalhos=False)
-    inst = (f'<div class="sec"><div class="rv">{kicker("INSTITUCIONAIS")}</div>'
+    inst = (f'<div class="sec"><div class="rv">{kicker("INSTITUCIONAIS")}'
+            + intro_grupo("Filmes que apresentam uma empresa ou uma institui&ccedil;&atilde;o: quem &eacute;, o que faz e por que faz.", "Como &eacute; feito um v&iacute;deo institucional", "/blog/como-e-feito-um-video-institucional")
+            + '</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
             + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
             + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
             + tile("thalf", "#D9C29A", "Institucional &middot; Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es", video=f"{MEDIA}/institucional-fundacao-ulysses-guimaraes.mp4", img="thumb-institucional-fundacao-ulysses-guimaraes.jpg", alt="V&iacute;deo Escola do Futuro, da Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es")
             + '</div></div>')
-    prod = (f'<div class="sec"><div class="rv">{kicker("PUBLICIT&Aacute;RIOS")}</div>'
+    prod = (f'<div class="sec"><div class="rv">{kicker("PUBLICIT&Aacute;RIOS")}'
+            + intro_grupo("Filmes de campanha, com ideia, roteiro e dire&ccedil;&atilde;o, para lan&ccedil;ar, marcar uma data especial e fazer a marca ser lembrada.", "V&iacute;deo sob encomenda", "/sob-encomenda")
+            + '</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
             + tile("thalf", "#2B2724", "Publicit&aacute;rio &middot; Oli Im&oacute;veis &middot; Webs&eacute;rie Tra&ccedil;os, com Em&iacute;lio Finger", video=f"{MEDIA}/publicitario-oli-imoveis-webserie-tracos.mp4", img="thumb-publicitario-oli-imoveis-webserie-tracos.jpg", alt="Webs&eacute;rie Tra&ccedil;os, epis&oacute;dio com Em&iacute;lio Finger, da Oli Im&oacute;veis")
             + tile("thalf", "#3A4638", "Publicit&aacute;rio &middot; SAIF &middot; O Jeito de Come&ccedil;ar o Dia", video=f"{MEDIA}/publicitario-saif-jeito-de-comecar-o-dia.mp4", img="thumb-publicitario-saif-jeito-de-comecar-o-dia.jpg", alt="Campanha publicit&aacute;ria SAIF, filme O Jeito SAIF de Come&ccedil;ar o Dia")
             + tile("thalf", "#D9C29A", "Publicit&aacute;rio &middot; Emp&oacute;rio Essenza &middot; Hist&oacute;ria de Natal", video=f"{MEDIA}/publicitario-emporio-essenza-natal.mp4", img="thumb-publicitario-emporio-essenza-natal.jpg", alt="Filme de Natal do Emp&oacute;rio Essenza")
             + '</div></div>')
-    outras = (f'<div class="sec"><div class="rv">{kicker("OUTRAS ENCOMENDAS")}</div>'
+    outras = (f'<div class="sec"><div class="rv">{kicker("OUTRAS ENCOMENDAS")}'
+            + intro_grupo("Uma videoaula para curso, um clipe musical e um filme sobre uma menina e a &eacute;gua que ela ama.", "", "")
+            + '</div>'
               f'<div class="mosaic rv" style="margin-top: 44px;">'
               + tile("thalf", "#3A4638", "Curso &middot; Dra Karol Hoppen &middot; Fada do Dente", video=f"{MEDIA}/curso-fada-do-dente.mp4", img="thumb-curso-fada-do-dente.jpg", alt="V&iacute;deo aula Fada do Dente, da Dra Karol Hoppen")
               + tile("thalf", "#2B2724", "Clipe musical &middot; Fam&iacute;lia Rolim &middot; Casa de Pedra", video=f"{MEDIA}/clipe-casa-de-pedra.mp4", img="thumb-clipe-casa-de-pedra.jpg", alt="Clipe musical Casa de Pedra, da Fam&iacute;lia Rolim")
               + tile("thalf", "#D9C29A", "Filme &middot; Kety e Serena &middot; Uma hist&oacute;ria de amor", video=f"{MEDIA}/filme-kety-e-serena.mp4", img="thumb-filme-kety-e-serena.jpg", alt="Kety e Serena, uma hist&oacute;ria de amor: filme sobre uma menina e a &eacute;gua que ela ama")
               + '</div></div>')
-    mensal = (f'<div class="sec"><div class="rv">{kicker("CONTE&Uacute;DO MENSAL")}</div>'
+    mensal = (f'<div class="sec"><div class="rv">{kicker("CONTE&Uacute;DO MENSAL")}'
+            + intro_grupo("Reels dos perfis que a gente acompanha todo m&ecirc;s, gravados nas sess&otilde;es mensais de grava&ccedil;&atilde;o.", "Acompanhamento mensal", "/acompanhamento")
+            + '</div>'
               f'<div class="mosaic rv" style="margin-top: 44px;">'
               + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Fyber Show Piscinas", video="/video/reel-fyber-show.mp4", img="capa-reel-fyber-show.jpg", alt="Reel Quem &eacute; a Fyber Show")
               + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; &Oacute;ticas Casa Marco", video="/video/reel-oticas-casa-marco.mp4", img="capa-reel-oticas-casa-marco.jpg", alt="Reel de produto Arma&ccedil;&otilde;es Femininas, das &Oacute;ticas Casa Marco")
