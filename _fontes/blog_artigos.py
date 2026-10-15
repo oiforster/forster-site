@@ -5,6 +5,44 @@
 
 ARTIGOS = [
     {
+        "slug": "video-vertical-ou-horizontal-site-instagram-youtube",
+        "data": "2026-10-15",
+        "titulo": "Vídeo vertical ou horizontal: qual usar no site, no Instagram e no YouTube",
+        "desc": "Cada lugar mostra o vídeo de um jeito. Quando gravar em pé, quando gravar deitado e como um mesmo filme pode servir para o site, o Instagram e o YouTube.",
+        "servico": ("Vídeo sob encomenda", "/sob-encomenda"),
+        "corpo": """
+<p>Antes de gravar um vídeo, vale responder uma pergunta simples: onde ele vai passar? O vídeo vertical, em pé, é o que enche a tela do celular. O vídeo horizontal, deitado, é o que combina com a tela do computador e da televisão. O mesmo filme pode aparecer bem num lugar e pequeno, com faixas pretas em volta, no outro. Por isso a escolha do formato vem antes da gravação.</p>
+<h2>O vertical é o formato do celular</h2>
+<p>O vídeo vertical tem a proporção de 9 por 16, parecida com a da tela do celular em pé. É o formato dos Reels e dos Stories do Instagram (os vídeos curtos em pé) e dos Shorts do YouTube (os vídeos curtos do canal). A pessoa não precisa virar o aparelho, e o vídeo ocupa a tela inteira enquanto ela passa o dedo de um conteúdo para o outro.</p>
+<p>Quando um vídeo deitado é publicado nesses lugares, ele aparece como uma faixa no meio da tela, com espaço vazio em cima e embaixo. Ele fica pequeno, e quem aparece nele parece mais longe do que deveria. Quem passa o dedo costuma passar direto.</p>
+<h2>O horizontal é o formato do computador e da televisão</h2>
+<p>O vídeo horizontal tem a proporção de 16 por 9. É o formato dos vídeos longos do YouTube, da televisão e das apresentações em telão, e combina com a tela do computador. Num vídeo deitado cabe mais coisa no quadro: a pessoa que fala e o lugar em volta dela, a máquina inteira na fábrica, a fachada com a rua.</p>
+<p>É também o formato que funciona quando o vídeo passa para várias pessoas ao mesmo tempo, como numa feira, numa recepção ou numa reunião com cliente. Uma apresentação na televisão da recepção, por exemplo, fica melhor com o vídeo deitado.</p>
+<h2>E no site?</h2>
+<p>No site, depende de onde a pessoa abre a página. No computador, o vídeo horizontal aproveita a largura da tela. No celular, o mesmo vídeo deitado aparece menor, mas continua bom de assistir.</p>
+<p>O vídeo que apresenta a empresa no site, o institucional, costuma ser horizontal. Vídeos curtos e verticais também cabem no site, em espaços pensados para eles, como uma grade de trabalhos ou uma área com depoimentos. O nosso próprio site mostra os dois: os institucionais deitados e os Reels dos clientes em pé.</p>
+<h2>Dá para usar o mesmo vídeo nos dois formatos?</h2>
+<p>Dá, desde que isso seja pensado antes de gravar. O que decide é o enquadramento, que é o que aparece dentro do quadro. Um vídeo horizontal pode virar vertical se a parte importante da cena estiver no centro, porque as laterais vão ser cortadas. Se a pessoa que fala estiver num canto, ou se o produto ocupar a largura inteira, o corte para o vertical perde justamente o que interessa.</p>
+<p>Por isso, na conversa que vem antes da gravação, a gente pergunta onde o vídeo vai ser usado, e o filme é entregue pronto nos formatos que você precisa.</p>
+<h2>Um jeito simples de decidir</h2>
+<ul>
+<li>Se o vídeo vai para o Instagram, para os Stories ou para os Shorts do YouTube, grave em pé.</li>
+<li>Se vai para um vídeo longo no YouTube, para uma feira, para a televisão da recepção ou para uma apresentação, grave deitado.</li>
+<li>Se vai para o site, grave deitado o vídeo principal da empresa, e em pé o vídeo curto que vai para um espaço feito para ele.</li>
+<li>Se o vídeo vai para mais de um lugar, avise antes da gravação.</li>
+</ul>
+<p>Se você está no Vale do Paranhana e quer um vídeo para a sua empresa, a gente conversa sobre onde ele vai passar antes de ligar a câmera. Essa resposta ajuda a decidir os formatos do seu vídeo.</p>
+""",
+        "faq": [
+            ("Qual é o formato do Reels do Instagram?",
+             "Vertical, na proporção de 9 por 16, parecida com a da tela do celular em pé. Os Stories e os Shorts do YouTube usam o mesmo formato."),
+            ("Posso transformar um vídeo horizontal em vertical?",
+             "Pode, cortando as laterais. Funciona quando a parte importante da cena está no centro do quadro, e por isso o ideal é decidir os formatos antes da gravação."),
+            ("Em quais formatos o vídeo é entregue?",
+             "A gente entrega o filme pronto nos formatos que você precisa. Por isso, na conversa antes da gravação, a gente pergunta onde ele vai ser usado."),
+        ],
+    },
+    {
         "slug": "como-gravar-o-conteudo-do-mes-numa-sessao-so",
         "data": "2026-10-05",
         "titulo": "Como gravar o conteúdo do mês inteiro numa sessão só",
