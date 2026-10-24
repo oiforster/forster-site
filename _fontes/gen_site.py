@@ -323,6 +323,12 @@ def convite(heading, text, cta_label, cta_href):
 CONVITE_PADRAO = convite("Vamos conversar?",
                          "Conte para a gente o que voc&ecirc; precisa. Quem l&ecirc; e responde &eacute; o Samuel ou a Silvana.",
                          "Conversar no WhatsApp", WA_SAMUEL)
+CONVITE_SITES = convite("Vamos conversar sobre o seu site?",
+                         "Conte quais serviços sua empresa oferece e o que precisa apresentar no site. Quem lê e responde é o Samuel ou a Silvana.",
+                         "Conversar no WhatsApp", WA_SAMUEL)
+CONVITE_ENCOMENDA = convite("Vamos conversar sobre o seu vídeo?",
+                             "Conte o que você precisa comunicar e onde pretende usar o vídeo. Quem lê e responde é o Samuel ou a Silvana.",
+                             "Conversar no WhatsApp", WA_SAMUEL)
 CONVITE_MENTORIA = convite("Se esse &eacute; o teu momento",
                            "Manda uma mensagem e vamos conversar para entender o que faz sentido pra ti.",
                            "Falar com a Silvana pelo WhatsApp", WA_SILVANA)
@@ -346,7 +352,7 @@ def faq_ld(items):
 
 FAQ_ACOMP = [
     ("Preciso aparecer nos vídeos?",
-     "Na maior parte dos casos, sim, e é isso que faz a diferença: quem confia em você quer ver você. A gente prepara o roteiro, liga o teleprompter e cuida da luz, então você só precisa aparecer. Quando faz sentido, o conteúdo também mostra a equipe, o produto ou o lugar."),
+     "Na maior parte dos casos, sim, e é isso que faz a diferença: quem confia em você quer ver você. A gente prepara o roteiro e orienta a sua fala durante a sessão, enquanto cuida da câmera, da luz e do som. Quando faz sentido, o conteúdo também mostra a equipe, o produto ou o lugar."),
     ("Quanto conteúdo sai por mês?",
      "Depende do plano. A base é uma sessão de gravação de até quatro horas, que rende um conjunto de vídeos curtos, além dos posts do mês com legenda. A gente monta o plano com você na conversa inicial."),
     ("Vocês também publicam?",
@@ -376,7 +382,7 @@ FAQ_ENC = [
     ("Quanto tempo leva um vídeo institucional?",
      "A gravação costuma caber em uma sessão de até quatro horas, da montagem ao desmonte. Antes dela vêm o briefing e o roteiro, e depois a edição e a sua aprovação por link. O prazo total a gente combina no briefing, de acordo com o tamanho do filme."),
     ("O roteiro está incluso?",
-     "Sim. A gente conversa, escreve o roteiro e manda para você aprovar antes da sessão. No dia, o teleprompter faz o resto: ninguém precisa decorar nada."),
+     "Sim. A gente conversa, escreve o roteiro e manda para você aprovar antes da sessão. Na gravação, você pode acompanhar o texto no teleprompter, sem precisar decorar. A gente orienta a fala durante a sessão."),
     ("Vocês gravam com drone?",
      "Sim, quando a história pede. As imagens aéreas entram no filme para mostrar a fábrica, a sede, a paisagem ou o tamanho do que você faz."),
     ("Onde posso usar o vídeo?",
@@ -401,7 +407,7 @@ def page_home():
             f'<div style="position: relative;">'
             f'<div class="in">{lockup("clamp(64px, 9.2vw, 132px)", "#262220", s_cls="sdraw")}</div>'
             f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO EM IGREJINHA, RS</h1>'
-            f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamento, textos e v&iacute;deos feitos a quatro m&atilde;os para quem quer construir presen&ccedil;a com consist&ecirc;ncia. Atendimento direto de quem cria: Samuel e Silvana.</p>'
+            f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamos e produzimos textos, v&iacute;deos e sites para apresentar o seu trabalho e manter a comunica&ccedil;&atilde;o da sua empresa em dia. Voc&ecirc; conversa diretamente com quem cria: Samuel e Silvana.</p>'
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
             f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
             f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
@@ -416,17 +422,17 @@ def page_home():
                      "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
                      "/mentoria")
               + door("03", "Sites",
-                     "Um site simples, r&aacute;pido e sob medida, que conta a sua hist&oacute;ria e aparece na busca.",
+                     "Um site sob medida que apresenta seus servi&ccedil;os, facilita o contato e vem preparado para o Google entender o seu neg&oacute;cio.",
                      "/sites")
               + door("04", "Sob encomenda",
-                     "Um v&iacute;deo com come&ccedil;o, meio e fim: institucional, v&iacute;deo de produto, a hist&oacute;ria da sua empresa bem contada.",
+                     "V&iacute;deos institucionais, de produto e de campanha para apresentar sua empresa e o que ela oferece.",
                      "/sob-encomenda")
               + '</div></div>')
 
     trabalhos = (f'<div class="sec"><div class="rv" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">{kicker("TRABALHOS")}'
                  f'<a class="tb lka" href="/trabalhos" style="font-size: 14px;">Ver todos os trabalhos {ARROW}</a></div>'
                  f'<div class="mosaic rv" style="margin-top: 44px;">'
-                 + tile("t169", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
+                 + tile("t169", "#3A4638", "V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis.", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
                  + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; &Oacute;ticas Casa Marco", video="/video/reel-oticas-casa-marco.mp4", img="capa-reel-oticas-casa-marco.jpg", alt="Reel de produto das &Oacute;ticas Casa Marco")
                  + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Fyber Show Piscinas", video="/video/reel-fyber-show.mp4", img="capa-reel-fyber-show.jpg", alt="Reel institucional da Fyber Show Piscinas")
                  + '</div></div>')
@@ -451,21 +457,22 @@ def page_home():
 
 def page_acompanhamento():
     hero = hero_page("ACOMPANHAMENTO MENSAL", "Planejamento, produ&ccedil;&atilde;o e const&acirc;ncia.",
-                     "No nosso acompanhamento mensal, a base da sua comunica&ccedil;&atilde;o digital fica por nossa conta. Antes de produzir qualquer conte&uacute;do, a gente estuda a fundo tudo o que voc&ecirc; j&aacute; publicou, o seu mercado e os seus concorrentes, at&eacute; entender o que funciona com o seu p&uacute;blico e qual espa&ccedil;o ainda est&aacute; livre pra voc&ecirc; ocupar. Desse estudo nascem as diretrizes que v&atilde;o guiar todo o trabalho. A partir delas, a gente cuida de tudo, do roteiro &agrave; postagem, do site ao seu perfil no Google Meu Neg&oacute;cio, sempre de olho no que acontece de novo na sua &aacute;rea. No dia da grava&ccedil;&atilde;o, os roteiros j&aacute; est&atilde;o prontos: voc&ecirc; grava e o resto &eacute; com a gente. Todo m&ecirc;s, os n&uacute;meros mostram o resultado do que j&aacute; foi feito e o que precisa ser ajustado. A qualidade de produ&ccedil;&atilde;o dos nossos v&iacute;deos eleva muito a sua imagem no digital, mas o v&iacute;deo &eacute; uma parte do trabalho, n&atilde;o o trabalho inteiro. &Eacute; isso que a gente chama de conte&uacute;do feito a quatro m&atilde;os.")
+                     "No nosso acompanhamento mensal, a base da sua comunica&ccedil;&atilde;o digital fica por nossa conta. No dia da grava&ccedil;&atilde;o, os roteiros j&aacute; est&atilde;o prontos: voc&ecirc; grava e o resto &eacute; com a gente."
+                     '<span style="display: block; font-size: 15px; margin-top: 18px;">O conjunto de cada cliente &eacute; definido na proposta.</span>')
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente cria.</h2></div>'
             + steps_grid([
-                ("Estudo", "Antes de qualquer conte&uacute;do, a gente estuda tudo o que voc&ecirc; j&aacute; publicou, o seu mercado e os seus concorrentes: o que funcionou, o que n&atilde;o funcionou, os assuntos que eles abordam e o espa&ccedil;o que ainda est&aacute; livre para voc&ecirc;."),
+                ("Estudo", "Antes de produzir qualquer conte&uacute;do, a gente estuda a fundo tudo o que voc&ecirc; j&aacute; publicou, o seu mercado e os seus concorrentes, at&eacute; entender o que funciona com o seu p&uacute;blico e qual espa&ccedil;o ainda est&aacute; livre pra voc&ecirc; ocupar."),
                 ("Diretrizes", "Desse estudo sai um documento com as diretrizes do seu trabalho: os assuntos, a linguagem e os servi&ccedil;os que merecem destaque. &Eacute; ele que guia cada roteiro, cada post e cada v&iacute;deo."),
                 ("Roteiro", "Os roteiros dos v&iacute;deos do m&ecirc;s nascem dessas diretrizes. No dia da grava&ccedil;&atilde;o eles j&aacute; est&atilde;o prontos no teleprompter, ent&atilde;o voc&ecirc; n&atilde;o precisa decorar nem improvisar nada."),
-                ("Grava&ccedil;&atilde;o", "A gente vai at&eacute; voc&ecirc; com tudo que &eacute; necess&aacute;rio. Voc&ecirc; s&oacute; precisa aparecer."),
+                ("Grava&ccedil;&atilde;o", "A gente vai at&eacute; voc&ecirc; com a estrutura de grava&ccedil;&atilde;o e os roteiros preparados. Durante a sess&atilde;o, orienta a sua fala e cuida da c&acirc;mera, da luz e do som."),
                 ("Produ&ccedil;&atilde;o e publica&ccedil;&atilde;o", "Cada v&iacute;deo, carrossel e post sai com a sua identidade visual e o seu tom de voz, e a gente publica nas suas redes. Voc&ecirc; fica livre para cuidar do seu neg&oacute;cio."),
-                ("E come&ccedil;a de novo", "Ao longo do m&ecirc;s, a gente segue pesquisando not&iacute;cias e estudos da sua &aacute;rea e troca ideias com voc&ecirc; sempre que aparece algo novo. Todo m&ecirc;s, um relat&oacute;rio mostra os n&uacute;meros e o que precisa ser ajustado."),
+                ("E come&ccedil;a de novo", "Ao longo do m&ecirc;s, a gente segue pesquisando not&iacute;cias e estudos da sua &aacute;rea e troca ideias com voc&ecirc; sempre que aparece algo novo. Todo m&ecirc;s, um relat&oacute;rio mostra os n&uacute;meros, o resultado do que j&aacute; foi feito e o que precisa ser ajustado."),
             ], grid="g3") + '</div>')
     pratica = (f'<div class="sec"><div class="qf rv" style="gap: 80px; align-items: flex-start;">'
                f'<div style="max-width: 560px;">{kicker("COMO &Eacute; NA PR&Aacute;TICA")}'
                f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Nos bastidores de uma sess&atilde;o.</h2>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Um trecho real de sess&atilde;o: luz montada, teleprompter rodando e voc&ecirc; s&oacute; precisando aparecer.</p></div>'
+               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Um trecho real de sess&atilde;o: luz montada, teleprompter rodando e a gente orientando a sua fala durante a grava&ccedil;&atilde;o.</p></div>'
                f'<div style="flex: 0 0 300px; border: 1px solid rgba(38,34,32,0.15);">'
                f'<video src="/video/bastidores-sessao.mp4" autoplay muted loop playsinline style="width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block;"></video></div>'
                f'</div></div>')
@@ -489,7 +496,7 @@ def page_acompanhamento():
                      "Cria&ccedil;&atilde;o e cuidado do site",
                      "Cuidado com o seu perfil no Google Meu Neg&oacute;cio",
                      "Relat&oacute;rio mensal com os n&uacute;meros e o que precisa ser ajustado"]
-    incluso = (f'<div class="sec"><div class="rv">{kicker("DO QUE A GENTE CUIDA")}<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">O conjunto de cada cliente &eacute; definido na proposta.</p></div>'
+    incluso = (f'<div class="sec"><div class="rv">{kicker("DO QUE A GENTE CUIDA")}<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">A partir das diretrizes, a gente cuida do trabalho, do roteiro &agrave; postagem, do site ao seu perfil no Google Meu Neg&oacute;cio. A qualidade de produ&ccedil;&atilde;o dos nossos v&iacute;deos eleva muito a sua imagem no digital, mas o v&iacute;deo &eacute; uma parte do trabalho, n&atilde;o o trabalho inteiro. &Eacute; isso que a gente chama de conte&uacute;do feito a quatro m&atilde;os.</p></div>'
                '<div class="g3 rv" style="margin-top: 40px;">'
                + "".join(f'<div><div class="rule rulex" style="height: 1px; background: rgba(38,34,32,0.35);"></div>'
                          f'<p class="t5" style="font-size: 16px; margin: 16px 0 0;">{i}</p></div>' for i in incluso_itens)
@@ -509,8 +516,8 @@ def page_acompanhamento():
     return hero + como + pratica + seugeito + incluso + trab + REGIAO + faq(FAQ_ACOMP)
 
 def page_mentoria():
-    hero = hero_page("MENTORIA", "Da teoria &agrave; pr&aacute;tica.",
-                     "Acompanhamento em Comunica&ccedil;&atilde;o Consciente: um processo individual para transformar o que tu j&aacute; sabe em presen&ccedil;a real, com clareza, rotina e conte&uacute;do que flui. A Silvana conduz; a parte de v&iacute;deo &eacute; com o Samuel.",
+    hero = hero_page("MENTORIA", "Organiza tua comunica&ccedil;&atilde;o e aprende a produzir os teus conte&uacute;dos.",
+                     "No Acompanhamento em Comunica&ccedil;&atilde;o Consciente, tu organiza os assuntos, prepara textos e aprende a gravar com o que j&aacute; tem em casa. S&atilde;o seis encontros individuais ao longo de tr&ecirc;s meses. A Silvana conduz; a parte de v&iacute;deo &eacute; com o Samuel.",
                      cta_label="Falar com a Silvana pelo WhatsApp", cta_href=WA_SILVANA, ver_trabalhos=False)
     silvana = (f'<div class="sec"><div class="qf rv">'
                f'<div class="silv-photo">'
@@ -533,7 +540,7 @@ def page_mentoria():
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Tr&ecirc;s meses, seis encontros quinzenais de 1h30, e suporte leve pelo WhatsApp entre eles.</h2></div>'
             + steps_grid([
                 ("Clareza e dire&ccedil;&atilde;o", "Entender o teu momento, a tua hist&oacute;ria e o que tu realmente quer comunicar: o qu&ecirc;, pra quem e por qu&ecirc;."),
-                ("Organiza&ccedil;&atilde;o e conte&uacute;do", "Definir o assunto foco de cada m&ecirc;s, abrir o guarda-chuva de temas e montar o esqueleto da tua comunica&ccedil;&atilde;o."),
+                ("Organiza&ccedil;&atilde;o e conte&uacute;do", "Definir o assunto principal de cada m&ecirc;s e organizar os temas que v&atilde;o virar publica&ccedil;&otilde;es."),
                 ("Posicionamento e presen&ccedil;a", "Definir o teu tom de voz e a tua forma de aparecer, com coer&ecirc;ncia e bastidores nos stories."),
                 ("Cria&ccedil;&atilde;o e estrutura", "Transformar ideias em falas, roteiros, legendas e conte&uacute;dos aplic&aacute;veis, com um banco criativo para agilizar o trabalho."),
                 ("Pr&aacute;tica e grava&ccedil;&atilde;o", "Luz, enquadramento, cen&aacute;rio e presen&ccedil;a em v&iacute;deo com o Samuel, para gravar bem com o que tu tem em casa."),
@@ -547,11 +554,11 @@ def page_mentoria():
 
 def page_sites():
     hero = hero_page("CRIA&Ccedil;&Atilde;O DE SITES", "Um site sob medida, do texto ao c&oacute;digo.",
-                     "Leve, r&aacute;pido e escrito por quem conhece a sua hist&oacute;ria: um site que carrega em segundos, aparece na busca e fala do jeito que voc&ecirc; fala.", ver_trabalhos=False)
+                     "Um site que apresenta seus servi&ccedil;os, facilita o contato e vem preparado para o Google entender quem voc&ecirc; &eacute;, o que faz e onde atende.", ver_trabalhos=False)
     dif = (f'<div class="sec"><div class="rv">{kicker("O QUE FAZ A DIFEREN&Ccedil;A")}</div>'
            + steps_grid([
                ("Texto artesanal", "O texto nasce de conversa, n&atilde;o de modelo pronto. Quem l&ecirc; sente que &eacute; voc&ecirc; falando."),
-               ("Leve e r&aacute;pido", "P&aacute;ginas enxutas, sem plataforma pesada, que abrem em qualquer celular e qualquer sinal."),
+               ("Leve e r&aacute;pido", "P&aacute;ginas enxutas, com imagens otimizadas e navega&ccedil;&atilde;o pensada para o celular."),
                ("Pronto para a busca", "Estrutura pensada para o Google entender quem voc&ecirc; &eacute;, o que faz e onde atende."),
            ], grid="g3", numbered=False) + '</div>')
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}</div>'
@@ -577,7 +584,7 @@ def page_sites():
     return hero + dif + como + ex + REGIAO + faq(FAQ_SITES)
 
 def page_encomenda():
-    hero = hero_page("SOB ENCOMENDA", "Um filme com come&ccedil;o, meio e fim.",
+    hero = hero_page("SOB ENCOMENDA", "V&iacute;deos para apresentar sua empresa, seus produtos e suas campanhas.",
                      "Produ&ccedil;&atilde;o de v&iacute;deo profissional, sem compromisso de recorr&ecirc;ncia: voc&ecirc; encomenda, a gente grava, edita e devolve pronto para usar. A Forster nasceu produtora de v&iacute;deo, e isso segue sendo o nosso forte.")
     tipos = (f'<div class="sec"><div class="rv">{kicker("TIPOS DE ENCOMENDA")}</div>'
              + steps_grid([
@@ -589,13 +596,13 @@ def page_encomenda():
             f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente grava.</h2></div>'
             + steps_grid([
                 ("Briefing", "Antes de qualquer coisa, a gente conversa: os temas, o tom e o que cada v&iacute;deo precisa comunicar. &Eacute; o que garante que o dia de grava&ccedil;&atilde;o renda ao m&aacute;ximo."),
-                ("Roteiro", "O roteiro chega antes da sess&atilde;o, para voc&ecirc; aprovar ou ajustar. No dia, teleprompter: nada de decorar."),
+                ("Roteiro", "O roteiro chega antes da sess&atilde;o, para voc&ecirc; aprovar ou ajustar. Na grava&ccedil;&atilde;o, voc&ecirc; pode acompanhar o texto no teleprompter, sem precisar decorar. A gente orienta a fala durante a sess&atilde;o."),
                 ("Sess&atilde;o de grava&ccedil;&atilde;o", "A gente vai at&eacute; voc&ecirc; com toda a estrutura: c&acirc;mera, ilumina&ccedil;&atilde;o profissional, microfone e teleprompter, e drone quando a hist&oacute;ria pede."),
                 ("Edi&ccedil;&atilde;o e entrega", "Cortes limpos, identidade visual e o seu tom de voz. Pronto, voc&ecirc; recebe um link para ver, aprovar e baixar. Simples assim."),
             ]) + '</div>')
     trab = (f'<div class="sec"><div class="rv">{kicker("TRABALHOS SOB ENCOMENDA")}</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
+            + tile("thalf", "#3A4638", "V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis.", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
             + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
             + '</div></div>')
     return hero + tipos + como + trab + REGIAO + faq(FAQ_ENC)
@@ -614,7 +621,7 @@ def page_trabalhos():
             + intro_grupo("Filmes que apresentam uma empresa ou uma institui&ccedil;&atilde;o: quem &eacute;, o que faz e por que faz.", "Como &eacute; feito um v&iacute;deo institucional", "/blog/como-e-feito-um-video-institucional")
             + '</div>'
             f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#3A4638", "Institucional &middot; Pelizzer Im&oacute;veis", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
+            + tile("thalf", "#3A4638", "V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis.", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
             + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
             + tile("thalf", "#D9C29A", "Institucional &middot; Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es", video=f"{MEDIA}/institucional-fundacao-ulysses-guimaraes.mp4", img="thumb-institucional-fundacao-ulysses-guimaraes.jpg", alt="V&iacute;deo Escola do Futuro, da Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es")
             + '</div></div>')
@@ -640,7 +647,7 @@ def page_trabalhos():
               f'<div class="mosaic rv" style="margin-top: 44px;">'
               + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Fyber Show Piscinas", video="/video/reel-fyber-show.mp4", img="capa-reel-fyber-show.jpg", alt="Reel Quem &eacute; a Fyber Show")
               + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; &Oacute;ticas Casa Marco", video="/video/reel-oticas-casa-marco.mp4", img="capa-reel-oticas-casa-marco.jpg", alt="Reel de produto Arma&ccedil;&otilde;es Femininas, das &Oacute;ticas Casa Marco")
-              + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; Catarata Center", video="/video/reel-catarata-center.mp4", img="capa-reel-catarata-center.jpg", alt="Reel 3 Perguntas sobre Cirurgia de Catarata, do Catarata Center")
+              + tile("t916", "#2B2724", "Catarata Center: tr&ecirc;s perguntas sobre cirurgia de catarata.", video="/video/reel-catarata-center.mp4", img="capa-reel-catarata-center.jpg", alt="Reel 3 Perguntas sobre Cirurgia de Catarata, do Catarata Center")
               + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Prisma Especialidades", video="/video/reel-prisma-especialidades.mp4", img="capa-reel-prisma-especialidades.jpg", alt="Reel Ansiedade Infantil, da Prisma Especialidades")
               + '</div></div>')
     return hero + inst + prod + outras + mensal
@@ -659,10 +666,10 @@ def page_404():
                      "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
                      "/mentoria")
               + door("03", "Sites",
-                     "Um site simples, r&aacute;pido e sob medida, que conta a sua hist&oacute;ria e aparece na busca.",
+                     "Um site sob medida que apresenta seus servi&ccedil;os, facilita o contato e vem preparado para o Google entender o seu neg&oacute;cio.",
                      "/sites")
               + door("04", "Sob encomenda",
-                     "Um v&iacute;deo com come&ccedil;o, meio e fim: institucional, v&iacute;deo de produto, a hist&oacute;ria da sua empresa bem contada.",
+                     "V&iacute;deos institucionais, de produto e de campanha para apresentar sua empresa e o que ela oferece.",
                      "/sob-encomenda")
               + '</div></div>')
     return hero + portas
@@ -732,17 +739,17 @@ PAGES = {
     "mentoria.html": {
         "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
         "title": "Mentoria de comunicação individual | Comunicação Consciente | FORSTER",
-        "desc": "Mentoria de comunicação individual com Silvana Forster: três meses para transformar o que tu já sabe em presença real, com a parte de vídeo com o Samuel.",
+        "desc": "Mentoria individual com Silvana Forster para organizar assuntos, preparar textos e aprender a gravar com Samuel. Seis encontros em três meses.",
         "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, seis encontros quinzenais e suporte leve pelo WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
     },
     "sites.html": {
-        "active": "sites", "fn": page_sites, "convite": CONVITE_PADRAO, "path": "/sites",
+        "active": "sites", "fn": page_sites, "convite": CONVITE_SITES, "path": "/sites",
         "title": "Criação de sites em Igrejinha e Vale do Paranhana | FORSTER",
         "desc": "Sites sob medida, do texto ao código: leves, rápidos e prontos para o Google. Feitos em Igrejinha para empresas do Vale do Paranhana e região.",
         "ld": service_ld("Criação de sites", "Sites institucionais leves e rápidos, do texto ao código, publicados no domínio do cliente.", "/sites") + [faq_ld(FAQ_SITES)],
     },
     "sob-encomenda.html": {
-        "active": "encomenda", "fn": page_encomenda, "convite": CONVITE_PADRAO, "path": "/sob-encomenda",
+        "active": "encomenda", "fn": page_encomenda, "convite": CONVITE_ENCOMENDA, "path": "/sob-encomenda",
         "title": "Produtora de vídeo institucional em Igrejinha, RS | FORSTER",
         "desc": "Vídeo institucional, de produto e publicitário, do roteiro à entrega, com luz profissional, teleprompter e drone. Produtora de vídeo em Igrejinha, RS.",
         "ld": service_ld("Produção de vídeo sob encomenda", "Vídeo institucional e vídeo de produto, do roteiro à entrega, sem compromisso de recorrência.", "/sob-encomenda") + [faq_ld(FAQ_ENC)],
