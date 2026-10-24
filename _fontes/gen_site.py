@@ -362,11 +362,11 @@ FAQ_ACOMP = [
 ]
 FAQ_MENT = [
     ("Quanto tempo dura?",
-     "Três meses, com seis encontros quinzenais de uma hora e meia e suporte leve pelo WhatsApp entre eles, no teu ritmo."),
+     "Três meses, com cinco encontros ao vivo, quinzenais, de uma hora e meia cada, e uma aula gravada. Entre os encontros, tu conta com suporte leve pelo WhatsApp."),
     ("Preciso já publicar conteúdo?",
      "Não. O acompanhamento começa pelo teu momento e pela tua história. Se tu já publica, a gente organiza o que existe. Se ainda não, a gente constrói do zero, com um calendário que cabe na tua rotina."),
     ("Como funciona a parte de vídeo?",
-     "É um encontro prático com o Samuel: luz, enquadramento e cenário com o que tu já tem em casa, presença em vídeo, teleprompter e gravação por blocos. Tu recebe retorno sobre um vídeo que gravou e sai com o plano do primeiro lote."),
+     "É a aula gravada “Como me gravar sozinha”, com Silvana e Samuel. Em 28 minutos e oito capítulos, ela mostra como preparar o cenário, a luz, a posição do celular e o som para se gravar em casa ou no escritório. As dúvidas da aula são conversadas no último encontro."),
 ]
 FAQ_SITES = [
     ("Preciso ter o texto pronto?",
@@ -517,7 +517,7 @@ def page_acompanhamento():
 
 def page_mentoria():
     hero = hero_page("MENTORIA", "Organiza tua comunica&ccedil;&atilde;o e aprende a produzir os teus conte&uacute;dos.",
-                     "No Acompanhamento em Comunica&ccedil;&atilde;o Consciente, tu organiza os assuntos, prepara textos e aprende a gravar com o que j&aacute; tem em casa. S&atilde;o seis encontros individuais ao longo de tr&ecirc;s meses. A Silvana conduz; a parte de v&iacute;deo &eacute; com o Samuel.",
+                     "No Acompanhamento em Comunica&ccedil;&atilde;o Consciente, tu organiza os assuntos, prepara textos e aprende a gravar com o que j&aacute; tem em casa. S&atilde;o cinco encontros ao vivo e uma aula gravada ao longo de tr&ecirc;s meses. A Silvana conduz os encontros; na aula, ela e o Samuel mostram como se gravar com o celular.",
                      cta_label="Falar com a Silvana pelo WhatsApp", cta_href=WA_SILVANA, ver_trabalhos=False)
     silvana = (f'<div class="sec"><div class="qf rv">'
                f'<div class="silv-photo">'
@@ -537,19 +537,18 @@ def page_mentoria():
                       f'<p class="t5" style="font-size: 16px; margin: 16px 0 0; line-height: 1.5;">{i}</p></div>' for i in quem_itens)
             + '</div></div>')
     como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
-            f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Tr&ecirc;s meses, seis encontros quinzenais de 1h30, e suporte leve pelo WhatsApp entre eles.</h2></div>'
+            f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Tr&ecirc;s meses, cinco encontros ao vivo, quinzenais, de 1h30 cada, e uma aula gravada.</h2></div>'
             + steps_grid([
                 ("Clareza e dire&ccedil;&atilde;o", "Entender o teu momento, a tua hist&oacute;ria e o que tu realmente quer comunicar: o qu&ecirc;, pra quem e por qu&ecirc;."),
                 ("Organiza&ccedil;&atilde;o e conte&uacute;do", "Definir o assunto principal de cada m&ecirc;s e organizar os temas que v&atilde;o virar publica&ccedil;&otilde;es."),
                 ("Posicionamento e presen&ccedil;a", "Definir o teu tom de voz e a tua forma de aparecer, com coer&ecirc;ncia e bastidores nos stories."),
                 ("Cria&ccedil;&atilde;o e estrutura", "Transformar ideias em falas, roteiros, legendas e conte&uacute;dos aplic&aacute;veis, com um banco criativo para agilizar o trabalho."),
-                ("Pr&aacute;tica e grava&ccedil;&atilde;o", "Luz, enquadramento, cen&aacute;rio e presen&ccedil;a em v&iacute;deo com o Samuel, para gravar bem com o que tu tem em casa."),
-                ("Revis&atilde;o e autonomia", "Revisar o caminho, ajustar o calend&aacute;rio e criar a tua rotina sustent&aacute;vel."),
+                ("Revis&atilde;o e autonomia", "Conversar sobre as d&uacute;vidas da aula gravada, revisar o que foi proposto e realizado, ajustar o calend&aacute;rio e organizar como seguir produzindo conte&uacute;do."),
             ], grid="g3") + '</div>')
-    video = (f'<div class="sec"><div class="rv" style="max-width: 720px;">{kicker("A PARTE DE V&Iacute;DEO")}'
-             f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Gravar bem com o que tu tem em casa.</h2>'
-             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Um encontro pr&aacute;tico com o Samuel, com as dicas de luz, enquadramento e cen&aacute;rio pensadas para o que tu j&aacute; tem em casa, mais presen&ccedil;a em v&iacute;deo, teleprompter na pr&aacute;tica, gravar por blocos e o que fazer quando trava.</p>'
-             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">Tu recebe retorno direto sobre um v&iacute;deo que gravou, sai com o plano de grava&ccedil;&atilde;o do primeiro lote e segue com suporte pelo WhatsApp.</p></div></div>')
+    video = (f'<div class="sec"><div class="rv" style="max-width: 720px;">{kicker("AULA GRAVADA")}'
+             f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Como me gravar sozinha.</h2>'
+             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Em 28 minutos e oito cap&iacute;tulos, Silvana e Samuel mostram como escolher o lugar, posicionar o celular e preparar a imagem e o som para se gravar em casa ou no escrit&oacute;rio, com a c&acirc;mera no autom&aacute;tico e a luz natural da janela.</p>'
+             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">Tu pode assistir no teu tempo e consultar os cap&iacute;tulos na p&aacute;gina da aula. Junto com ela, recebe um resumo em PDF para conferir antes de gravar e um passo a passo para ajustar a c&acirc;mera do iPhone. Anota as d&uacute;vidas para conversar com a Silvana no &uacute;ltimo encontro.</p></div></div>')
     return hero + silvana + quem + como + video + faq(FAQ_MENT)
 
 def page_sites():
@@ -739,8 +738,8 @@ PAGES = {
     "mentoria.html": {
         "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
         "title": "Mentoria de comunicação individual | Comunicação Consciente | FORSTER",
-        "desc": "Mentoria individual com Silvana Forster para organizar assuntos, preparar textos e aprender a gravar com Samuel. Seis encontros em três meses.",
-        "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, seis encontros quinzenais e suporte leve pelo WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
+        "desc": "Mentoria individual de comunicação com Silvana Forster: três meses, cinco encontros ao vivo e uma aula gravada sobre como se gravar com o celular.",
+        "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, cinco encontros ao vivo, quinzenais, de 1h30 cada, uma aula gravada e suporte leve pelo WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
     },
     "sites.html": {
         "active": "sites", "fn": page_sites, "convite": CONVITE_SITES, "path": "/sites",
