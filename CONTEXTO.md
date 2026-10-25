@@ -82,3 +82,4 @@ morto não enganar ninguém depois. Para mudar o robots.txt de verdade, é no pa
 - Pedido do Samuel no mesmo dia: miniatura do link com a foto dela (`img/og-silvana-forster.jpg`, a mesma da proposta) e a apresentação da proposta, aprovada em 25/10, no fim da página, passada de "você" para "tu".
 - Cuidado: a proposta vence pela regra dos 15 dias do forster-propostas (envio 24/10, sai do ar depois de 08/11) e cada abertura conta no registro de visita. Para ficar na bio, precisa de decisão do Samuel.
 - Conferida em 375 px e no computador, sem erro no console. Pendências: a Silvana ler o texto (fala em primeira pessoa por ela), publicar e trocar a bio para um link só, `somosforster.com.br/silvana`.
+- Publicada em 25/10 (`676d397`), junto com a proposta sem prazo (forster-propostas `24de7bb`) e sem aviso no Telegram (forster-aprovacoes `bb6d5e6`). Link e explicação mandados à Silvana pelo WhatsApp do Samuel, a pedido dele, às 03h16. Falta ela trocar a bio.
