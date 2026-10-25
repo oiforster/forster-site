@@ -103,3 +103,10 @@ morto não enganar ninguém depois. Para mudar o robots.txt de verdade, é no pa
 - Publicações e verificações finais do perfil serão registradas no Vault: `_Interno/Conteudo Forster/CONTEXTO.md` e `2026-10 - Perfil, fixados e destaques Forster.md`.
 
 - Conferência pública no Safari, em 390×844: acrescentados na fonte do Design quatro atalhos para os serviços e uma âncora para os contatos logo na abertura. As capas também ganharam exportação para Stories, com o mesmo símbolo central e o nome da seção acima do recorte, para serem usadas pelo seletor normal de capas dos destaques na web.
+
+
+### Fechamento da atualização do Instagram — 25/10/2026
+
+A página final corresponde à versão publicada e foi conferida no Safari em 390 × 844 com os atalhos. Os 18 arquivos anteriores de HTML, CSS, JavaScript e sitemap permaneceram iguais. Publicados dois carrosséis (https://www.instagram.com/p/De6JcXIFqnH/ e https://www.instagram.com/p/De6JmuZFok3/) e 26 Stories. Os dez destaques do Instagram foram organizados com as capas novas; Vídeos, Sites, Conteúdo, Mentoria, Sobre e Clientes aparecem na frente.
+
+A única pendência é trocar a fixação dos dois posts, mantendo o depoimento da Joele. A ação não apareceu no Instagram web, e a tentativa final de conexão pelo Espelhamento do iPhone esgotou o tempo. Nenhuma publicação anterior, anúncio, valor ou condição foi alterado. O registro completo e os links dos destaques estão no documento do Vault indicado acima.
