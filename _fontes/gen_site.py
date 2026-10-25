@@ -715,6 +715,76 @@ def page_privacidade():
             f'<p class="t">Qualquer d&uacute;vida sobre os seus dados, &eacute; s&oacute; escrever para o Samuel pelo WhatsApp ou pelo Instagram. Respons&aacute;vel: FORSTER Ateli&ecirc; de Conte&uacute;do, Igrejinha, RS.</p>'
             f'</div></div>')
 
+# ---------------------------------------------------------------- links da Silvana (desde 25/10/2026)
+# Pagina do link da bio do @silvanaforster. Camada do repo, fora do Claude Design, como o blog.
+# Sem menu nem rodape do site: e uma pagina so, aberta pelo celular a partir do Instagram.
+PROPOSTA_SILVANA = "https://propostas.somosforster.com.br/acompanhamento-comunicacao-consciente-363656cb/"
+TELEGRAM_SILVANA = "https://t.me/+8itHEv_NC6kwOTRh"
+
+CSS_LINKS = """.lk { background: #F7F3EC; min-height: 100vh; display: flex; flex-direction: column; }
+.lk-top { position: relative; overflow: hidden; background: #3A4638; color: #F7F3EC; padding: 44px 24px 40px; text-align: center; }
+.lk-top .lk-s { position: absolute; right: -70px; top: -30px; width: 300px; opacity: .22; }
+.lk-top .lk-s svg { width: 100%; height: auto; overflow: visible; }
+.lk-foto { position: relative; width: 116px; height: 116px; margin: 0 auto; border-radius: 50%; overflow: hidden; border: 3px solid #F7F3EC; }
+.lk-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.lk-nome { position: relative; font-size: 32px; margin-top: 20px; }
+.lk-desc { position: relative; font-size: 11px; color: #D9C29A; margin-top: 12px; }
+.lk-bio { position: relative; font-size: 16px; line-height: 1.55; color: rgba(247,243,236,0.88); max-width: 380px; margin: 18px auto 0; }
+.lk-lista { width: 100%; max-width: 520px; box-sizing: border-box; margin: 0 auto; padding: 32px 20px 44px; flex: 1 0 auto; }
+.lk-dest { display: block; color: #262220; border: 2px solid #262220; border-radius: 10px; padding: 24px 22px 22px; background: #FBF8F3; transition: transform .2s cubic-bezier(.22,1,.36,1); }
+.lk-dest:hover { color: #262220; }
+.lk-dest .btn { margin-top: 20px; }
+.lk-item { display: flex; align-items: center; gap: 16px; color: #262220; padding: 20px 4px; border-bottom: 1px solid rgba(38,34,32,0.16); }
+.lk-item:hover { color: #262220; }
+.lk-item:hover h2 { color: #B0553B; }
+.lk-item svg { color: #B0553B; transition: transform .25s cubic-bezier(.22,1,.36,1); }
+.lk-item h2 { font-size: 20px; transition: color .2s ease; }
+.lk-item p { font-size: 14px; line-height: 1.5; color: rgba(38,34,32,0.72); margin-top: 6px; }
+.lk-apres { margin-top: 44px; }
+.lk-apres p { font-size: 16px; line-height: 1.65; color: rgba(38,34,32,0.85); margin-top: 14px; }
+.lk-pe { background: #3A4638; color: #F7F3EC; padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.lk-pe a { color: #F7F3EC; }
+@media (hover: hover) and (pointer: fine) {
+  .lk-dest:hover { transform: translateY(-3px); }
+  .lk-item:hover svg { transform: translateX(4px); }
+}"""
+
+def link_item(titulo, desc, href):
+    return (f'<a class="lk-item rv" href="{href}" target="_blank" rel="noopener">'
+            f'<div style="flex: 1 1 auto;"><h2 class="h">{titulo}</h2><p class="t">{desc}</p></div>'
+            f'{ARROW}</a>')
+
+def page_silvana():
+    topo = (f'<header class="lk-top"><div class="lk-s sdraw">{s_svg("#D9C29A", sw="9", inline_size=False)}</div>'
+            f'<div class="lk-foto in"><img src="/img/silvana-forster.jpg" alt="Silvana Forster"></div>'
+            f'<h1 class="h lk-nome in in1">Silvana Forster</h1>'
+            f'<div class="ds lk-desc in in1">COMUNICA&Ccedil;&Atilde;O CONSCIENTE</div>'
+            f'<p class="t lk-bio in in2">Comunica&ccedil;&atilde;o para mulheres m&atilde;es que empreendem, com as bases do Marketing Sist&ecirc;mico.</p></header>')
+    # Mesma apresentacao da proposta do Acompanhamento (aprovada em 25/10/2026), passada de "voce" para "tu".
+    apresentacao = (f'<section class="lk-apres rv">{kicker("QUEM SOU EU")}'
+                    f'<h2 class="h" style="font-size: 24px; margin-top: 18px;">Ol&aacute;! Eu sou a Silvana.</h2>'
+                    f'<p class="t">Sou publicit&aacute;ria e empreendedora e trabalho com comunica&ccedil;&atilde;o h&aacute; quase 20 anos. Hoje, tenho a FORSTER, nosso ateli&ecirc; de conte&uacute;do, com o Samuel, meu marido. &Eacute; onde planejo e escrevo os conte&uacute;dos dos nossos clientes.</p>'
+                    f'<p class="t">Eu tamb&eacute;m j&aacute; tive ideias, conhecimento e projetos que n&atilde;o conseguia apresentar. Sei como &eacute; ter muito a dizer e travar na hora de comunicar o pr&oacute;prio trabalho.</p>'
+                    f'<p class="t">Foi dessa experi&ecirc;ncia que nasceu o Acompanhamento em Comunica&ccedil;&atilde;o Consciente. Nele, eu te acompanho na organiza&ccedil;&atilde;o das tuas ideias, na escrita dos teus conte&uacute;dos e na constru&ccedil;&atilde;o de uma rotina para apresentar os teus servi&ccedil;os com as tuas palavras.</p></section>')
+    destaque = (f'<a class="lk-dest in in3" href="{PROPOSTA_SILVANA}" target="_blank" rel="noopener">'
+                f'{kicker("MENTORIA INDIVIDUAL")}'
+                f'<h2 class="h" style="font-size: 26px; margin-top: 18px;">Acompanhamento em Comunica&ccedil;&atilde;o Consciente</h2>'
+                f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin-top: 12px;">S&atilde;o tr&ecirc;s meses, com cinco encontros ao vivo e uma aula gravada. Na proposta est&atilde;o cada encontro, o que fica contigo e os valores.</p>'
+                f'<span class="tb btn btn-lg">Ver a proposta completa</span></a>')
+    itens = (link_item("Conversar comigo no WhatsApp",
+                       "Para tirar uma d&uacute;vida ou me contar do teu momento.",
+                       WA_SILVANA + "?text=" + "Oi,%20Silvana!%20Vim%20pelo%20teu%20Instagram.")
+             + link_item("Uma pergunta por semana, no Telegram",
+                         "No canal gratuito, toda semana eu trago uma reflex&atilde;o e uma pergunta para tu desenvolver a comunica&ccedil;&atilde;o do teu neg&oacute;cio.",
+                         TELEGRAM_SILVANA)
+             + link_item("FORSTER, o nosso ateli&ecirc; de conte&uacute;do",
+                         "O que eu e o Samuel fazemos para empresas: conte&uacute;do mensal, v&iacute;deos e sites.",
+                         "/"))
+    pe = (f'<footer class="lk-pe"><a href="/" aria-label="FORSTER, p&aacute;gina inicial">{lockup("17px", "currentColor")}</a>'
+          f'<div class="t" style="font-size: 13px; color: rgba(247,243,236,0.75);">Conte&uacute;do feito a quatro m&atilde;os.</div></footer>')
+    return (f'<style>{CSS_LINKS}</style><div class="lk">{topo}'
+            f'<main class="lk-lista">{destaque}<div style="margin-top: 14px;">{itens}</div>{apresentacao}</main>{pe}</div>')
+
 def service_ld(name, desc, path):
     return [{"@type": "Service", "name": name, "description": desc,
              "url": SITE + path, "provider": {"@id": ORG_ID}, "areaServed": AREA},
@@ -766,6 +836,14 @@ PAGES = {
         "title": "Portfólio de vídeos e conteúdo | FORSTER",
         "desc": "Uma seleção do que sai do ateliê: vídeos institucionais, publicitários, curso, clipe e o conteúdo mensal que a Forster produz para os clientes.",
         "ld": service_ld("Trabalhos da Forster", "Seleção de vídeos institucionais, publicitários e de conteúdo mensal produzidos pela Forster.", "/trabalhos"),
+    },
+    # Link da bio do Instagram da Silvana. noindex: pagina de passagem, sem conteudo proprio para o Google.
+    "silvana.html": {
+        "active": "", "fn": page_silvana, "convite": "", "path": "/silvana", "noindex": True, "solo": True,
+        "og": "og-silvana-forster.jpg",
+        "title": "Silvana Forster · Comunicação Consciente",
+        "desc": "Os links da Silvana Forster: o Acompanhamento em Comunicação Consciente, o WhatsApp, o canal no Telegram e a FORSTER.",
+        "ld": [],
     },
     # Servida pelo Cloudflare Pages em qualquer rota sem correspondencia.
     # noindex: fica fora do sitemap e sem canonical, porque nao tem URL propria.
@@ -876,7 +954,7 @@ def head(p):
   <meta property="og:title" content="{p["title"]}">
   <meta property="og:description" content="{p["desc"]}">
   <meta property="og:url" content="{SITE}{p["path"]}">
-  <meta property="og:image" content="{SITE}/img/og-forster.jpg">
+  <meta property="og:image" content="{SITE}/img/{p.get("og", "og-forster.jpg")}">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -886,7 +964,7 @@ def head(p):
   <link rel="stylesheet" href="/style.css?v={VER}">{ld}{ga4()}'''
 
 def page_html(p):
-    body = f'<div class="page">{nav(p["active"])}{p["fn"]()}{p["convite"]}</div>{FOOTER}'
+    body = p["fn"]() if p.get("solo") else f'<div class="page">{nav(p["active"])}{p["fn"]()}{p["convite"]}</div>{FOOTER}'
     return (f'<!doctype html>\n<html lang="pt-BR">\n<head>\n  {head(p)}\n</head>\n<body>\n'
             f'{body}\n<script src="/site.js?v={VER}" defer></script>\n</body>\n</html>\n')
 

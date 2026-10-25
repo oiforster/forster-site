@@ -72,3 +72,13 @@ morto não enganar ninguém depois. Para mudar o robots.txt de verdade, é no pa
 - 06/10/2026, conferência automática: 1 de 5 páginas do blog no Google ("como gravar o conteúdo do mês numa sessão"); /blog/ e os outros 3 artigos "Detectada, mas não indexada". Sitemap reenviado (204), aviso no Telegram.
 - 15/10/2026, rotina quinzenal: artigo "Vídeo vertical ou horizontal: qual usar no site, no Instagram e no YouTube" publicado em https://somosforster.com.br/blog/video-vertical-ou-horizontal-site-instagram-youtube (leva para /sob-encomenda). Revisor de texto ok, correções aplicadas (antítese, "9 por 16 parecida com o celular", explicação de Reels/Shorts e enquadramento, lista em frase completa; saíram as frases sem fonte sobre planejar o enquadramento para vários formatos).
 - 15/10/2026: sitemap reenviado (204); 4 de 5 artigos do blog "Enviada e indexada" (o novo ainda não reconhecido). Aviso no Telegram.
+
+## 25/10/2026 — Página de links da Silvana (/silvana)
+
+- Pedido do Samuel: uma página de links dentro do somosforster para a Silvana pôr na bio do @silvanaforster, na identidade da FORSTER.
+- Bio dela hoje (conferida no perfil, 25/10): dois links, `somosforster.com.br` e o canal do Telegram "Comunicação Consciente" (`t.me/+8itHEv_NC6kwOTRh`, 21 inscritos, uma reflexão e uma pergunta por semana).
+- O post fixado do Acompanhamento (rascunho de 22/10) promete "a proposta inteira, com o detalhamento de cada encontro, tá no link da bio", e o valor ficou na proposta. Por isso o destaque da página é a proposta: `propostas.somosforster.com.br/acompanhamento-comunicacao-consciente-363656cb/`.
+- Página: `/silvana`, feita no gerador (`page_silvana`, camada do repo fora do Claude Design, como o blog), sem menu nem rodapé do site, `noindex` e fora do sitemap. Ordem: proposta do Acompanhamento (destaque), WhatsApp dela com a mensagem "Oi, Silvana! Vim pelo teu Instagram.", canal do Telegram, FORSTER. Texto em "tu", na voz dela. Os cliques entram no GA4 pelos eventos que o `site.js` já manda.
+- Pedido do Samuel no mesmo dia: miniatura do link com a foto dela (`img/og-silvana-forster.jpg`, a mesma da proposta) e a apresentação da proposta, aprovada em 25/10, no fim da página, passada de "você" para "tu".
+- Cuidado: a proposta vence pela regra dos 15 dias do forster-propostas (envio 24/10, sai do ar depois de 08/11) e cada abertura conta no registro de visita. Para ficar na bio, precisa de decisão do Samuel.
+- Conferida em 375 px e no computador, sem erro no console. Pendências: a Silvana ler o texto (fala em primeira pessoa por ela), publicar e trocar a bio para um link só, `somosforster.com.br/silvana`.
