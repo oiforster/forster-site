@@ -5,8 +5,16 @@ Site da FORSTER · Ateliê de Conteúdo — somosforster.com.br
 - `public/` é o que o Cloudflare Pages publica (build `exit 0`, output `public`).
 - O domínio antigo forsterfilmes.com redireciona (301) para somosforster.com.br por uma Redirect Rule na zona forsterfilmes.com da Cloudflare; nada no repo cuida disso.
 - `_fontes/gen_site.py` gera as páginas de `public/` (rodar com `python3 _fontes/gen_site.py`).
-- A fonte da verdade de design é o projeto "Site Forster design" no Claude Design; alterações de
-  layout nascem lá e são portadas para o gerador, nunca o contrário.
+  Não editar os HTMLs gerados diretamente.
+- As fontes visuais estão no projeto [Forster site implementation](https://claude.ai/design/p/ec94a935-7c92-48fc-a4bb-4faf1766289f)
+  no Claude Design. As seis páginas da revisão de 25/10/2026 ficam em `_fontes/paginas/`.
+  Alterações de arte passam pelo chat do Design; antes da portagem, reler a página atual.
+  As páginas antigas do projeto foram preservadas.
+- `_fontes/design_pages.py` integra o corpo, o CSS e as interações dessas páginas, convertendo
+  os endereços do próprio site para as rotas locais. Títulos, descrições, dados estruturados,
+  Analytics e sitemap continuam no gerador. Blog e páginas de entrada mantêm suas fontes próprias.
+- `_fontes/site.js` reúne o comportamento das páginas auxiliares e os eventos de medição.
+  As páginas da revisão usam seu próprio diálogo de vídeo, sem reproduzir antes do clique.
 
 ## Medição (Google Analytics 4)
 

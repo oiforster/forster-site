@@ -45,7 +45,7 @@ ARTIGOS = [
     {
         "slug": "como-gravar-o-conteudo-do-mes-numa-sessao-so",
         "data": "2026-10-05",
-        "titulo": "Como gravar o conteúdo do mês inteiro numa sessão só",
+        "titulo": "Como gravar os vídeos do mês numa sessão só",
         "desc": "Roteiro pronto, teleprompter e luz montada: como funciona a sessão mensal de gravação para quem tem pouco tempo e pouca vontade de aparecer em vídeo.",
         "servico": ("Acompanhamento mensal", "/acompanhamento"),
         "corpo": """
@@ -90,7 +90,7 @@ ARTIGOS = [
 <li>Fotos reais da fachada, do ambiente e da equipe.</li>
 </ul>
 <h2>As avaliações</h2>
-<p>As avaliações são o que mais pesa para quem está escolhendo, e também ajudam a ficha a aparecer nas buscas. O jeito mais simples de conseguir avaliações é pedir: o próprio Google oferece um link que leva a pessoa direto para a tela de avaliar, e ele pode ir por WhatsApp para os clientes que ficaram satisfeitos.</p>
+<p>As avaliações são o que mais pesa para quem está escolhendo, e também ajudam a ficha a aparecer nas buscas. O jeito mais simples de conseguir avaliações é pedir: o próprio Google oferece um link que leva a pessoa direto para a tela de avaliar. O link pode ser enviado por WhatsApp aos clientes, convidando cada um a contar como foi a experiência.</p>
 <p>Responder às avaliações também conta, inclusive às negativas. Uma resposta educada mostra a quem lê depois que a empresa escuta o cliente.</p>
 <h2>Manter a ficha atualizada</h2>
 <p>A ficha aceita postagens, parecidas com as das redes sociais. Uma novidade, um artigo novo do site ou um horário especial publicados ali mostram às pessoas que a empresa está ativa. Na Catarata Center, em Novo Hamburgo, cada artigo novo do blog também vira uma postagem na ficha.</p>
@@ -115,7 +115,7 @@ ARTIGOS = [
         "corpo": """
 <p>Colocar um site no ar não garante que alguém vá encontrá-lo. O Google precisa primeiro visitar cada página, guardar o conteúdo e decidir para quais buscas ela serve. A gente viu isso de perto no nosso próprio site: em outubro de 2026, o Google tinha guardado só a página inicial do somosforster.com.br, e as páginas de cada serviço ainda não apareciam em nenhuma busca.</p>
 <h2>O Google precisa saber que a página existe</h2>
-<p>O primeiro passo é avisar o Google. Isso se faz pelo Search Console, uma ferramenta gratuita do próprio Google em que o dono confirma que o site é dele, envia a lista de páginas do site e acompanha quais delas já foram guardadas. Sem isso, o Google acaba encontrando o site sozinho, mas leva mais tempo.</p>
+<p>O Search Console é uma ferramenta gratuita do Google em que o dono confirma que o site é dele, envia a lista de páginas do site e acompanha quais delas já foram guardadas. Ele também permite solicitar uma nova visita às páginas. O Google pode encontrá-las por links em outros sites, mesmo sem esse envio.</p>
 <h2>Cada página precisa dizer o que é e onde fica</h2>
 <p>O Google lê o título e o texto de cada página para entender o assunto dela, e a descrição é o resumo que aparece embaixo do título na busca. Um título como "Início" não diz nada. "Criação de sites em Igrejinha e Vale do Paranhana" diz o serviço e a região, que é o que a pessoa digita na busca.</p>
 <p>O mesmo vale para o texto: escrever o nome da cidade e das cidades vizinhas que a empresa atende ajuda o Google a mostrar o site para quem está perto.</p>
@@ -126,11 +126,11 @@ ARTIGOS = [
 <h2>Outros sites apontando para o seu</h2>
 <p>Quando outro site coloca um link para o seu, o Google entende que o seu site merece confiança. A associação comercial da cidade e os sites de parceiros e fornecedores são bons primeiros lugares para ter esse link.</p>
 <h2>Acompanhar os números</h2>
-<p>Mesmo com tudo certo, um site novo leva semanas para começar a aparecer e meses para aparecer bem. O Search Console mostra quantas vezes o site apareceu no Google, quantos cliques recebeu e o que as pessoas buscaram antes de entrar. Nos clientes do acompanhamento mensal, esses números entram no relatório de cada mês.</p>
+<p>O tempo para uma página aparecer nas buscas varia, assim como a posição que ela ocupa. O Search Console mostra quantas vezes o site apareceu no Google, quantos cliques recebeu e o que as pessoas buscaram antes de entrar. Nos clientes do acompanhamento mensal, esses números entram no relatório de cada mês.</p>
 """,
         "faq": [
             ("Quanto tempo um site novo leva para aparecer no Google?",
-             "Não existe prazo fixo. As primeiras páginas costumam ser guardadas pelo Google em alguns dias ou semanas, e aparecer bem nas buscas da sua região é um trabalho de meses."),
+             "Não existe prazo fixo. O Google pode levar de alguns dias a algumas semanas para visitar uma página. Solicitar a visita não garante que ela apareça nos resultados."),
             ("O que é o Search Console?",
              "É uma ferramenta gratuita do Google para o dono do site. Ela mostra quais páginas o Google já guardou, em quais buscas o site apareceu e quantas pessoas clicaram."),
             ("Preciso pagar para aparecer no Google?",

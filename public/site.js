@@ -1,3 +1,4 @@
+if (!document.body.hasAttribute('data-design-revision')) {
 if ('IntersectionObserver' in window) {
   document.documentElement.classList.add('js');
   var io = new IntersectionObserver(function (entries) {
@@ -14,9 +15,13 @@ if (mb) {
     var aberto = menu.classList.toggle('open');
     mb.setAttribute('aria-expanded', aberto ? 'true' : 'false');
     mb.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+    if (aberto) menu.querySelector('a').focus();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menu.classList.contains('open')) { menu.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); mb.setAttribute('aria-label', 'Abrir menu'); mb.focus(); }
   });
   menu.addEventListener('click', function (e) {
-    if (e.target.closest('a')) { menu.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
+    if (e.target.closest('a')) { menu.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); mb.setAttribute('aria-label', 'Abrir menu'); }
   });
 }
 document.addEventListener('click', function (e) {
@@ -44,6 +49,13 @@ document.addEventListener('click', function (e) {
   var rotulo = el.querySelector('.tlabel');
   medir('play_video', { video: el.dataset.yt || el.dataset.video, titulo: rotulo ? rotulo.textContent.trim() : '' });
 });
+
+} else {
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-video]');
+    if (el) medir('play_video', {video: el.dataset.video, titulo: el.dataset.title || el.getAttribute('aria-label') || el.textContent.trim()});
+  });
+}
 // Medicao (Google Analytics 4): so faz algo quando a tag esta na pagina.
 var PESSOAS = {"5551981578225": "samuel", "5551980603512": "silvana"};
 function medir(nome, dados) {

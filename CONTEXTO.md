@@ -110,3 +110,17 @@ morto não enganar ninguém depois. Para mudar o robots.txt de verdade, é no pa
 A página final corresponde à versão publicada e foi conferida no Safari em 390 × 844 com os atalhos. Os 18 arquivos anteriores de HTML, CSS, JavaScript e sitemap permaneceram iguais. Publicados dois carrosséis (https://www.instagram.com/p/De6JcXIFqnH/ e https://www.instagram.com/p/De6JmuZFok3/) e 26 Stories. Os dez destaques do Instagram foram organizados com as capas novas; Vídeos, Sites, Conteúdo, Mentoria, Sobre e Clientes aparecem na frente.
 
 A única pendência é trocar a fixação dos dois posts, mantendo o depoimento da Joele. A ação não apareceu no Instagram web, e a tentativa final de conexão pelo Espelhamento do iPhone esgotou o tempo. Nenhuma publicação anterior, anúncio, valor ou condição foi alterado. O registro completo e os links dos destaques estão no documento do Vault indicado acima.
+
+
+## 25/10/2026 — Revisão do site completo
+
+Samuel aprovou a nova home e autorizou seguir com as sugestões da auditoria. Comunicação, organização dos processos e criatividade orientam a apresentação. A identidade e o processo devem ajudar o trabalho criativo; a pessoa precisa reconhecer uma empresa criativa ao abrir o site.
+
+- Seis páginas da revisão de 25/10 no projeto “Forster site implementation” do Claude Design: Home, Acompanhamento, Mentoria, Sites, Videos e Trabalhos. As páginas anteriores foram preservadas. As fontes foram relidas pelo editor do Design e comparadas integralmente com as composições revisadas antes da portagem para `_fontes/paginas/`.
+- Home com trabalhos desde a abertura; serviços com composições próprias, exemplos reais e processo de trabalho. Portfólio agora reúne três sites e treze vídeos, com categorias e duração medida. Os exemplos da Polaris são identificados como calendário planejado. Prisma Especialidades de Novo Hamburgo tem um caminho separado para a Prisma Clínica de Olhos e suas unidades.
+- Samuel confirmou: os planos mensais variam conforme a proposta e podem reunir só vídeos, só conteúdo ou um conjunto mais completo. Usar apenas “suporte por WhatsApp” na mentoria. A Silvana dirige sua comunicação principalmente às mães empreendedoras, mas atende qualquer pessoa; ser mãe não é requisito. Notas, FAQs e descrições para busca refletem essas definições. Valores e contatos foram preservados.
+- Blog: título sobre gravar os vídeos do mês; pedido de avaliações sem selecionar apenas clientes satisfeitos; explicação do Search Console e de prazos de busca sem garantia de posição. Slugs preservados.
+- Navegação por teclado, foco visível, perguntas frequentes nativas e vídeos por escolha do visitante. O menu das páginas auxiliares fecha com Escape e devolve o foco. Medição, escolha de não contar visitas, canonical, dados estruturados e rotas foram mantidos. As entradas /silvana e /instagram continuam fora do sitemap.
+- Verificação: 16 HTMLs com links, arquivos, âncoras, H1, main e JSON-LD conferidos; revisão visual das páginas principais em 1440/390/320, larguras intermediárias 768/1024 sem transbordamento; vídeo reproduziu, fechou com Escape, interrompeu o carregamento e devolveu o foco. Ampliação das capturas e navegação entre serviços conferidas.
+
+O registro de propostas e da aprovação fica no Vault em `_Interno/Sites/Proposta da home Forster/CONTEXTO.md`. Nenhuma nova decisão comercial pendente nesta revisão. A manutenção de sites após a entrega não recebeu promessa nova.

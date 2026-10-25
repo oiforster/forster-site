@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # Gerador do site da FORSTER (somosforster.com.br).
-# Fonte da verdade de design: projeto "Site Forster design" no Claude Design.
-# Este script emite a versao publicada em ../public: 7 paginas + style.css + site.js
+# Fontes visuais: revisao 25/10/2026 do projeto "Forster site implementation" no Claude Design.
+# Este script emite o site institucional, o blog e as paginas de entrada em ../public
 # + robots/sitemap/_headers + redirect da raiz (forsterfilmes.com via GitHub Pages).
 import json, pathlib
+from urllib.parse import quote
 
 BASE = pathlib.Path(__file__).parent
 PUB = BASE.parent / "public"
@@ -14,7 +15,6 @@ WA_SILVANA = "https://wa.me/5551980603512"
 # Google Analytics 4: ID da propriedade (formato G-XXXXXXXXXX). Vazio = nenhuma medicao no site.
 # Criar em analytics.google.com > Administrador > Criar propriedade > fluxo de dados Web.
 GA4_ID = "G-0PH3FJRH7W"
-MEDIA = "https://media.somosforster.com.br/video"
 
 S_PATH = "M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92"
 
@@ -92,10 +92,10 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 .silv-photo { flex: 0 0 300px; border: 1px solid rgba(38,34,32,0.15); }
 .silv-photo img { width: 100%; height: auto; display: block; }
 .foot { background: #3A4638; padding: 44px clamp(20px, 8.3vw, 120px); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-.note { font-size: 13px; font-style: italic; color: #8A817A; }
+.note { font-size: 13px; font-style: italic; color: #61594F; }
 .conf { display: flex; flex-wrap: wrap; gap: 18px 40px; font-size: 17px; }
 @media (min-width: 1200px) {
-  .conf { flex-wrap: nowrap; justify-content: space-between; gap: 16px; font-size: 15px; }
+  .conf { flex-wrap: wrap; justify-content: flex-start; gap: 16px; font-size: 15px; }
 }
 @media (max-width: 700px) {
   .conf { flex-direction: column; gap: 14px; }
@@ -127,7 +127,7 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 .prosa a { color: #262220; }
 .optout { font: inherit; font-variation-settings: 'opsz' 12, 'wght' 600; background: none; color: #262220; border: 1px solid rgba(38,34,32,0.4); border-radius: 6px; padding: 12px 20px; font-size: 15px; cursor: pointer; margin-top: 26px; }
 .optout:hover { border-color: #B0553B; color: #B0553B; }
-.optout-st { font-size: 14px; color: #8A817A; margin-top: 12px; }
+.optout-st { font-size: 14px; color: #61594F; margin-top: 12px; }
 @media (prefers-reduced-motion: no-preference) {
   .in { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
   .in1 { animation-delay: .05s; } .in2 { animation-delay: .12s; }
@@ -141,95 +141,23 @@ h1, h2, h3, p { margin: 0; font-weight: normal; font-size: inherit; }
 }
 """
 
-JS = """if ('IntersectionObserver' in window) {
-  document.documentElement.classList.add('js');
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('vis'); io.unobserve(en.target); }
-    });
-  }, { rootMargin: '0px 0px -10% 0px' });
-  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+CSS += """
+.skip-link { position: absolute; left: 16px; top: -80px; z-index: 100; background: #262220; color: #F7F3EC; padding: 12px 18px; }
+.skip-link:focus { top: 12px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #B0553B; outline-offset: 5px; }
+.foot a:focus-visible { outline-color: #F7F3EC; }
+@media (max-width: 1100px) {
+  .menu-btn { display: flex; }
+  .navlinks { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 20; flex-direction: column; align-items: stretch; gap: 0; background: #F7F3EC; border-bottom: 1px solid rgba(38,34,32,0.12); padding: 6px clamp(20px, 8.3vw, 120px) 14px; }
+  .navlinks.open { display: flex; }
+  .navlink { padding: 13px 0; }
 }
-var mb = document.querySelector('.menu-btn');
-if (mb) {
-  var menu = document.getElementById('menu');
-  mb.addEventListener('click', function () {
-    var aberto = menu.classList.toggle('open');
-    mb.setAttribute('aria-expanded', aberto ? 'true' : 'false');
-    mb.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
-  });
-  menu.addEventListener('click', function (e) {
-    if (e.target.closest('a')) { menu.classList.remove('open'); mb.setAttribute('aria-expanded', 'false'); }
-  });
-}
-document.addEventListener('click', function (e) {
-  var el = e.target.closest('[data-yt], [data-video]');
-  if (!el) return;
-  e.preventDefault();
-  var box = document.createElement('div');
-  box.className = el.className.replace('tile', 'tile-live');
-  box.setAttribute('style', (el.getAttribute('style') || '') + '; position: relative; background: #262220; overflow: hidden;');
-  var m;
-  if (el.dataset.yt) {
-    m = document.createElement('iframe');
-    m.src = 'https://www.youtube-nocookie.com/embed/' + el.dataset.yt + '?autoplay=1&rel=0';
-    m.allow = 'autoplay; encrypted-media; picture-in-picture';
-    m.allowFullscreen = true;
-    m.setAttribute('style', 'position: absolute; inset: 0; width: 100%; height: 100%; border: 0;');
-  } else {
-    m = document.createElement('video');
-    m.src = el.dataset.video;
-    m.controls = true; m.autoplay = true; m.playsInline = true;
-    m.setAttribute('style', 'position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;');
-  }
-  box.appendChild(m);
-  el.replaceWith(box);
-  var rotulo = el.querySelector('.tlabel');
-  medir('play_video', { video: el.dataset.yt || el.dataset.video, titulo: rotulo ? rotulo.textContent.trim() : '' });
-});
-// Medicao (Google Analytics 4): so faz algo quando a tag esta na pagina.
-var PESSOAS = __PESSOAS__;
-function medir(nome, dados) {
-  if (typeof gtag === 'function') gtag('event', nome, dados || {});
-}
-document.addEventListener('click', function (e) {
-  var a = e.target.closest('a[href]');
-  if (!a || a.dataset.yt || a.dataset.video) return;
-  var href = a.getAttribute('href') || '';
-  var texto = (a.textContent || '').trim().slice(0, 60);
-  if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
-    var pessoa = 'outro';
-    for (var num in PESSOAS) { if (href.indexOf(num) !== -1) pessoa = PESSOAS[num]; }
-    medir('clique_whatsapp', { pessoa: pessoa, texto: texto });
-  } else if (href.indexOf('instagram.com') !== -1) {
-    medir('clique_instagram', { texto: texto });
-  } else if (href.indexOf('tel:') === 0) {
-    medir('clique_telefone', { numero: href.slice(4) });
-  } else if (href.indexOf('mailto:') === 0) {
-    medir('clique_email', { email: href.slice(7) });
-  } else if (/^https?:/.test(href) && a.hostname !== location.hostname) {
-    medir('clique_externo', { destino: a.hostname, texto: texto });
-  }
-});
-var ob = document.querySelector('[data-optout]');
-if (ob) {
-  var oid = ob.dataset.optout, ost = document.getElementById('optout-st');
-  function semMedicao() { try { return localStorage.getItem('sem-medicao') === '1'; } catch (err) { return false; } }
-  function pintar() {
-    var off = semMedicao();
-    ob.textContent = off ? 'Voltar a contar minhas visitas' : 'N\u00e3o contar minhas visitas';
-    ost.textContent = off ? 'Feito. Suas visitas n\u00e3o s\u00e3o contadas neste navegador.' : 'Suas visitas neste navegador est\u00e3o sendo contadas.';
-  }
-  ob.addEventListener('click', function () {
-    var off = !semMedicao();
-    try { off ? localStorage.setItem('sem-medicao', '1') : localStorage.removeItem('sem-medicao'); } catch (err) {}
-    window['ga-disable-' + oid] = off;
-    pintar();
-  });
-  pintar();
-}
+.contact-mobile { display: none; }
+@media(max-width:600px) { .contact-desktop { display:none; } .contact-mobile { display:inline; } }
 """
-JS = JS.replace("__PESSOAS__", json.dumps({WA_SAMUEL.rsplit("/", 1)[1]: "samuel", WA_SILVANA.rsplit("/", 1)[1]: "silvana"}))
+
+JS = (BASE / 'site.js').read_text(encoding='utf-8')
+JS = (BASE / 'site.js').read_text(encoding='utf-8')
 
 def s_svg(stroke, sw="14", cls="", inline_size=True):
     size = ' style="overflow: visible; width: 0.70em; height: 0.756em; position: relative; top: 0.042em;"' if inline_size else ''
@@ -248,41 +176,39 @@ ARROW = ('<svg width="15" height="12" viewBox="0 0 15 12" fill="none" style="fle
          '<path d="M1 6h12M9 1.5 13.5 6 9 10.5" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" stroke-linejoin="round"></path></svg>')
 
-def play(color):
-    return (f'<svg class="playc" width="54" height="54" viewBox="0 0 54 54" fill="none">'
-            f'<circle cx="27" cy="27" r="25.5" stroke="{color}" stroke-width="2"></circle>'
-            f'<path d="M22 18.5v17l14-8.5z" fill="{color}"></path></svg>')
 
 NAV_ITEMS = [("inicio", "In&iacute;cio", "/"),
              ("trabalhos", "Trabalhos", "/trabalhos"),
              ("acompanhamento", "Acompanhamento", "/acompanhamento"),
              ("mentoria", "Mentoria", "/mentoria"),
              ("sites", "Sites", "/sites"),
-             ("encomenda", "Sob encomenda", "/sob-encomenda")]
+             ("encomenda", "V&iacute;deos sob encomenda", "/sob-encomenda")]
 
 def nav(active=""):
     links = "".join(
-        f'<a class="navlink t5{" nav-on" if key == active else ""}" href="{href}">{label}</a>'
+        f'<a class="navlink t5{" nav-on" if key == active else ""}"'
+        + (' aria-current="page"' if key == active else '')
+        + f' href="{href}">{label}</a>'
         for key, label, href in NAV_ITEMS)
     burger = ('<button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">'
               '<svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">'
               '<path d="M1 1.5h20M1 8h20M1 14.5h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>')
-    return (f'<nav class="topbar"><a href="/" style="color: #262220;" aria-label="FORSTER, p&aacute;gina inicial">{lockup("20px", "currentColor")}</a>'
-            f'<div class="navwrap"><div class="navlinks" id="menu">{links}</div>'
-            f'<a class="tb btn btn-sm" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar</a>{burger}</div></nav>')
+    pessoa = WA_SILVANA if active == "mentoria" else WA_SAMUEL
+    mensagens = {"mentoria": "Olá, Silvana! Queria conversar sobre a Comunicação Consciente.",
+                 "sites": "Olá! Queria conversar sobre um site para a minha empresa.",
+                 "encomenda": "Olá! Queria conversar sobre um vídeo para a minha empresa.",
+                 "acompanhamento": "Olá! Queria conhecer o acompanhamento mensal da Forster."}
+    destino = pessoa + ("?text=" + quote(mensagens[active]) if active in mensagens else "")
+    rotulo = ('<span class="contact-desktop">Falar com a Silvana</span><span class="contact-mobile">Silvana</span>'
+              if active == "mentoria" else 'Conversar')
+    return (f'<nav class="topbar" aria-label="Principal"><a href="/" style="color: #262220;" aria-label="FORSTER, p&aacute;gina inicial">{lockup("20px", "currentColor")}</a>'
+            f'<div class="navwrap">{burger}<div class="navlinks" id="menu">{links}</div>'
+            f'<a class="tb btn btn-sm" href="{destino}" target="_blank" rel="noopener">{rotulo}</a></div></nav>')
 
-def kicker(text, extra_cls=""):
-    return f'<div class="krow{extra_cls}"><div class="kbar"></div><div class="kick">{text}</div></div>'
+def kicker(text, extra_cls="", heading=False):
+    tag = "h2" if heading else "p"
+    return f'<div class="krow{extra_cls}"><div class="kbar" aria-hidden="true"></div><{tag} class="kick">{text}</{tag}></div>'
 
-def steps_grid(items, grid="g4", numbered=True):
-    cols = ""
-    for i, (title, desc) in enumerate(items, 1):
-        num = f'<div class="t5" style="font-size: 13px; color: #8A817A; margin-top: 22px;">0{i}</div>' if numbered else ''
-        mt = ' margin-top: 12px;' if numbered else ' margin-top: 22px;'
-        cols += (f'<div class="col"><div class="rule rulex"></div>{num}'
-                 f'<h3 class="h" style="font-size: 24px;{mt}">{title}</h3>'
-                 f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin: 14px 0 0;">{desc}</p></div>')
-    return f'<div class="{grid} rv" style="margin-top: 44px;">{cols}</div>'
 
 def hero_page(kick, h1, sup, cta_label="Conversar no WhatsApp", cta_href=WA_SAMUEL, ver_trabalhos=True):
     ver = (f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
@@ -293,25 +219,6 @@ def hero_page(kick, h1, sup, cta_label="Conversar no WhatsApp", cta_href=WA_SAMU
             f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 36px; flex-wrap: wrap;">'
             f'<a class="tb btn btn-lg" href="{cta_href}" target="_blank" rel="noopener">{cta_label}</a>{ver}</div></header>')
 
-def tile(cls_size, bg, label, light=True, dashed=False, href="", img="", alt="", yt="", video=""):
-    if dashed:
-        return (f'<div class="tile ph {cls_size}"><div class="t note" style="padding: 0 20px; text-align: center;">{label}</div></div>')
-    ink = "#F7F3EC" if (light or img) else "#262220"
-    foto = ''
-    if img:
-        foto = (f'<img src="/img/{img}" alt="{alt or label}" loading="lazy">'
-                f'<div class="grad"></div>')
-    inner = (f'{foto}{play(ink)}<div class="t5 tlabel" style="color: {ink};">{label}</div>')
-    style = f'background: {bg}; overflow: hidden;'
-    data = ''
-    if yt:
-        data = f' data-yt="{yt}"'
-    if video:
-        data = f' data-video="{video}"'
-        href = href or video
-    if href:
-        return (f'<a class="tile {cls_size}" href="{href}"{data} target="_blank" rel="noopener" style="{style}">{inner}</a>')
-    return (f'<div class="tile {cls_size}" style="{style}">{inner}</div>')
 
 def convite(heading, text, cta_label, cta_href):
     return (f'<div class="sec"><div class="rv">'
@@ -333,9 +240,6 @@ CONVITE_MENTORIA = convite("Se esse &eacute; o teu momento",
                            "Manda uma mensagem e vamos conversar para entender o que faz sentido pra ti.",
                            "Falar com a Silvana pelo WhatsApp", WA_SILVANA)
 
-REGIAO = (f'<div class="sec"><div class="rv" style="max-width: 720px;">{kicker("ONDE A GENTE ATENDE")}'
-          f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">De Igrejinha para o Vale do Paranhana, Novo Hamburgo, Gramado e Canela.</h2>'
-          f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">O ateliê fica em Igrejinha, e a maior parte dos nossos clientes está por perto: Três Coroas, Taquara, Parobé, Rolante, Novo Hamburgo, Gramado e Canela. Para gravar, a gente vai até você com toda a estrutura. Para um site, a conversa pode ser por chamada de vídeo, e o trabalho chega por link.</p></div></div>')
 
 def faq(items):
     rows = "".join(
@@ -354,15 +258,15 @@ FAQ_ACOMP = [
     ("Preciso aparecer nos vídeos?",
      "Na maior parte dos casos, sim, e é isso que faz a diferença: quem confia em você quer ver você. A gente prepara o roteiro e orienta a sua fala durante a sessão, enquanto cuida da câmera, da luz e do som. Quando faz sentido, o conteúdo também mostra a equipe, o produto ou o lugar."),
     ("Quanto conteúdo sai por mês?",
-     "Depende do plano. A base é uma sessão de gravação de até quatro horas, que rende um conjunto de vídeos curtos, além dos posts do mês com legenda. A gente monta o plano com você na conversa inicial."),
+     "A quantidade e o tipo de conteúdo são definidos na proposta. O acompanhamento pode incluir só vídeos, só conteúdo ou um conjunto mais completo de serviços, conforme o que você precisa."),
     ("Vocês também publicam?",
-     "Sim. A gente publica os vídeos, os posts e as legendas nos seus perfis. Você fica livre para cuidar do seu negócio."),
+     "Sim. A publicação dos vídeos, posts e legendas pode fazer parte do acompanhamento. O que fica com a gente é combinado na proposta."),
     ("Como começa?",
      "Com um mês de diagnóstico. Antes de gravar qualquer coisa, a gente estuda tudo o que você já publicou, o seu mercado e os seus concorrentes, e monta o documento com as diretrizes do trabalho. Só depois o ciclo mensal começa."),
 ]
 FAQ_MENT = [
     ("Quanto tempo dura?",
-     "Três meses, com cinco encontros ao vivo, quinzenais, de uma hora e meia cada, e uma aula gravada. Entre os encontros, tu conta com suporte leve pelo WhatsApp."),
+     "Três meses, com cinco encontros ao vivo, quinzenais, de uma hora e meia cada, e uma aula gravada. Entre os encontros, tu conta com suporte por WhatsApp."),
     ("Preciso já publicar conteúdo?",
      "Não. O acompanhamento começa pelo teu momento e pela tua história. Se tu já publica, a gente organiza o que existe. Se ainda não, a gente constrói do zero, com um calendário que cabe na tua rotina."),
     ("Como funciona a parte de vídeo?",
@@ -397,259 +301,17 @@ FOOTER = (f'<footer class="foot"><div>{lockup("19px", "#F7F3EC")}'
 
 def door(num, titulo, desc, href):
     return (f'<div class="col"><div class="rule rulex"></div>'
-            f'<div class="t5" style="font-size: 13px; color: #8A817A; margin-top: 22px;">{num}</div>'
+            f'<div class="t5" style="font-size: 13px; color: #61594F; margin-top: 22px;">{num}</div>'
             f'<h3 class="h" style="font-size: 26px; margin-top: 12px; min-height: 64px;">{titulo}</h3>'
             f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin: 14px 0 0;">{desc}</p>'
             f'<a class="tb lka" href="{href}" style="font-size: 14px; margin-top: auto; padding-top: 18px;">Como funciona {ARROW}</a></div>')
 
-def page_home():
-    hero = (f'<header class="heroH"><div class="heroS">{s_svg("#D9C29A", sw="3", cls="sdraw", inline_size=False)}</div>'
-            f'<div style="position: relative;">'
-            f'<div class="in">{lockup("clamp(64px, 9.2vw, 132px)", "#262220", s_cls="sdraw")}</div>'
-            f'<h1 class="ds in in1" style="font-size: clamp(15px, 1.5vw, 21px); margin-top: 18px; color: #262220;">ATELI&Ecirc; DE CONTE&Uacute;DO EM IGREJINHA, RS</h1>'
-            f'<p class="t sup in in2" style="margin: 40px 0 0;">Planejamos e produzimos textos, v&iacute;deos e sites para apresentar o seu trabalho e manter a comunica&ccedil;&atilde;o da sua empresa em dia. Voc&ecirc; conversa diretamente com quem cria: Samuel e Silvana.</p>'
-            f'<div class="in in3" style="display: flex; align-items: center; gap: 28px; margin-top: 40px; flex-wrap: wrap;">'
-            f'<a class="tb btn btn-lg" href="{WA_SAMUEL}" target="_blank" rel="noopener">Conversar no WhatsApp</a>'
-            f'<a class="tb lka" href="/trabalhos" style="font-size: 16px; color: #262220; border-bottom: 1px solid rgba(38,34,32,0.4); padding-bottom: 2px;">Ver trabalhos {ARROW}</a>'
-            f'</div></div></header>')
 
-    portas = (f'<div class="sec"><div class="rv" style="margin-bottom: 44px;">{kicker("O QUE A GENTE FAZ")}</div>'
-              f'<div class="g4 rv">'
-              + door("01", "Acompanhamento mensal",
-                     "A gente estuda o seu perfil, o seu mercado e os seus concorrentes e, a partir disso, cuida da sua comunica&ccedil;&atilde;o digital: roteiros, v&iacute;deos, postagens, site e perfil no Google. Voc&ecirc; grava, e o resto &eacute; com a gente.",
-                     "/acompanhamento")
-              + door("02", "Mentoria",
-                     "Para quem quer aprender a comunicar, em encontros diretos com quem faz isso todos os dias.",
-                     "/mentoria")
-              + door("03", "Sites",
-                     "Um site sob medida que apresenta seus servi&ccedil;os, facilita o contato e vem preparado para o Google entender o seu neg&oacute;cio.",
-                     "/sites")
-              + door("04", "Sob encomenda",
-                     "V&iacute;deos institucionais, de produto e de campanha para apresentar sua empresa e o que ela oferece.",
-                     "/sob-encomenda")
-              + '</div></div>')
 
-    trabalhos = (f'<div class="sec"><div class="rv" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">{kicker("TRABALHOS")}'
-                 f'<a class="tb lka" href="/trabalhos" style="font-size: 14px;">Ver todos os trabalhos {ARROW}</a></div>'
-                 f'<div class="mosaic rv" style="margin-top: 44px;">'
-                 + tile("t169", "#3A4638", "V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis.", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
-                 + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; &Oacute;ticas Casa Marco", video="/video/reel-oticas-casa-marco.mp4", img="capa-reel-oticas-casa-marco.jpg", alt="Reel de produto das &Oacute;ticas Casa Marco")
-                 + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Fyber Show Piscinas", video="/video/reel-fyber-show.mp4", img="capa-reel-fyber-show.jpg", alt="Reel institucional da Fyber Show Piscinas")
-                 + '</div></div>')
 
-    quemfaz = (f'<div class="sec"><div class="qf rv">'
-               f'<div class="qf-photo"><img src="/img/samuel-silvana-familia-corrida.jpg" alt="Samuel, Silvana e os filhos na chegada de uma prova de corrida" loading="lazy"></div>'
-               f'<div style="padding-top: 26px;">{kicker("QUEM FAZ")}'
-               f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Quem atende &eacute; quem cria.</h2>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 520px;">Forster &eacute; sobrenome: o de Samuel e o de Silvana. O ateli&ecirc; funciona na nossa casa, em Igrejinha, e cada trabalho passa pelas m&atilde;os dos dois, do planejamento &agrave; entrega.</p>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">A Forster &eacute; feita por quem acredita que o trabalho se adapta &agrave; filosofia de vida, e n&atilde;o o contr&aacute;rio. Nosso sobrenome vem do alem&atilde;o e quer dizer guardi&atilde;o: &eacute; assim que a gente cuida da comunica&ccedil;&atilde;o de quem confia na Forster.</p>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">A gente atende Igrejinha, o Vale do Paranhana, Novo Hamburgo, Gramado e Canela, e vai at&eacute; voc&ecirc; para gravar.</p>'
-               f'</div></div></div>')
 
-    nomes = ["&Oacute;ticas Casa Marco", "Fyber Show Piscinas", "Catarata Center", "Prisma Especialidades",
-             "Col&eacute;gio Luterano Redentor", "Psic&oacute;loga Martina Schneider", "Vanessa Mainardi", "Teclib - GLPI"]
-    confianca = (f'<div class="sec" style="padding-top: 64px; padding-bottom: 72px;"><div class="rv">{kicker("QUEM CONFIA NA FORSTER")}'
-                 '<div class="conf" style="margin-top: 30px;">'
-                 + "".join(f'<div class="h" style="color: rgba(38,34,32,0.55); white-space: nowrap;">{n}</div>' for n in nomes)
-                 + '</div></div></div>')
 
-    return hero + portas + trabalhos + quemfaz + confianca
 
-def page_acompanhamento():
-    hero = hero_page("ACOMPANHAMENTO MENSAL", "Planejamento, produ&ccedil;&atilde;o e const&acirc;ncia.",
-                     "No nosso acompanhamento mensal, a base da sua comunica&ccedil;&atilde;o digital fica por nossa conta. No dia da grava&ccedil;&atilde;o, os roteiros j&aacute; est&atilde;o prontos: voc&ecirc; grava e o resto &eacute; com a gente."
-                     '<span style="display: block; font-size: 15px; margin-top: 18px;">O conjunto de cada cliente &eacute; definido na proposta.</span>')
-    como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
-            f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente cria.</h2></div>'
-            + steps_grid([
-                ("Estudo", "Antes de produzir qualquer conte&uacute;do, a gente estuda a fundo tudo o que voc&ecirc; j&aacute; publicou, o seu mercado e os seus concorrentes, at&eacute; entender o que funciona com o seu p&uacute;blico e qual espa&ccedil;o ainda est&aacute; livre pra voc&ecirc; ocupar."),
-                ("Diretrizes", "Desse estudo sai um documento com as diretrizes do seu trabalho: os assuntos, a linguagem e os servi&ccedil;os que merecem destaque. &Eacute; ele que guia cada roteiro, cada post e cada v&iacute;deo."),
-                ("Roteiro", "Os roteiros dos v&iacute;deos do m&ecirc;s nascem dessas diretrizes. No dia da grava&ccedil;&atilde;o eles j&aacute; est&atilde;o prontos no teleprompter, ent&atilde;o voc&ecirc; n&atilde;o precisa decorar nem improvisar nada."),
-                ("Grava&ccedil;&atilde;o", "A gente vai at&eacute; voc&ecirc; com a estrutura de grava&ccedil;&atilde;o e os roteiros preparados. Durante a sess&atilde;o, orienta a sua fala e cuida da c&acirc;mera, da luz e do som."),
-                ("Produ&ccedil;&atilde;o e publica&ccedil;&atilde;o", "Cada v&iacute;deo, carrossel e post sai com a sua identidade visual e o seu tom de voz, e a gente publica nas suas redes. Voc&ecirc; fica livre para cuidar do seu neg&oacute;cio."),
-                ("E come&ccedil;a de novo", "Ao longo do m&ecirc;s, a gente segue pesquisando not&iacute;cias e estudos da sua &aacute;rea e troca ideias com voc&ecirc; sempre que aparece algo novo. Todo m&ecirc;s, um relat&oacute;rio mostra os n&uacute;meros, o resultado do que j&aacute; foi feito e o que precisa ser ajustado."),
-            ], grid="g3") + '</div>')
-    pratica = (f'<div class="sec"><div class="qf rv" style="gap: 80px; align-items: flex-start;">'
-               f'<div style="max-width: 560px;">{kicker("COMO &Eacute; NA PR&Aacute;TICA")}'
-               f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Nos bastidores de uma sess&atilde;o.</h2>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Um trecho real de sess&atilde;o: luz montada, teleprompter rodando e a gente orientando a sua fala durante a grava&ccedil;&atilde;o.</p></div>'
-               f'<div style="flex: 0 0 300px; border: 1px solid rgba(38,34,32,0.15);">'
-               f'<video src="/video/bastidores-sessao.mp4" autoplay muted loop playsinline style="width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block;"></video></div>'
-               f'</div></div>')
-    seugeito = (f'<div class="sec"><div class="qf rv" style="gap: 80px;">'
-                f'<div style="max-width: 620px;">{kicker("DO SEU JEITO")}'
-                f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">E se voc&ecirc; preferir gravar por conta.</h2>'
-                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Alguns clientes gravam os pr&oacute;prios v&iacute;deos, e funciona: a gente define as pautas, prepara os roteiros, orienta a capta&ccedil;&atilde;o e cuida da edi&ccedil;&atilde;o e dos textos. O padr&atilde;o continua sendo o do ateli&ecirc;, com a sua rotina mais leve e o seu jeito na tela.</p>'
-                f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">&Eacute; um caminho natural para quem quer ganhar autonomia sem abrir m&atilde;o de acompanhamento.</p></div>'
-                f'<div style="flex: 0 0 260px;"><div style="border: 1px solid rgba(38,34,32,0.15); overflow: hidden;">'
-                f'<img src="/img/manual-de-campo-mentoria.jpg" alt="Manual de campo de grava&ccedil;&atilde;o feito pela Forster" loading="lazy" style="width: 100%; display: block;"></div>'
-                f'<p class="t note" style="margin: 12px 0 0;">Manual de campo sob medida, feito para quem grava por conta.</p></div>'
-                f'</div></div>')
-    incluso_itens = ["Estudo de tudo o que voc&ecirc; j&aacute; publicou",
-                     "Pesquisa do seu mercado e dos seus concorrentes",
-                     "Documento com as diretrizes que guiam todo o trabalho",
-                     "Roteiros dos v&iacute;deos para o Instagram e o YouTube",
-                     "Grava&ccedil;&atilde;o e produ&ccedil;&atilde;o dos v&iacute;deos",
-                     "Identidade visual e produ&ccedil;&atilde;o dos carross&eacute;is, posts e cards",
-                     "Publica&ccedil;&atilde;o nas suas redes",
-                     "Pesquisa cont&iacute;nua de not&iacute;cias e estudos da sua &aacute;rea",
-                     "Cria&ccedil;&atilde;o e cuidado do site",
-                     "Cuidado com o seu perfil no Google Meu Neg&oacute;cio",
-                     "Relat&oacute;rio mensal com os n&uacute;meros e o que precisa ser ajustado"]
-    incluso = (f'<div class="sec"><div class="rv">{kicker("DO QUE A GENTE CUIDA")}<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">A partir das diretrizes, a gente cuida do trabalho, do roteiro &agrave; postagem, do site ao seu perfil no Google Meu Neg&oacute;cio. A qualidade de produ&ccedil;&atilde;o dos nossos v&iacute;deos eleva muito a sua imagem no digital, mas o v&iacute;deo &eacute; uma parte do trabalho, n&atilde;o o trabalho inteiro. &Eacute; isso que a gente chama de conte&uacute;do feito a quatro m&atilde;os.</p></div>'
-               '<div class="g3 rv" style="margin-top: 40px;">'
-               + "".join(f'<div><div class="rule rulex" style="height: 1px; background: rgba(38,34,32,0.35);"></div>'
-                         f'<p class="t5" style="font-size: 16px; margin: 16px 0 0;">{i}</p></div>' for i in incluso_itens)
-               + '</div></div>')
-    perfis_data = [("perfil-instagram-oticas-casa-marco.jpg", "@oticas_casamarco"),
-                   ("perfil-instagram-catarata-center.jpg", "@cataratacenter"),
-                   ("perfil-instagram-fyber-show.jpg", "@fybershow"),
-                   ("perfil-instagram-colegio-redentor.jpg", "@colegioredentor")]
-    cards = "".join(
-        f'<div><div style="aspect-ratio: 9 / 16; overflow: hidden; border: 1px solid rgba(38,34,32,0.15);">'
-        f'<img src="/img/{f}" alt="Feed do Instagram {h}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: top;"></div>'
-        f'<div class="t5" style="font-size: 14px; margin-top: 12px;">{h}</div></div>'
-        for f, h in perfis_data)
-    trab = (f'<div class="sec"><div class="rv">{kicker("PERFIS QUE A GENTE CUIDA COM CONST&Acirc;NCIA")}</div>'
-            f'<div class="g4 rv" style="margin-top: 44px;">{cards}</div>'
-            f'<a class="tb lka rv" href="/trabalhos" style="font-size: 14px; margin-top: 28px;">Ver os trabalhos destes perfis {ARROW}</a></div>')
-    return hero + como + pratica + seugeito + incluso + trab + REGIAO + faq(FAQ_ACOMP)
-
-def page_mentoria():
-    hero = hero_page("MENTORIA", "Organiza tua comunica&ccedil;&atilde;o e aprende a produzir os teus conte&uacute;dos.",
-                     "No Acompanhamento em Comunica&ccedil;&atilde;o Consciente, tu organiza os assuntos, prepara textos e aprende a gravar com o que j&aacute; tem em casa. S&atilde;o cinco encontros ao vivo e uma aula gravada ao longo de tr&ecirc;s meses. A Silvana conduz os encontros; na aula, ela e o Samuel mostram como se gravar com o celular.",
-                     cta_label="Falar com a Silvana pelo WhatsApp", cta_href=WA_SILVANA, ver_trabalhos=False)
-    silvana = (f'<div class="sec"><div class="qf rv">'
-               f'<div class="silv-photo">'
-               f'<img src="/img/silvana-forster.jpg" alt="Silvana Forster" loading="lazy"></div>'
-               f'<div style="padding-top: 26px;">{kicker("QUEM CONDUZ")}'
-               f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Ol&aacute;! Eu sou a Silvana.</h2>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 520px;">Trabalho para que a tua comunica&ccedil;&atilde;o seja leve, coerente e sustent&aacute;vel, sem f&oacute;rmulas prontas e sem perder a tua ess&ecirc;ncia.</p>'
-               f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0; max-width: 520px;">O Acompanhamento em Comunica&ccedil;&atilde;o Consciente nasceu para quem j&aacute; entendeu a import&acirc;ncia da comunica&ccedil;&atilde;o, mas ainda n&atilde;o conseguiu colocar em pr&aacute;tica o que sabe.</p>'
-               f'</div></div></div>')
-    quem_itens = ["J&aacute; tem bagagem, curso e teoria, mas trava na hora de agir.",
-                  "Busca uma comunica&ccedil;&atilde;o que apresente os teus servi&ccedil;os com clareza e represente quem tu &eacute; de verdade.",
-                  "Precisa de dire&ccedil;&atilde;o e companhia para organizar as ideias e construir uma comunica&ccedil;&atilde;o viva e consistente.",
-                  "Deseja autonomia, n&atilde;o depend&ecirc;ncia: quer aprender a caminhar com os pr&oacute;prios p&eacute;s."]
-    quem = (f'<div class="sec"><div class="rv">{kicker("PRA QUEM &Eacute;")}</div>'
-            '<div class="g2 rv" style="margin-top: 40px;">'
-            + "".join(f'<div><div class="rule rulex" style="height: 1px; background: rgba(38,34,32,0.35);"></div>'
-                      f'<p class="t5" style="font-size: 16px; margin: 16px 0 0; line-height: 1.5;">{i}</p></div>' for i in quem_itens)
-            + '</div></div>')
-    como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
-            f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Tr&ecirc;s meses, cinco encontros ao vivo, quinzenais, de 1h30 cada, e uma aula gravada.</h2></div>'
-            + steps_grid([
-                ("Clareza e dire&ccedil;&atilde;o", "Entender o teu momento, a tua hist&oacute;ria e o que tu realmente quer comunicar: o qu&ecirc;, pra quem e por qu&ecirc;."),
-                ("Organiza&ccedil;&atilde;o e conte&uacute;do", "Definir o assunto principal de cada m&ecirc;s e organizar os temas que v&atilde;o virar publica&ccedil;&otilde;es."),
-                ("Posicionamento e presen&ccedil;a", "Definir o teu tom de voz e a tua forma de aparecer, com coer&ecirc;ncia e bastidores nos stories."),
-                ("Cria&ccedil;&atilde;o e estrutura", "Transformar ideias em falas, roteiros, legendas e conte&uacute;dos aplic&aacute;veis, com um banco criativo para agilizar o trabalho."),
-                ("Revis&atilde;o e autonomia", "Conversar sobre as d&uacute;vidas da aula gravada, revisar o que foi proposto e realizado, ajustar o calend&aacute;rio e organizar como seguir produzindo conte&uacute;do."),
-            ], grid="g3") + '</div>')
-    video = (f'<div class="sec"><div class="rv" style="max-width: 720px;">{kicker("AULA GRAVADA")}'
-             f'<h2 class="h" style="font-size: 30px; margin-top: 26px;">Como me gravar sozinha.</h2>'
-             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0;">Em 28 minutos e oito cap&iacute;tulos, Silvana e Samuel mostram como escolher o lugar, posicionar o celular e preparar a imagem e o som para se gravar em casa ou no escrit&oacute;rio, com a c&acirc;mera no autom&aacute;tico e a luz natural da janela.</p>'
-             f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 16px 0 0;">Tu pode assistir no teu tempo e consultar os cap&iacute;tulos na p&aacute;gina da aula. Junto com ela, recebe um resumo em PDF para conferir antes de gravar e um passo a passo para ajustar a c&acirc;mera do iPhone. Anota as d&uacute;vidas para conversar com a Silvana no &uacute;ltimo encontro.</p></div></div>')
-    return hero + silvana + quem + como + video + faq(FAQ_MENT)
-
-def page_sites():
-    hero = hero_page("CRIA&Ccedil;&Atilde;O DE SITES", "Um site sob medida, do texto ao c&oacute;digo.",
-                     "Um site que apresenta seus servi&ccedil;os, facilita o contato e vem preparado para o Google entender quem voc&ecirc; &eacute;, o que faz e onde atende.", ver_trabalhos=False)
-    dif = (f'<div class="sec"><div class="rv">{kicker("O QUE FAZ A DIFEREN&Ccedil;A")}</div>'
-           + steps_grid([
-               ("Texto artesanal", "O texto nasce de conversa, n&atilde;o de modelo pronto. Quem l&ecirc; sente que &eacute; voc&ecirc; falando."),
-               ("Leve e r&aacute;pido", "P&aacute;ginas enxutas, com imagens otimizadas e navega&ccedil;&atilde;o pensada para o celular."),
-               ("Pronto para a busca", "Estrutura pensada para o Google entender quem voc&ecirc; &eacute;, o que faz e onde atende."),
-           ], grid="g3", numbered=False) + '</div>')
-    como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}</div>'
-            + steps_grid([
-                ("Conhecer", "A gente conversa e levanta a sua hist&oacute;ria, os servi&ccedil;os e o que os seus clientes precisam encontrar."),
-                ("Escrever e desenhar", "O texto vem primeiro e o desenho vem junto: cada p&aacute;gina nasce sob medida, com a sua identidade."),
-                ("Publicar", "Site no ar, no seu dom&iacute;nio, com tudo conferido: velocidade, celular e busca."),
-            ], grid="g3") + '</div>')
-    sites_data = [("site-catarata-center.jpg", "Site &middot; Catarata Center",
-                   "https://cataratacenter.com.br/"),
-                  ("site-prisma-especialidades.jpg", "Site &middot; Prisma Especialidades",
-                   "https://prismaespecialidades.com.br/"),
-                  ("site-fyber-show.jpg", "Site &middot; Fyber Show Piscinas",
-                   "https://fybershow.com.br/")]
-    cards = "".join(
-        f'<a href="{u}" target="_blank" rel="noopener" style="display: block; color: #262220;">'
-        f'<div style="aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid rgba(38,34,32,0.15);">'
-        f'<img src="/img/{f}" alt="{l}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: top; display: block;"></div>'
-        f'<div class="t5" style="font-size: 14px; margin-top: 12px;">{l}</div></a>'
-        for f, l, u in sites_data)
-    ex = (f'<div class="sec"><div class="rv">{kicker("SITES NO AR")}</div>'
-          f'<div class="g3 rv" style="margin-top: 44px;">{cards}</div></div>')
-    return hero + dif + como + ex + REGIAO + faq(FAQ_SITES)
-
-def page_encomenda():
-    hero = hero_page("SOB ENCOMENDA", "V&iacute;deos para apresentar sua empresa, seus produtos e suas campanhas.",
-                     "Produ&ccedil;&atilde;o de v&iacute;deo profissional, sem compromisso de recorr&ecirc;ncia: voc&ecirc; encomenda, a gente grava, edita e devolve pronto para usar. A Forster nasceu produtora de v&iacute;deo, e isso segue sendo o nosso forte.")
-    tipos = (f'<div class="sec"><div class="rv">{kicker("TIPOS DE ENCOMENDA")}</div>'
-             + steps_grid([
-                 ("V&iacute;deo institucional", "A sua empresa apresentada com verdade: quem &eacute;, o que faz e por que faz. Para o site, para vender, para apresentar."),
-                 ("V&iacute;deo de produto", "O seu produto em cena, bem iluminado e bem contado, pronto para campanha, loja e redes."),
-                 ("V&iacute;deo publicit&aacute;rio", "Um filme de campanha, com ideia, roteiro e dire&ccedil;&atilde;o: para lan&ccedil;ar, para datas especiais e para a sua marca ser lembrada."),
-             ], grid="g3") + '</div>')
-    como = (f'<div class="sec"><div class="rv">{kicker("COMO FUNCIONA")}'
-            f'<h2 class="h" style="font-size: 28px; margin-top: 26px;">Primeiro a gente entende. Depois a gente grava.</h2></div>'
-            + steps_grid([
-                ("Briefing", "Antes de qualquer coisa, a gente conversa: os temas, o tom e o que cada v&iacute;deo precisa comunicar. &Eacute; o que garante que o dia de grava&ccedil;&atilde;o renda ao m&aacute;ximo."),
-                ("Roteiro", "O roteiro chega antes da sess&atilde;o, para voc&ecirc; aprovar ou ajustar. Na grava&ccedil;&atilde;o, voc&ecirc; pode acompanhar o texto no teleprompter, sem precisar decorar. A gente orienta a fala durante a sess&atilde;o."),
-                ("Sess&atilde;o de grava&ccedil;&atilde;o", "A gente vai at&eacute; voc&ecirc; com toda a estrutura: c&acirc;mera, ilumina&ccedil;&atilde;o profissional, microfone e teleprompter, e drone quando a hist&oacute;ria pede."),
-                ("Edi&ccedil;&atilde;o e entrega", "Cortes limpos, identidade visual e o seu tom de voz. Pronto, voc&ecirc; recebe um link para ver, aprovar e baixar. Simples assim."),
-            ]) + '</div>')
-    trab = (f'<div class="sec"><div class="rv">{kicker("TRABALHOS SOB ENCOMENDA")}</div>'
-            f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#3A4638", "V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis.", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
-            + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
-            + '</div></div>')
-    return hero + tipos + como + trab + REGIAO + faq(FAQ_ENC)
-
-def intro_grupo(texto, link_texto="", href=""):
-    # Uma frase sob o titulo de cada grupo do Portfolio (05/10/2026): a pagina tinha so os
-    # cartoes de video, e o Google tinha pouco texto para entender o que ela mostra.
-    link = f' <a class="tb lka" href="{href}" style="font-size: 15px;">{link_texto} {ARROW}</a>' if href else ''
-    return f'<p class="t" style="font-size: 17px; line-height: 1.65; margin: 22px 0 0; max-width: 640px;">{texto}{link}</p>'
-
-def page_trabalhos():
-    hero = hero_page("TRABALHOS", "O que sai do ateli&ecirc;.",
-                     "Uma sele&ccedil;&atilde;o dos trabalhos, por tipo de encomenda. Toque num cart&atilde;o para assistir aqui mesmo.",
-                     ver_trabalhos=False)
-    inst = (f'<div class="sec"><div class="rv">{kicker("INSTITUCIONAIS")}'
-            + intro_grupo("Filmes que apresentam uma empresa ou uma institui&ccedil;&atilde;o: quem &eacute;, o que faz e por que faz.", "Como &eacute; feito um v&iacute;deo institucional", "/blog/como-e-feito-um-video-institucional")
-            + '</div>'
-            f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#3A4638", "V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis.", video=f"{MEDIA}/institucional-pelizzer-imoveis.mp4", img="thumb-institucional-pelizzer-imoveis.jpg", alt="V&iacute;deo institucional dos 30 anos da Pelizzer Im&oacute;veis")
-            + tile("thalf", "#2B2724", "Institucional &middot; Col&eacute;gio Luterano Redentor", video=f"{MEDIA}/institucional-colegio-redentor.mp4", img="thumb-institucional-colegio-redentor.jpg", alt="V&iacute;deo institucional do Col&eacute;gio Luterano Redentor")
-            + tile("thalf", "#D9C29A", "Institucional &middot; Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es", video=f"{MEDIA}/institucional-fundacao-ulysses-guimaraes.mp4", img="thumb-institucional-fundacao-ulysses-guimaraes.jpg", alt="V&iacute;deo Escola do Futuro, da Funda&ccedil;&atilde;o Ulysses Guimar&atilde;es")
-            + '</div></div>')
-    prod = (f'<div class="sec"><div class="rv">{kicker("PUBLICIT&Aacute;RIOS")}'
-            + intro_grupo("Filmes de campanha, com ideia, roteiro e dire&ccedil;&atilde;o, para lan&ccedil;ar, marcar uma data especial e fazer a marca ser lembrada.", "V&iacute;deo sob encomenda", "/sob-encomenda")
-            + '</div>'
-            f'<div class="mosaic rv" style="margin-top: 44px;">'
-            + tile("thalf", "#2B2724", "Publicit&aacute;rio &middot; Oli Im&oacute;veis &middot; Webs&eacute;rie Tra&ccedil;os, com Em&iacute;lio Finger", video=f"{MEDIA}/publicitario-oli-imoveis-webserie-tracos.mp4", img="thumb-publicitario-oli-imoveis-webserie-tracos.jpg", alt="Webs&eacute;rie Tra&ccedil;os, epis&oacute;dio com Em&iacute;lio Finger, da Oli Im&oacute;veis")
-            + tile("thalf", "#3A4638", "Publicit&aacute;rio &middot; SAIF &middot; O Jeito de Come&ccedil;ar o Dia", video=f"{MEDIA}/publicitario-saif-jeito-de-comecar-o-dia.mp4", img="thumb-publicitario-saif-jeito-de-comecar-o-dia.jpg", alt="Campanha publicit&aacute;ria SAIF, filme O Jeito SAIF de Come&ccedil;ar o Dia")
-            + tile("thalf", "#D9C29A", "Publicit&aacute;rio &middot; Emp&oacute;rio Essenza &middot; Hist&oacute;ria de Natal", video=f"{MEDIA}/publicitario-emporio-essenza-natal.mp4", img="thumb-publicitario-emporio-essenza-natal.jpg", alt="Filme de Natal do Emp&oacute;rio Essenza")
-            + '</div></div>')
-    outras = (f'<div class="sec"><div class="rv">{kicker("OUTRAS ENCOMENDAS")}'
-            + intro_grupo("Uma videoaula para curso, um clipe musical e um filme sobre uma menina e a &eacute;gua que ela ama.", "", "")
-            + '</div>'
-              f'<div class="mosaic rv" style="margin-top: 44px;">'
-              + tile("thalf", "#3A4638", "Curso &middot; Dra Karol Hoppen &middot; Fada do Dente", video=f"{MEDIA}/curso-fada-do-dente.mp4", img="thumb-curso-fada-do-dente.jpg", alt="V&iacute;deo aula Fada do Dente, da Dra Karol Hoppen")
-              + tile("thalf", "#2B2724", "Clipe musical &middot; Fam&iacute;lia Rolim &middot; Casa de Pedra", video=f"{MEDIA}/clipe-casa-de-pedra.mp4", img="thumb-clipe-casa-de-pedra.jpg", alt="Clipe musical Casa de Pedra, da Fam&iacute;lia Rolim")
-              + tile("thalf", "#D9C29A", "Filme &middot; Kety e Serena &middot; Uma hist&oacute;ria de amor", video=f"{MEDIA}/filme-kety-e-serena.mp4", img="thumb-filme-kety-e-serena.jpg", alt="Kety e Serena, uma hist&oacute;ria de amor: filme sobre uma menina e a &eacute;gua que ela ama")
-              + '</div></div>')
-    mensal = (f'<div class="sec"><div class="rv">{kicker("CONTE&Uacute;DO MENSAL")}'
-            + intro_grupo("Reels dos perfis que a gente acompanha todo m&ecirc;s, gravados nas sess&otilde;es mensais de grava&ccedil;&atilde;o.", "Acompanhamento mensal", "/acompanhamento")
-            + '</div>'
-              f'<div class="mosaic rv" style="margin-top: 44px;">'
-              + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Fyber Show Piscinas", video="/video/reel-fyber-show.mp4", img="capa-reel-fyber-show.jpg", alt="Reel Quem &eacute; a Fyber Show")
-              + tile("t916", "#2B2724", "Conte&uacute;do mensal &middot; &Oacute;ticas Casa Marco", video="/video/reel-oticas-casa-marco.mp4", img="capa-reel-oticas-casa-marco.jpg", alt="Reel de produto Arma&ccedil;&otilde;es Femininas, das &Oacute;ticas Casa Marco")
-              + tile("t916", "#2B2724", "Catarata Center: tr&ecirc;s perguntas sobre cirurgia de catarata.", video="/video/reel-catarata-center.mp4", img="capa-reel-catarata-center.jpg", alt="Reel 3 Perguntas sobre Cirurgia de Catarata, do Catarata Center")
-              + tile("t916", "#3A4638", "Conte&uacute;do mensal &middot; Prisma Especialidades", video="/video/reel-prisma-especialidades.mp4", img="capa-reel-prisma-especialidades.jpg", alt="Reel Ansiedade Infantil, da Prisma Especialidades")
-              + '</div></div>')
-    return hero + inst + prod + outras + mensal
 
 def page_404():
     hero = hero_page("ERRO 404",
@@ -801,31 +463,31 @@ def service_ld(name, desc, path):
 
 PAGES = {
     "index.html": {
-        "active": "", "fn": page_home, "convite": CONVITE_PADRAO, "path": "/",
+        "active": "", "design": "Home-2026-10-25.html", "convite": "", "path": "/",
         "title": "FORSTER · Ateliê de Conteúdo em Igrejinha, RS",
         "desc": "Vídeo, conteúdo para redes sociais, sites e mentoria de comunicação feitos a quatro mãos em Igrejinha, RS, para empresas do Vale do Paranhana e região.",
         "ld": [ORG],
     },
     "acompanhamento.html": {
-        "active": "acompanhamento", "fn": page_acompanhamento, "convite": CONVITE_PADRAO, "path": "/acompanhamento",
+        "active": "acompanhamento", "design": "Acompanhamento-2026-10-25.html", "convite": CONVITE_PADRAO, "path": "/acompanhamento",
         "title": "Gestão de redes sociais e conteúdo mensal em Igrejinha, RS | FORSTER",
-        "desc": "Você grava uma vez por mês e a gente cuida do resto: roteiro, gravação, edição, publicação e relatório. Para empresas de Igrejinha e do Vale do Paranhana.",
-        "ld": service_ld("Acompanhamento mensal de conteúdo", "A base da sua comunicação digital por conta da Forster: estudo do seu perfil, do seu mercado e dos seus concorrentes, diretrizes, roteiros, gravação, produção e publicação dos conteúdos, site, perfil no Google e relatório mensal.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
+        "desc": "Planejamento, vídeos, textos e publicações conforme a proposta. Acompanhamento de comunicação para empresas de Igrejinha e do Vale do Paranhana.",
+        "ld": service_ld("Acompanhamento mensal de conteúdo", "Acompanhamento mensal com serviços definidos na proposta: pode incluir estudo, diretrizes, roteiros, gravação, produção e publicação de conteúdo, site, Perfil da Empresa no Google e relatório.", "/acompanhamento") + [faq_ld(FAQ_ACOMP)],
     },
     "mentoria.html": {
-        "active": "mentoria", "fn": page_mentoria, "convite": CONVITE_MENTORIA, "path": "/mentoria",
+        "active": "mentoria", "design": "Mentoria-2026-10-25.html", "convite": CONVITE_MENTORIA, "path": "/mentoria",
         "title": "Mentoria de comunicação individual | Comunicação Consciente | FORSTER",
         "desc": "Mentoria individual de comunicação com Silvana Forster: três meses, cinco encontros ao vivo e uma aula gravada sobre como se gravar com o celular.",
-        "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, cinco encontros ao vivo, quinzenais, de 1h30 cada, uma aula gravada e suporte leve pelo WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
+        "ld": service_ld("Acompanhamento em Comunicação Consciente", "Mentoria individual de comunicação: três meses, cinco encontros ao vivo, quinzenais, de 1h30 cada, uma aula gravada e suporte por WhatsApp.", "/mentoria") + [faq_ld(FAQ_MENT)],
     },
     "sites.html": {
-        "active": "sites", "fn": page_sites, "convite": CONVITE_SITES, "path": "/sites",
+        "active": "sites", "design": "Sites-2026-10-25.html", "convite": CONVITE_SITES, "path": "/sites",
         "title": "Criação de sites em Igrejinha e Vale do Paranhana | FORSTER",
         "desc": "Sites sob medida, do texto ao código: leves, rápidos e prontos para o Google. Feitos em Igrejinha para empresas do Vale do Paranhana e região.",
         "ld": service_ld("Criação de sites", "Sites institucionais leves e rápidos, do texto ao código, publicados no domínio do cliente.", "/sites") + [faq_ld(FAQ_SITES)],
     },
     "sob-encomenda.html": {
-        "active": "encomenda", "fn": page_encomenda, "convite": CONVITE_ENCOMENDA, "path": "/sob-encomenda",
+        "active": "encomenda", "design": "Videos-2026-10-25.html", "convite": CONVITE_ENCOMENDA, "path": "/sob-encomenda",
         "title": "Produtora de vídeo institucional em Igrejinha, RS | FORSTER",
         "desc": "Vídeo institucional, de produto e publicitário, do roteiro à entrega, com luz profissional, teleprompter e drone. Produtora de vídeo em Igrejinha, RS.",
         "ld": service_ld("Produção de vídeo sob encomenda", "Vídeo institucional e vídeo de produto, do roteiro à entrega, sem compromisso de recorrência.", "/sob-encomenda") + [faq_ld(FAQ_ENC)],
@@ -839,10 +501,10 @@ PAGES = {
             {"@type": "ListItem", "position": 2, "name": "Privacidade", "item": SITE + "/privacidade"}]}],
     },
     "trabalhos.html": {
-        "active": "trabalhos", "fn": page_trabalhos, "convite": CONVITE_PADRAO, "path": "/trabalhos",
-        "title": "Portfólio de vídeos e conteúdo | FORSTER",
-        "desc": "Uma seleção do que sai do ateliê: vídeos institucionais, publicitários, curso, clipe e o conteúdo mensal que a Forster produz para os clientes.",
-        "ld": service_ld("Trabalhos da Forster", "Seleção de vídeos institucionais, publicitários e de conteúdo mensal produzidos pela Forster.", "/trabalhos"),
+        "active": "trabalhos", "design": "Trabalhos-2026-10-25.html", "convite": CONVITE_PADRAO, "path": "/trabalhos",
+        "title": "Portfólio de sites e vídeos | FORSTER",
+        "desc": "Sites, vídeos institucionais, campanhas, cursos, clipes e conteúdo mensal produzidos pela Forster. Veja os trabalhos e conheça os serviços.",
+        "ld": service_ld("Trabalhos da Forster", "Seleção de sites, vídeos institucionais, campanhas e conteúdo mensal produzidos pela Forster.", "/trabalhos"),
     },
     # Link da bio do Instagram da Silvana. noindex: pagina de passagem, sem conteudo proprio para o Google.
     "silvana.html": {
@@ -958,6 +620,8 @@ def head(p):
           + "</script>") if p["ld"] else ""
     canonical = "" if p.get("noindex") else f'\n  <link rel="canonical" href="{SITE}{p["path"]}">'
     robots = "noindex, nofollow" if p.get("noindex") else "index, follow, max-image-preview:large"
+    stylesheet = (f'<style>{p["design_doc"]["css"]}</style>' if p.get("design_doc")
+                  else f'<link rel="stylesheet" href="/style.css?v={VER}">')
     return f'''<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{p["title"]}</title>
@@ -975,12 +639,25 @@ def head(p):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
-  <link rel="stylesheet" href="/style.css?v={VER}">{ld}{ga4()}'''
+  {stylesheet}{ld}{ga4()}'''
 
 def page_html(p):
-    body = p["fn"]() if p.get("solo") else f'<div class="page">{nav(p["active"])}{p["fn"]()}{p["convite"]}</div>{FOOTER}'
-    return (f'<!doctype html>\n<html lang="pt-BR">\n<head>\n  {head(p)}\n</head>\n<body>\n'
+    if p.get("design_doc"):
+        body = p["design_doc"]["body"]
+        attrs = p["design_doc"]["body_attrs"] + ' data-design-revision="2026-10-25"'
+    elif p.get("solo"):
+        body, attrs = p["fn"](), ""
+    else:
+        body = (f'<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>'
+                f'<div class="page">{nav(p["active"])}<main id="conteudo">{p["fn"]()}{p["convite"]}</main></div>{FOOTER}')
+        attrs = ""
+    return (f'<!doctype html>\n<html lang="pt-BR">\n<head>\n  {head(p)}\n</head>\n<body {attrs}>\n'
             f'{body}\n<script src="/site.js?v={VER}" defer></script>\n</body>\n</html>\n')
+
+from design_pages import load_design
+for p in PAGES.values():
+    if p.get("design"):
+        p["design_doc"] = load_design(BASE / "paginas" / p["design"])
 
 PUB.mkdir(exist_ok=True)
 for fname, p in PAGES.items():
