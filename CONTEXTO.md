@@ -83,3 +83,10 @@ morto não enganar ninguém depois. Para mudar o robots.txt de verdade, é no pa
 - Cuidado: a proposta vence pela regra dos 15 dias do forster-propostas (envio 24/10, sai do ar depois de 08/11) e cada abertura conta no registro de visita. Para ficar na bio, precisa de decisão do Samuel.
 - Conferida em 375 px e no computador, sem erro no console. Pendências: a Silvana ler o texto (fala em primeira pessoa por ela), publicar e trocar a bio para um link só, `somosforster.com.br/silvana`.
 - Publicada em 25/10 (`676d397`), junto com a proposta sem prazo (forster-propostas `24de7bb`) e sem aviso no Telegram (forster-aprovacoes `bb6d5e6`). Link e explicação mandados à Silvana pelo WhatsApp do Samuel, a pedido dele, às 03h16. Falta ela trocar a bio.
+
+## 25/10/2026 — Revisão dos textos da página da Silvana
+
+- Samuel pediu uma leitura mais humanizada e fluida e aprovou a aplicação e a publicação das seis sugestões apresentadas no chat.
+- Ajustados a abertura, a descrição do acompanhamento, os convites para WhatsApp e Telegram e os três parágrafos da apresentação pessoal. Preservados a voz em primeira pessoa, o uso de tu, a referência ao Marketing Sistêmico, os títulos, os links, as condições do acompanhamento e o layout.
+- Alteração limitada a `page_silvana` e ao HTML gerado. Conferência visual no navegador em 375 px e no computador, com os textos legíveis e sem cortes. Conferência de estrutura, atributos e destinos dos links antes da publicação pelo fluxo automático da main.
+- Nenhum valor ou contato novo informado. Não há nova decisão editorial pendente para esta revisão.

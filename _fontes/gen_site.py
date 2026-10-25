@@ -759,23 +759,23 @@ def page_silvana():
             f'<div class="lk-foto in"><img src="/img/silvana-forster.jpg" alt="Silvana Forster"></div>'
             f'<h1 class="h lk-nome in in1">Silvana Forster</h1>'
             f'<div class="ds lk-desc in in1">COMUNICA&Ccedil;&Atilde;O CONSCIENTE</div>'
-            f'<p class="t lk-bio in in2">Comunica&ccedil;&atilde;o para mulheres m&atilde;es que empreendem, com as bases do Marketing Sist&ecirc;mico.</p></header>')
-    # Mesma apresentacao da proposta do Acompanhamento (aprovada em 25/10/2026), passada de "voce" para "tu".
+            f'<p class="t lk-bio in in2">Ajudo mulheres que s&atilde;o m&atilde;es e empreendem a organizar as ideias e comunicar o pr&oacute;prio trabalho. O Marketing Sist&ecirc;mico &eacute; a base desse acompanhamento.</p></header>')
+    # Apresentacao revisada para esta pagina e aprovada pelo Samuel em 25/10/2026.
     apresentacao = (f'<section class="lk-apres rv">{kicker("QUEM SOU EU")}'
                     f'<h2 class="h" style="font-size: 24px; margin-top: 18px;">Ol&aacute;! Eu sou a Silvana.</h2>'
-                    f'<p class="t">Sou publicit&aacute;ria e empreendedora e trabalho com comunica&ccedil;&atilde;o h&aacute; quase 20 anos. Hoje, tenho a FORSTER, nosso ateli&ecirc; de conte&uacute;do, com o Samuel, meu marido. &Eacute; onde planejo e escrevo os conte&uacute;dos dos nossos clientes.</p>'
-                    f'<p class="t">Eu tamb&eacute;m j&aacute; tive ideias, conhecimento e projetos que n&atilde;o conseguia apresentar. Sei como &eacute; ter muito a dizer e travar na hora de comunicar o pr&oacute;prio trabalho.</p>'
-                    f'<p class="t">Foi dessa experi&ecirc;ncia que nasceu o Acompanhamento em Comunica&ccedil;&atilde;o Consciente. Nele, eu te acompanho na organiza&ccedil;&atilde;o das tuas ideias, na escrita dos teus conte&uacute;dos e na constru&ccedil;&atilde;o de uma rotina para apresentar os teus servi&ccedil;os com as tuas palavras.</p></section>')
+                    f'<p class="t">Sou publicit&aacute;ria e empreendedora e trabalho com comunica&ccedil;&atilde;o h&aacute; quase 20 anos. Hoje, eu e o Samuel, meu marido, temos a FORSTER, nosso ateli&ecirc; de conte&uacute;do. &Eacute; l&aacute; que planejo e escrevo os conte&uacute;dos dos nossos clientes.</p>'
+                    f'<p class="t">Eu tamb&eacute;m j&aacute; tive dificuldade para apresentar minhas ideias e os projetos que queria realizar. Sei como &eacute; ter muito a dizer e travar na hora de comunicar o pr&oacute;prio trabalho.</p>'
+                    f'<p class="t">Foi dessa experi&ecirc;ncia que nasceu o Acompanhamento em Comunica&ccedil;&atilde;o Consciente. Nele, eu te acompanho para organizar as tuas ideias, escrever os teus conte&uacute;dos e criar uma rotina para apresentar os teus servi&ccedil;os com as tuas palavras.</p></section>')
     destaque = (f'<a class="lk-dest in in3" href="{PROPOSTA_SILVANA}" target="_blank" rel="noopener">'
                 f'{kicker("MENTORIA INDIVIDUAL")}'
                 f'<h2 class="h" style="font-size: 26px; margin-top: 18px;">Acompanhamento em Comunica&ccedil;&atilde;o Consciente</h2>'
-                f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin-top: 12px;">S&atilde;o tr&ecirc;s meses, com cinco encontros ao vivo e uma aula gravada. Na proposta est&atilde;o cada encontro, o que fica contigo e os valores.</p>'
+                f'<p class="t" style="font-size: 15px; line-height: 1.6; color: rgba(38,34,32,0.78); margin-top: 12px;">S&atilde;o tr&ecirc;s meses de acompanhamento para te ajudar a organizar as ideias e comunicar o teu trabalho, com cinco encontros ao vivo e uma aula gravada. Na proposta, tu encontra os detalhes de cada encontro, o que est&aacute; inclu&iacute;do e os valores.</p>'
                 f'<span class="tb btn btn-lg">Ver a proposta completa</span></a>')
     itens = (link_item("Conversar comigo no WhatsApp",
-                       "Para tirar uma d&uacute;vida ou me contar do teu momento.",
+                       "Para tirar uma d&uacute;vida ou me contar como est&aacute; a comunica&ccedil;&atilde;o do teu neg&oacute;cio.",
                        WA_SILVANA + "?text=" + "Oi,%20Silvana!%20Vim%20pelo%20teu%20Instagram.")
              + link_item("Uma pergunta por semana, no Telegram",
-                         "No canal gratuito, toda semana eu trago uma reflex&atilde;o e uma pergunta para tu desenvolver a comunica&ccedil;&atilde;o do teu neg&oacute;cio.",
+                         "No meu canal gratuito, compartilho uma reflex&atilde;o e uma pergunta por semana para te ajudar a pensar em como tu comunica o teu neg&oacute;cio no dia a dia.",
                          TELEGRAM_SILVANA)
              + link_item("FORSTER, o nosso ateli&ecirc; de conte&uacute;do",
                          "O que eu e o Samuel fazemos para empresas: conte&uacute;do mensal, v&iacute;deos e sites.",
