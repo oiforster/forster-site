@@ -34,6 +34,10 @@ p{margin:0;text-wrap:pretty}
 .hero{display:grid;gap:32px;padding:20px 0 56px}
 h1{font-size:clamp(38px,6.4vw,66px);line-height:1.04;letter-spacing:-.015em;margin:0 0 22px;font-weight:600;font-variation-settings:'opsz' 96,'wdth' 100,'wght' 600;text-wrap:pretty}
 .abertura{font-size:clamp(19px,2.2vw,23px);line-height:1.45;max-width:34em}
+.atalhos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;max-width:520px}
+.atalhos a{display:flex;align-items:center;justify-content:center;min-height:52px;padding:12px 16px;background:var(--musgo);color:var(--papel);border:2px solid var(--musgo);border-radius:6px;font-size:18px;line-height:1.2;font-weight:600;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;text-decoration:none;text-align:center}
+.atalhos a:hover{background:var(--papel);color:var(--musgo)}
+.conversar{display:inline-flex;align-items:center;min-height:44px;margin-top:16px;font-size:18px;font-weight:600;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
 .foto{padding:14px;background:var(--branco);box-shadow:0 2px 0 rgba(38,34,32,.05),0 22px 44px rgba(38,34,32,.14);transform:rotate(-1.2deg)}
 .foto img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 35%}
 .fita{position:relative}
@@ -73,7 +77,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
 .rodape{padding:40px 0 56px;border-top:1px solid var(--linha);display:flex;flex-direction:column;gap:18px;font-size:16px}
 .rodape nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 .rodape .marca{font-size:20px}
-@media(min-width:700px){.cartoes{grid-template-columns:1fr 1fr;gap:28px}.janelas{grid-template-columns:repeat(3,1fr)}.contatos{grid-template-columns:1fr 1fr}.materiais{grid-template-columns:1fr 1fr;gap:32px}}
+@media(min-width:700px){.atalhos{grid-template-columns:repeat(4,1fr)}.cartoes{grid-template-columns:1fr 1fr;gap:28px}.janelas{grid-template-columns:repeat(3,1fr)}.contatos{grid-template-columns:1fr 1fr}.materiais{grid-template-columns:1fr 1fr;gap:32px}}
 @media(min-width:820px){.hero{grid-template-columns:1.1fr .9fr;align-items:center;gap:56px;padding:40px 0 80px}section{padding:64px 0}.rodape{flex-direction:row;justify-content:space-between;align-items:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -81,7 +85,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
 <body>
 
 <header class="wrap topo">
-  <a class="marca" href="https://somosforster.com.br/" aria-label="FORSTER, página inicial"><span style="margin-right:-.05em">FOR</span><svg viewBox="0 0 100 108" aria-hidden="true"><path d="M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" transform="rotate(-2 50 54)"></path></svg><span>TER</span></a>
+  <a class="marca" href="/" aria-label="FORSTER, página inicial"><span style="margin-right:-.05em">FOR</span><svg viewBox="0 0 100 108" aria-hidden="true"><path d="M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" transform="rotate(-2 50 54)"></path></svg><span>TER</span></a>
   <span class="descritor">Ateliê de Conteúdo</span>
 </header>
 
@@ -90,6 +94,13 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
     <div>
       <h1>Conheça o trabalho da Forster</h1>
       <p class="abertura">Somos Samuel e Silvana. Na FORSTER, nosso ateliê de conteúdo em Igrejinha, RS, planejamos e produzimos vídeos e conteúdos, criamos sites e orientamos quem quer comunicar o próprio trabalho. Você conversa diretamente com quem cria.</p>
+      <nav class="atalhos" aria-label="Serviços">
+        <a href="/sob-encomenda">Vídeos</a>
+        <a href="/acompanhamento">Conteúdo</a>
+        <a href="/sites">Sites</a>
+        <a href="/mentoria">Mentoria</a>
+      </nav>
+      <a class="conversar" href="#contato">Conversar com a gente</a>
     </div>
     <div class="foto fita">
       <img src="/img/samuel-silvana-familia-corrida.jpg" alt="Samuel, Silvana e os filhos na chegada de uma prova de corrida" width="1200" height="900" fetchpriority="high">
@@ -105,7 +116,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
         <div class="corpo">
           <h3>Vídeos com roteiro, direção e edição</h3>
           <p>Produção para sua empresa, seus produtos e suas campanhas, com orientação durante a gravação.</p>
-          <a href="https://somosforster.com.br/sob-encomenda">Como funciona</a>
+          <a href="/sob-encomenda">Como funciona</a>
         </div>
       </article>
       <article class="cartao">
@@ -113,7 +124,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
         <div class="corpo">
           <h3>Planejamento e produção de conteúdo</h3>
           <p>Pautas, roteiros, textos e produção para manter sua comunicação em dia. Você pode gravar com a gente ou por conta, conforme a proposta.</p>
-          <a href="https://somosforster.com.br/acompanhamento">Como funciona</a>
+          <a href="/acompanhamento">Como funciona</a>
         </div>
       </article>
       <article class="cartao">
@@ -121,7 +132,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
         <div class="corpo">
           <h3>Sites para apresentar seus serviços</h3>
           <p>Do texto à publicação, com as informações organizadas e o contato fácil de encontrar.</p>
-          <a href="https://somosforster.com.br/sites">Como funciona</a>
+          <a href="/sites">Como funciona</a>
         </div>
       </article>
       <article class="cartao">
@@ -129,7 +140,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
         <div class="corpo">
           <h3>Acompanhamento em Comunicação Consciente</h3>
           <p>Com a Silvana: três meses, cinco encontros ao vivo e uma aula gravada para organizar ideias e produzir seus conteúdos.</p>
-          <a href="https://somosforster.com.br/mentoria">Como funciona</a>
+          <a href="/mentoria">Como funciona</a>
         </div>
       </article>
     </div>
@@ -162,7 +173,7 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
           </figure>
         </a>
       </div>
-      <a class="ver" href="https://somosforster.com.br/trabalhos">Ver trabalhos</a>
+      <a class="ver" href="/trabalhos">Ver trabalhos</a>
     </div>
   </section>
 
@@ -205,11 +216,11 @@ h3{margin:0;font-size:24px;line-height:1.15;font-weight:600;font-variation-setti
 </main>
 
 <footer class="wrap rodape">
-  <a class="marca" href="https://somosforster.com.br/" aria-label="FORSTER, site completo"><span style="margin-right:-.05em">FOR</span><svg viewBox="0 0 100 108" aria-hidden="true"><path d="M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" transform="rotate(-2 50 54)"></path></svg><span>TER</span></a>
+  <a class="marca" href="/" aria-label="FORSTER, site completo"><span style="margin-right:-.05em">FOR</span><svg viewBox="0 0 100 108" aria-hidden="true"><path d="M 80 24 C 76 8, 38 0, 22 14 C 8 28, 18 46, 42 54 C 66 62, 90 66, 82 88 C 74 103, 36 107, 20 92" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" transform="rotate(-2 50 54)"></path></svg><span>TER</span></a>
   <nav aria-label="Rodapé">
-    <a href="https://somosforster.com.br/">Site completo</a>
+    <a href="/">Site completo</a>
     <a href="https://www.instagram.com/somosforster" target="_blank" rel="noopener">@somosforster</a>
-    <a href="https://somosforster.com.br/privacidade">Privacidade</a>
+    <a href="/privacidade">Privacidade</a>
   </nav>
 </footer>
 
