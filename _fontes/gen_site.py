@@ -785,6 +785,13 @@ def page_silvana():
     return (f'<style>{CSS_LINKS}</style><div class="lk">{topo}'
             f'<main class="lk-lista">{destaque}<div style="margin-top: 14px;">{itens}</div>{apresentacao}</main>{pe}</div>')
 
+def page_instagram():
+    # Exportação atual do Claude Design; preserva o desenho e os textos da página.
+    source = (BASE / "entrada-instagram-design.html").read_text(encoding="utf-8")
+    style = "<style>" + source.split("<style>", 1)[1].split("</style>", 1)[0] + "</style>"
+    body = source.split("<body>", 1)[1].split("</body>", 1)[0]
+    return style + body
+
 def service_ld(name, desc, path):
     return [{"@type": "Service", "name": name, "description": desc,
              "url": SITE + path, "provider": {"@id": ORG_ID}, "areaServed": AREA},
@@ -843,6 +850,13 @@ PAGES = {
         "og": "og-silvana-forster.jpg",
         "title": "Silvana Forster · Comunicação Consciente",
         "desc": "Os links da Silvana Forster: o Acompanhamento em Comunicação Consciente, o WhatsApp, o canal no Telegram e a FORSTER.",
+        "ld": [],
+    },
+    # Entrada do perfil da Forster, com os serviços, exemplos e contatos.
+    "instagram.html": {
+        "active": "", "fn": page_instagram, "convite": "", "path": "/instagram", "noindex": True, "solo": True,
+        "title": "Conheça o trabalho da Forster | FORSTER · Ateliê de Conteúdo",
+        "desc": "Vídeos, conteúdos, sites e acompanhamento em comunicação com Samuel e Silvana, na FORSTER, ateliê de conteúdo em Igrejinha, RS.",
         "ld": [],
     },
     # Servida pelo Cloudflare Pages em qualquer rota sem correspondencia.

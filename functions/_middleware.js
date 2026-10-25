@@ -12,5 +12,13 @@ export async function onRequest({ request, next }) {
     url.protocol = 'https:';
     return Response.redirect(url.toString(), 301);
   }
+  // O link já publicado na bio usa esta campanha. Só essa entrada vai à apresentação do Instagram.
+  if (url.hostname === FINAL && url.pathname === '/' &&
+      url.searchParams.get('utm_source') === 'ig' &&
+      url.searchParams.get('utm_medium') === 'social' &&
+      url.searchParams.get('utm_content') === 'link_in_bio') {
+    url.pathname = '/instagram';
+    return Response.redirect(url.toString(), 302);
+  }
   return next();
 }
