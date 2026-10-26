@@ -145,3 +145,7 @@ Conferência: CSS e corpo gerados correspondem à prévia aprovada; 16 páginas 
 Samuel autorizou corrigir a aplicação da marca nos seis rodapés da revisão. O texto FORSTER foi substituído pelo vetor oficial compacto, com o S desenhado e letras em curvas, sem alterações no arquivo original. Asset `public/img/forster-logo-compacto-c0290d0dbd42.svg`, identificado pelo hash por causa do cache imutável de imagens. Largura105px e altura proporcional para manter a escala anterior; texto alternativo FORSTER e legenda preservada.
 
 As seis fontes foram atualizadas pelo chat do Design e relidas antes da portagem. Comparação confirmou somente a troca da marca e seu CSS. Cabeçalhos, conteúdo, contatos, scripts e S animado da home preservados. Conferidos o carregamento do vetor e o rodapé em1440px e320px, sem transbordamento;16HTMLs passaram pela conferência estrutural.
+
+## 26/10/2026 — Cabeçalho e links da Silvana
+
+Pedido, evidência do áudio, decisões e verificações registrados em `~/Forster-Vault/_Marketing-Sistêmico/Acompanhamento em Comunicação Consciente/CONTEXTO.md`, entrada “Cor e botões da página de links da Silvana”. Implementação restrita a `CSS_LINKS`, `link_item` e aos três usos desse componente em `page_silvana`, com saída em `public/silvana.html`.
