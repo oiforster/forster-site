@@ -131,3 +131,10 @@ O registro de propostas e da aprovação fica no Vault em `_Interno/Sites/Propos
 Samuel pediu recuperar o desenho animado do S atrás da colagem da abertura. A fonte da home foi atualizada no chat do Design e relida antes da portagem. Movimento anterior recuperado: 2,4s, atraso de 0,5s, uma execução; com movimento reduzido, o traço fica completo e parado. A curva aparece acima do filme no computador, e o símbolo permite os cliques dos trabalhos abaixo. Corpo, textos, links, imagens e demais páginas preservados.
 
 Conferidos o desenho do traço de 400 a 0, os cliques no vídeo e as larguras de 1440, 1024, 768, 390 e 320 pixels, sem transbordamento. As observações recentes de texto e da bio da Silvana foram comparadas com a revisão publicada; as novas sugestões ficaram para avaliação no chat. Registro no Vault: `_Interno/Sites/Proposta da home Forster/CONTEXTO.md`.
+
+
+## 26/10/2026 — S aprovado na abertura
+
+Samuel aprovou a prévia com o S reconhecível e um pequeno corte no topo e na base. O SVG ocupa o fundo da abertura, sem rotação, preservando as duas curvas. No celular, a escala é limitada pela largura para preservar a letra. A home foi relida e atualizada no chat do Design; a fonte salva foi lida novamente e portada ao gerador. Texto, colagem, links, contatos e interações mantidos.
+
+Conferência: CSS e corpo gerados correspondem à prévia aprovada; 16 páginas sem erros estruturais; larguras 1440, 768, 390 e 320 sem transbordamento. O filme reproduziu, fechou com Escape e devolveu o foco. Animação e respeito a movimento reduzido preservados. Alteração restrita à home e sua data no sitemap.

@@ -28,6 +28,13 @@
   @keyframes forster-s-draw{to{stroke-dashoffset:0}}
 }
 @media(min-width:761px){.collage-s{width:95%;right:0;top:-95px}}
+
+.topbar{position:relative;z-index:3}
+.intro-stage{--header-height:92px;position:relative;isolation:isolate;overflow:hidden;overflow:clip;margin-top:calc(-1 * var(--header-height));padding-top:var(--header-height)}
+.intro-stage .hero{position:relative;z-index:1;min-height:calc(100svh - var(--header-height))}
+.giant-s{position:absolute;z-index:0;pointer-events:none;left:50%;top:50%;height:118%;width:auto;aspect-ratio:100 / 108;max-width:none;color:var(--sand);opacity:.8;transform:translate(-50%,-50%);transform-origin:center}
+@media(prefers-reduced-motion:no-preference){.giant-s path{stroke-dasharray:400;stroke-dashoffset:400;animation:forster-s-draw 2.4s cubic-bezier(.45,.05,.55,.95) .5s forwards}}
+@media(max-width:760px){.intro-stage{--header-height:73px}.giant-s{top:50svh;height:min(118svh,154vw)}}
 </style>
 
 </head>
@@ -39,6 +46,7 @@
     <a class="nav-contact" href="#contato">Conversar <span aria-hidden="true">↗</span></a>
   </header>
   <main id="conteudo">
+    <div class="intro-stage"><svg class="giant-s" viewBox="0 0 100 108" aria-hidden="true"><path d="M80 24C76 8 38 0 22 14C8 28 18 46 42 54C66 62 90 66 82 88C74 103 36 107 20 92" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     <section class="hero wrap" id="inicio" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">ATELIÊ DE CONTEÚDO · IGREJINHA, RS</p>
@@ -47,13 +55,12 @@
         <div class="hero-actions"><a class="button dark" href="#trabalhos">Conheça alguns trabalhos <span aria-hidden="true">↓</span></a><a class="text-link" href="#servicos">O que a gente faz <span aria-hidden="true">↗</span></a></div>
       </div>
       <div class="collage" aria-label="Filme, site e conteúdo produzidos pela Forster">
-        <svg class="collage-s" viewBox="0 0 100 108" aria-hidden="true"><path d="M80 24C76 8 38 0 22 14C8 28 18 46 42 54C66 62 90 66 82 88C74 103 36 107 20 92" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <figure class="collage-film"><button class="media-button" data-video="https://media.somosforster.com.br/video/institucional-pelizzer-imoveis.mp4" data-title="Pelizzer Imóveis · 30 anos" aria-label="Assistir ao filme dos 30 anos da Pelizzer Imóveis"><img src="https://somosforster.com.br/img/thumb-institucional-pelizzer-imoveis.jpg" alt="Cena do filme dos 30 anos da Pelizzer Imóveis" width="720" height="405" fetchpriority="high"><span class="play" aria-hidden="true">▶</span></button><figcaption><span>01 / FILME</span> Pelizzer Imóveis</figcaption></figure>
         <figure class="collage-site"><a href="https://cataratacenter.com.br/" target="_blank" rel="noopener"><img src="https://somosforster.com.br/img/site-catarata-center.jpg" alt="Página inicial do site Catarata Center, criado pela Forster" width="760" height="475"></a><figcaption><span>02 / SITE</span> Catarata Center <span aria-hidden="true">↗</span></figcaption></figure>
         <figure class="collage-reel"><button class="media-button" data-video="https://somosforster.com.br/video/reel-oticas-casa-marco.mp4" data-title="Óticas Casa Marco · Conteúdo mensal" aria-label="Assistir ao Reel das Óticas Casa Marco"><img src="https://somosforster.com.br/img/capa-reel-oticas-casa-marco.jpg" alt="Reel de armações femininas das Óticas Casa Marco" width="450" height="800"><span class="play small" aria-hidden="true">▶</span></button><figcaption><span>03 / CONTEÚDO</span> Óticas Casa Marco</figcaption></figure>
         <p class="collage-sign">Conteúdo feito<br>a quatro mãos.</p>
       </div>
-    </section>
+    </section></div>
 
     <div class="clients wrap"><p>ALGUMAS DAS EMPRESAS COM QUEM TRABALHAMOS</p><div><span>Fyber Show</span><span>Catarata Center</span><span>Óticas Casa Marco</span><span>Prisma Especialidades</span><span>Colégio Luterano Redentor</span></div></div>
 
