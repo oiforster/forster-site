@@ -138,3 +138,10 @@ Conferidos o desenho do traço de 400 a 0, os cliques no vídeo e as larguras de
 Samuel aprovou a prévia com o S reconhecível e um pequeno corte no topo e na base. O SVG ocupa o fundo da abertura, sem rotação, preservando as duas curvas. No celular, a escala é limitada pela largura para preservar a letra. A home foi relida e atualizada no chat do Design; a fonte salva foi lida novamente e portada ao gerador. Texto, colagem, links, contatos e interações mantidos.
 
 Conferência: CSS e corpo gerados correspondem à prévia aprovada; 16 páginas sem erros estruturais; larguras 1440, 768, 390 e 320 sem transbordamento. O filme reproduziu, fechou com Escape e devolveu o foco. Animação e respeito a movimento reduzido preservados. Alteração restrita à home e sua data no sitemap.
+
+
+## 26/10/2026 — Logo oficial nos rodapés
+
+Samuel autorizou corrigir a aplicação da marca nos seis rodapés da revisão. O texto FORSTER foi substituído pelo vetor oficial compacto, com o S desenhado e letras em curvas, sem alterações no arquivo original. Asset `public/img/forster-logo-compacto-c0290d0dbd42.svg`, identificado pelo hash por causa do cache imutável de imagens. Largura105px e altura proporcional para manter a escala anterior; texto alternativo FORSTER e legenda preservada.
+
+As seis fontes foram atualizadas pelo chat do Design e relidas antes da portagem. Comparação confirmou somente a troca da marca e seu CSS. Cabeçalhos, conteúdo, contatos, scripts e S animado da home preservados. Conferidos o carregamento do vetor e o rodapé em1440px e320px, sem transbordamento;16HTMLs passaram pela conferência estrutural.
