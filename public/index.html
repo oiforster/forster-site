@@ -34,6 +34,12 @@
 
 @media(max-width:760px){.nav-contact{font-size:12px;gap:6px}.nav-contact span{font-size:20px}}
 @media(max-width:360px){.topbar nav a:nth-child(2){display:none}}
+.collage-s{pointer-events:none;z-index:0}
+@media(prefers-reduced-motion:no-preference){
+  .collage-s path{stroke-dasharray:400;stroke-dashoffset:400;animation:forster-s-draw 2.4s cubic-bezier(.45,.05,.55,.95) .5s forwards}
+  @keyframes forster-s-draw{to{stroke-dashoffset:0}}
+}
+@media(min-width:761px){.collage-s{width:95%;right:0;top:-95px}}
 </style>
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://somosforster.com.br/#org", "name": "FORSTER", "alternateName": "Forster Ateliê de Conteúdo", "slogan": "Conteúdo feito a quatro mãos.", "url": "https://somosforster.com.br/", "logo": "https://somosforster.com.br/img/forster-lockup.png", "image": "https://somosforster.com.br/img/og-forster.jpg", "telephone": "+55-51-98157-8225", "address": {"@type": "PostalAddress", "streetAddress": "Rua Dr. Edmundo Lauffer, 260, Bom Pastor", "addressLocality": "Igrejinha", "addressRegion": "RS", "postalCode": "95650-000", "addressCountry": "BR"}, "areaServed": [{"@type": "City", "name": "Igrejinha"}, {"@type": "City", "name": "Três Coroas"}, {"@type": "City", "name": "Taquara"}, {"@type": "City", "name": "Parobé"}, {"@type": "City", "name": "Rolante"}, {"@type": "City", "name": "Novo Hamburgo"}, {"@type": "City", "name": "Gramado"}, {"@type": "City", "name": "Canela"}, {"@type": "AdministrativeArea", "name": "Vale do Paranhana"}, {"@type": "AdministrativeArea", "name": "Rio Grande do Sul"}], "sameAs": ["https://www.instagram.com/somosforster"], "founder": [{"@type": "Person", "name": "Samuel Forster"}, {"@type": "Person", "name": "Silvana Forster"}]}]}</script>
   <link rel="preconnect" href="https://www.googletagmanager.com">

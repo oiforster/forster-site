@@ -124,3 +124,10 @@ Samuel aprovou a nova home e autorizou seguir com as sugestões da auditoria. Co
 - Verificação: 16 HTMLs com links, arquivos, âncoras, H1, main e JSON-LD conferidos; revisão visual das páginas principais em 1440/390/320, larguras intermediárias 768/1024 sem transbordamento; vídeo reproduziu, fechou com Escape, interrompeu o carregamento e devolveu o foco. Ampliação das capturas e navegação entre serviços conferidas.
 
 O registro de propostas e da aprovação fica no Vault em `_Interno/Sites/Proposta da home Forster/CONTEXTO.md`. Nenhuma nova decisão comercial pendente nesta revisão. A manutenção de sites após a entrega não recebeu promessa nova.
+
+
+## 25/10/2026 — Movimento do S na home
+
+Samuel pediu recuperar o desenho animado do S atrás da colagem da abertura. A fonte da home foi atualizada no chat do Design e relida antes da portagem. Movimento anterior recuperado: 2,4s, atraso de 0,5s, uma execução; com movimento reduzido, o traço fica completo e parado. A curva aparece acima do filme no computador, e o símbolo permite os cliques dos trabalhos abaixo. Corpo, textos, links, imagens e demais páginas preservados.
+
+Conferidos o desenho do traço de 400 a 0, os cliques no vídeo e as larguras de 1440, 1024, 768, 390 e 320 pixels, sem transbordamento. As observações recentes de texto e da bio da Silvana foram comparadas com a revisão publicada; as novas sugestões ficaram para avaliação no chat. Registro no Vault: `_Interno/Sites/Proposta da home Forster/CONTEXTO.md`.
