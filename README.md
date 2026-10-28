@@ -36,5 +36,5 @@ Site da FORSTER · Ateliê de Conteúdo — somosforster.com.br
 - Rota temporária: `/previas/casa-marco-b7f4/`, com `noindex`, fora do sitemap e da navegação.
 - Fonte visual: projeto Casa Marco no Claude Design, página `Links da bio - Casa Marco.dc.html`; exportação `exportacao/links-da-bio/index.html`. Reler a versão atual antes de cada portagem.
 - Fonte local: `_fontes/casa-marco-links.html`, com logo e fontes incorporados. Para publicar alterações desta prévia: `cp _fontes/casa-marco-links.html public/previas/casa-marco-b7f4/index.html`.
-- Esta página é independente de `gen_site.py`, de `site.js` e do GA4. A prévia não tem contador de toques nem scripts remotos.
+- Esta página é independente de `gen_site.py`, de `site.js` e do GA4. A prévia não tem contador de toques; a política CSP no HTML bloqueia scripts e conexões de medição, inclusive o beacon que a hospedagem injeta automaticamente.
 - A abertura de sábado permanece em conferência. Dados e decisões editoriais ficam no Briefing e na proposta da Casa Marco no Vault.
