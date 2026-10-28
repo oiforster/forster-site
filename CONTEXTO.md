@@ -174,3 +174,10 @@ Samuel corrigiu a informação de horário comum às quatro lojas e confirmou a 
 
 - Samuel autorizou executar as melhorias de clareza e fluidez. Fonte e HTML da prévia receberam as mesmas alterações; documento do Vault atualizado no arquivo existente.
 - Termos técnicos explicados, duas revisões esclarecidas, manutenção com exemplos e aprovação prévia de excedente e menos repetições. Os valores e os limites comerciais foram preservados. A publicação segue aguardando aprovação dos termos.
+
+
+## 28/10/2026 — Proposta Casa Marco saiu deste repositório
+
+- A proposta do site da Casa Marco foi refeita no `forster-propostas` (`public/casa-marco-342a90b3/`), na identidade da FORSTER, com registro de visita, prazo de 15 dias pela lista `ENVIOS` e endereço previsto em propostas.somosforster.com.br. Decisão do Samuel.
+- Daqui saíram a página `public/propostas/casa-marco-342a90b3/`, a fonte `_fontes/proposta-casa-marco-342a90b3.html`, a regra de validade do `functions/_middleware.js` e a seção do README. O middleware e o README voltaram ao estado anterior.
+- Motivo da saída: o commit anterior estava à frente do GitHub, e o próximo push deste site publicaria a página com os valores em somosforster.com.br. A prévia da bio (`/previas/casa-marco-b7f4/`) não foi alterada.
