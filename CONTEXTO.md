@@ -159,3 +159,18 @@ Implementação isolada em `/previas/casa-marco-b7f4/`, a partir da exportação
 ## 28/10/2026 — Horários de sábado confirmados por unidade
 
 Samuel corrigiu a informação de horário comum às quatro lojas e confirmou a vigência dos horários publicados nos cards oficiais localizados no export do Instagram. Fontes, tabela atual e confirmação estão no Briefing da Casa Marco no Vault. A página e sua exportação foram atualizadas no Claude Design e relidas antes da portagem das quatro linhas de sábado. Mantidos links, layout, metadados e as regras que bloqueiam medição e preservam o e-mail sem scripts.
+
+
+## 28/10/2026 — Proposta comercial Casa Marco preparada
+
+- Pedido: proposta completa para leitura independente, dentro de somosforster.com.br. Conteúdo e termos para revisão permanecem no Vault, em Casa Marco/03_Propostas/2026-10 - Proposta comercial do site Casa Marco.md.
+- Nova página isolada em `/propostas/casa-marco-342a90b3/`; fonte `_fontes/proposta-casa-marco-342a90b3.html`, cópia de publicação em `public/propostas/casa-marco-342a90b3/`. Não usa o gerador institucional.
+- Imagens próprias otimizadas; amostra navegável dentro da página; noindex; CSP limita scripts a interações locais e bloqueia conexões de medição. Sem envio automático de mensagens.
+- Preparado bloqueio de validade no middleware, exclusivamente para esta rota, depois de 12/11/2026. Data de envio prevista 28/10; atualizar texto e data se o envio ocorrer depois.
+- Estado: local, aguardando revisão dos termos e autorização final de publicação. As páginas institucionais e a prévia da bio não foram alteradas.
+
+
+## 28/10/2026 — Revisão editorial da proposta Casa Marco
+
+- Samuel autorizou executar as melhorias de clareza e fluidez. Fonte e HTML da prévia receberam as mesmas alterações; documento do Vault atualizado no arquivo existente.
+- Termos técnicos explicados, duas revisões esclarecidas, manutenção com exemplos e aprovação prévia de excedente e menos repetições. Os valores e os limites comerciais foram preservados. A publicação segue aguardando aprovação dos termos.
