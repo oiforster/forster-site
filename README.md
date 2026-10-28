@@ -30,3 +30,11 @@ Site da FORSTER · Ateliê de Conteúdo — somosforster.com.br
   `clique_whatsapp` (pessoa, texto), `clique_instagram`, `clique_telefone`, `clique_email`,
   `clique_externo` (destino) e `play_video` (video, titulo).
 - Para um site de cliente, o mesmo bloco vale: trocar o ID e a tabela `PESSOAS` (número → nome).
+
+## Prévia dos links da Casa Marco — 28/10/2026
+
+- Rota temporária: `/previas/casa-marco-b7f4/`, com `noindex`, fora do sitemap e da navegação.
+- Fonte visual: projeto Casa Marco no Claude Design, página `Links da bio - Casa Marco.dc.html`; exportação `exportacao/links-da-bio/index.html`. Reler a versão atual antes de cada portagem.
+- Fonte local: `_fontes/casa-marco-links.html`, com logo e fontes incorporados. Para publicar alterações desta prévia: `cp _fontes/casa-marco-links.html public/previas/casa-marco-b7f4/index.html`.
+- Esta página é independente de `gen_site.py`, de `site.js` e do GA4. A prévia não tem contador de toques nem scripts remotos.
+- A abertura de sábado permanece em conferência. Dados e decisões editoriais ficam no Briefing e na proposta da Casa Marco no Vault.

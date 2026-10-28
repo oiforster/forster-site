@@ -149,3 +149,9 @@ As seis fontes foram atualizadas pelo chat do Design e relidas antes da portagem
 ## 26/10/2026 — Cabeçalho e links da Silvana
 
 Pedido, evidência do áudio, decisões e verificações registrados em `~/Forster-Vault/_Marketing-Sistêmico/Acompanhamento em Comunicação Consciente/CONTEXTO.md`, entrada “Cor e botões da página de links da Silvana”. Implementação restrita a `CSS_LINKS`, `link_item` e aos três usos desse componente em `page_silvana`, com saída em `public/silvana.html`.
+
+## 28/10/2026 — Prévia dos links da Casa Marco
+
+Samuel autorizou construir e hospedar uma página de links da bio da Casa Marco em endereço temporário do somosforster.com.br. Decisões e dados do cliente ficam na pasta Óticas Casa Marco do Vault, no Briefing, no CONTEXTO e em `04_Estratégia/2026-10 - Página de Links Óticas Casa Marco.md`.
+
+Implementação isolada em `/previas/casa-marco-b7f4/`, a partir da exportação atual do Claude Design, sem regenerar as páginas existentes. HTML e CSS com logo e fontes incorporados, metadado noindex e links externos identificados por loja. Contador desativado nesta prévia; a medição existente do site usa GA4 e não atende à condição de apenas totais de toques. Pendências: confirmação da abertura de sábado e implementação da contagem antes da versão definitiva. Nenhum valor novo informado. Conferidos no navegador em 320, 390 e 1440 px: sem transbordamento, quatro WhatsApps na primeira tela, endereços e horários abertos, logo carregado, foco de teclado visível e nenhum erro no console. Links de avaliação das quatro lojas abriram os formulários corretos no Google; nenhum foi preenchido. A publicação será conferida após o deploy.
