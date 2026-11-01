@@ -5,6 +5,49 @@
 
 ARTIGOS = [
     {
+        "slug": "como-se-preparar-para-gravar-roupa-fala-teleprompter",
+        "data": "2026-11-01",
+        "titulo": "Como se preparar para gravar: roupa, fala e teleprompter",
+        "desc": "O que vestir, como falar e como funciona o teleprompter no dia da gravação. Um guia simples para se preparar para a sessão de vídeos do mês.",
+        "servico": ("Acompanhamento mensal", "/acompanhamento"),
+        "corpo": """
+<p>O dia de gravação chega e aparecem as dúvidas: que roupa eu uso? E se eu travar? Como é falar com o teleprompter? A preparação é pequena. Os roteiros já estão prontos, a gente chega com a estrutura e monta tudo no seu espaço. O que fica com você são alguns cuidados simples: a roupa, a fala, o jeito de ler e o lugar da gravação.</p>
+<h2>A roupa: a que você usa no trabalho</h2>
+<p>A melhor roupa para o vídeo é a que você usa no dia a dia do seu trabalho. Se você atende de jaleco, grave de jaleco. Se a sua equipe usa uniforme, o uniforme já mostra quem você é. Quem assiste precisa reconhecer você quando entrar na sua loja ou no seu consultório.</p>
+<p>Dois cuidados deixam a imagem melhor. Prefira tecido liso ou com estampa grande, porque listra fina e xadrez miúdo criam um efeito ondulado na imagem, e é difícil corrigir isso na edição. E escolha uma cor diferente da parede do fundo, para você não se misturar com o cenário.</p>
+<p>Colar, pulseira e chaveiro que fazem barulho podem entrar no som. Se puder, deixe em casa nesse dia. Também vale levar uma segunda peça: os vídeos de uma sessão são publicados ao longo do mês, e trocar a camisa no meio da gravação ajuda a variar a imagem de um vídeo para o outro.</p>
+<h2>A fala: do jeito que você explica para um cliente</h2>
+<p>O roteiro é escrito do jeito que você fala, então não precisa mudar a voz nem usar palavra difícil. Fale como explica para um cliente na sua frente. O ritmo é o da conversa, um pouco mais devagar do que o normal, com uma pausa no fim de cada frase. Na tela, a pressa aparece mais do que ao vivo.</p>
+<p>Se uma frase sair errada, pare e repita. Na edição, a gente escolhe a melhor versão de cada trecho, e o erro some. Ninguém precisa gravar um vídeo inteiro de uma vez só.</p>
+<p>Ficar sem jeito nos primeiros minutos acontece com quase todo mundo. Com a repetição sem pressa e a orientação da gente durante a sessão, isso costuma passar.</p>
+<h2>O teleprompter: ler olhando para a câmera</h2>
+<p>O teleprompter é uma tela presa na frente da lente da câmera. O roteiro aparece nessa tela e vai passando enquanto você fala, então você não precisa decorar nada. E, como a tela fica na frente da lente, você lê olhando para quem vai assistir.</p>
+<p>Um cuidado faz diferença: leia com o ritmo da sua fala, como se estivesse contando a coisa para alguém. Se alguma palavra do roteiro não é do seu jeito, avise a gente durante a sessão.</p>
+<h2>Antes de ligar a câmera: ler em voz alta</h2>
+<p>No dia, antes de começar, vale passar os olhos no roteiro e ler uma vez em voz alta, sem decorar. Você percebe a frase que trava na língua e o termo que não usaria, e avisa a gente antes de gravar. Ler o roteiro antes ajuda a fala a sair mais natural.</p>
+<h2>O que a gente cuida no dia</h2>
+<p>Câmera, iluminação profissional, microfone e teleprompter chegam com a gente, e a montagem é no seu espaço: consultório, loja, escritório ou fábrica. A sessão cabe em até quatro horas, da montagem ao desmonte. O que ajuda é reservar um canto tranquilo, de preferência sem gente passando atrás de você e sem ar-condicionado, geladeira ou máquina ligada por perto, porque o microfone capta o barulho.</p>
+<h2>Um resumo para o dia</h2>
+<ul>
+<li>Vista a roupa que você usa no trabalho, lisa ou de estampa grande, numa cor diferente do fundo.</li>
+<li>Deixe de lado o acessório que faz barulho.</li>
+<li>Fale como explica para um cliente, um pouco mais devagar, com pausa entre as frases.</li>
+<li>Se errar, pare e repita. A edição fica com a melhor versão.</li>
+<li>No teleprompter, leia olhando para a câmera e no seu ritmo.</li>
+<li>Reserve um canto tranquilo, sem barulho de ar-condicionado ou máquina e sem gente passando atrás.</li>
+</ul>
+<p>Se você tem uma empresa em Igrejinha ou no Vale do Paranhana e quer gravar os vídeos do mês sem decorar texto, a gente leva a estrutura até você e orienta a sua fala durante a sessão. Na primeira conversa, a gente explica o acompanhamento mensal, e o conjunto de serviços é definido na proposta.</p>
+""",
+        "faq": [
+            ("Preciso decorar o roteiro?",
+             "Não. O roteiro aparece no teleprompter, uma tela presa na frente da lente da câmera, e você lê olhando para quem vai assistir. Se uma frase sair errada, é só repetir."),
+            ("Que roupa eu uso na gravação?",
+             "A que você usa no trabalho, como o jaleco ou o uniforme. Prefira tecido liso ou de estampa grande, numa cor diferente do fundo, e deixe de lado o acessório que faz barulho."),
+            ("E se eu ficar nervoso na frente da câmera?",
+             "É comum nos primeiros minutos. O roteiro é escrito do jeito que você fala, a repetição é sem pressa, e a gente orienta a sua fala durante a sessão."),
+        ],
+    },
+    {
         "slug": "video-vertical-ou-horizontal-site-instagram-youtube",
         "data": "2026-10-15",
         "titulo": "Vídeo vertical ou horizontal: qual usar no site, no Instagram e no YouTube",
