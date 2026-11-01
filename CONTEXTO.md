@@ -181,3 +181,8 @@ Samuel corrigiu a informação de horário comum às quatro lojas e confirmou a 
 - A proposta do site da Casa Marco foi refeita no `forster-propostas` (`public/casa-marco-342a90b3/`), na identidade da FORSTER, com registro de visita, prazo de 15 dias pela lista `ENVIOS` e endereço previsto em propostas.somosforster.com.br. Decisão do Samuel.
 - Daqui saíram a página `public/propostas/casa-marco-342a90b3/`, a fonte `_fontes/proposta-casa-marco-342a90b3.html`, a regra de validade do `functions/_middleware.js` e a seção do README. O middleware e o README voltaram ao estado anterior.
 - Motivo da saída: o commit anterior estava à frente do GitHub, e o próximo push deste site publicaria a página com os valores em somosforster.com.br. A prévia da bio (`/previas/casa-marco-b7f4/`) não foi alterada.
+
+## 01/11/2026 — Blog quinzenal: como se preparar para gravar
+
+- Rotina quinzenal: artigo "Como se preparar para gravar: roupa, fala e teleprompter" publicado em https://somosforster.com.br/blog/como-se-preparar-para-gravar-roupa-fala-teleprompter (leva para /acompanhamento). Revisor de texto ok, correções aplicadas: saíram as frases sem fonte (roteiro trocado na hora, ordem dos roteiros, "grava mais rápido"), as promessas absolutas ("ninguém percebe", "a edição não corrige") e a antítese do teleprompter; teleprompter e desconforto reescritos com palavras diferentes do artigo de 05/10. Pergunta aberta do revisor para o Samuel: no Acompanhamento, o cliente vê o roteiro antes do dia?
+- Sitemap reenviado (204); 5 de 6 artigos do blog "Enviada e indexada" (o novo ainda não reconhecido). Aviso no Telegram.
