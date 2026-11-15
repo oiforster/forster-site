@@ -186,3 +186,8 @@ Samuel corrigiu a informação de horário comum às quatro lojas e confirmou a 
 
 - Rotina quinzenal: artigo "Como se preparar para gravar: roupa, fala e teleprompter" publicado em https://somosforster.com.br/blog/como-se-preparar-para-gravar-roupa-fala-teleprompter (leva para /acompanhamento). Revisor de texto ok, correções aplicadas: saíram as frases sem fonte (roteiro trocado na hora, ordem dos roteiros, "grava mais rápido"), as promessas absolutas ("ninguém percebe", "a edição não corrige") e a antítese do teleprompter; teleprompter e desconforto reescritos com palavras diferentes do artigo de 05/10. Pergunta aberta do revisor para o Samuel: no Acompanhamento, o cliente vê o roteiro antes do dia?
 - Sitemap reenviado (204); 5 de 6 artigos do blog "Enviada e indexada" (o novo ainda não reconhecido). Aviso no Telegram.
+
+## 15/11/2026 — Blog quinzenal: drone no vídeo institucional
+
+- Rotina quinzenal: artigo "Drone no vídeo institucional: quando a imagem aérea faz sentido" publicado em https://somosforster.com.br/blog/drone-no-video-institucional-quando-faz-sentido (leva para /sob-encomenda). O tema do teleprompter, próximo da lista, foi pulado porque três artigos já explicam o teleprompter (05/10 e 01/11).
+- Revisor de texto ok, correções aplicadas. Saíram as frases sem fonte: data reserva para o voo, "o lugar do voo é conferido antes" (processo da FORSTER sem fonte) e a descrição dos morros e do rio do Vale. Ficaram só fatos gerais (ANAC, DECEA, restrição perto de aeroporto, chuva e vento). Perguntas abertas para o Samuel: a FORSTER combina data reserva quando o filme tem drone? Confere o espaço aéreo antes da gravação? Se sim, esses pontos podem voltar ao artigo.

@@ -5,6 +5,49 @@
 
 ARTIGOS = [
     {
+        "slug": "drone-no-video-institucional-quando-faz-sentido",
+        "data": "2026-11-15",
+        "titulo": "Drone no vídeo institucional: quando a imagem aérea faz sentido",
+        "desc": "Quando vale usar imagem de drone no vídeo da sua empresa, o que ela mostra melhor do alto e o que pode atrapalhar o voo no dia da gravação.",
+        "servico": ("Vídeo sob encomenda", "/sob-encomenda"),
+        "corpo": """
+<p>Muita gente que encomenda um vídeo institucional pergunta se ele vai ter drone. A imagem aérea chama atenção e costuma agradar. Mesmo assim, ela só ajuda o filme quando mostra algo que a câmera no chão não alcança. Por isso, a gente decide pela história que o vídeo conta, na conversa que vem antes da gravação.</p>
+<h2>O que o drone mostra que a câmera no chão não mostra</h2>
+<p>O drone é uma pequena aeronave com câmera, controlada do chão. Lá de cima, ele mostra três coisas que ficam difíceis de ver de perto: o tamanho, o lugar e o caminho.</p>
+<p>O tamanho fica claro quando a empresa ocupa um espaço grande, como um pavilhão de fábrica, um pátio cheio de caminhões ou uma plantação. Do chão, a câmera mostra só uma parte. Do alto, quem assiste entende de uma vez o tamanho da operação.</p>
+<p>O lugar entra quando a paisagem faz parte de quem a empresa é. Aqui no Vale do Paranhana, uma imagem aérea mostra onde a empresa está e o que existe ao redor dela.</p>
+<p>O caminho conta quando o vídeo acompanha um movimento: o caminhão saindo para a entrega, a obra que avança de um mês para o outro, a chegada até a sede pela estrada.</p>
+<h2>Quando a imagem aérea faz sentido</h2>
+<ul>
+<li>Na fábrica ou na indústria, para mostrar o tamanho do pavilhão e do pátio.</li>
+<li>Na escola, no clube ou no hotel, para mostrar a área inteira, com o prédio, a quadra e o espaço verde.</li>
+<li>No loteamento, no condomínio ou na obra, para mostrar o terreno e o que fica perto dele.</li>
+<li>Na empresa que nasceu e cresceu na cidade, quando o filme conta essa história e a cidade entra na imagem.</li>
+<li>Na abertura do vídeo, para apresentar o lugar antes de entrar e mostrar as pessoas.</li>
+</ul>
+<h2>Quando o filme fica melhor sem drone</h2>
+<p>Num consultório, numa loja pequena ou num escritório dentro de um prédio, o que interessa está do lado de dentro: as pessoas, o atendimento, o produto na mão. Uma imagem aérea do telhado não conta nada disso a quem assiste.</p>
+<p>Nesses casos, o tempo do filme rende mais com quem fala e com as imagens de perto. A gente prefere usar esse tempo para mostrar a equipe trabalhando, o detalhe do produto e o rosto de quem atende.</p>
+<h2>O que pesa no dia do voo</h2>
+<p>O primeiro ponto é o tempo. Chuva e vento forte podem impedir o voo, então a imagem aérea depende de um dia de tempo firme.</p>
+<p>O segundo ponto é o lugar. No Brasil, o voo de drone segue regras da ANAC, a Agência Nacional de Aviação Civil, e do DECEA, o órgão que controla o espaço aéreo. Perto de aeroportos, por exemplo, há restrições, e nem todo lugar pode receber o voo.</p>
+<p>O terceiro ponto são as pessoas. Se a imagem vai mostrar funcionários no pátio ou alunos na quadra, vale avisar antes que o drone vai passar, para ninguém se assustar.</p>
+<h2>Como o drone entra no filme</h2>
+<p>A imagem aérea costuma entrar em poucos trechos do vídeo: na abertura, para apresentar o lugar, no meio, para mostrar o tamanho do que está sendo dito, e às vezes no fim. No resto do tempo, o filme segue com quem fala e com as imagens de perto.</p>
+<p>Na edição, a gente coloca cada imagem aérea no trecho em que ela ajuda a explicar a fala. Por exemplo: se alguém conta que a empresa começou num galpão pequeno, a imagem do pavilhão de hoje vem logo depois e mostra o quanto ela cresceu.</p>
+<h2>Na conversa antes da gravação</h2>
+<p>Se você tem uma empresa em Igrejinha ou no Vale do Paranhana e está pensando num vídeo institucional, conte na primeira conversa o que o filme precisa mostrar. A partir disso, a gente diz se a imagem aérea ajuda a contar a sua história e em que trechos ela entra.</p>
+""",
+        "faq": [
+            ("Todo vídeo institucional precisa de drone?",
+             "Não. A imagem aérea ajuda a mostrar o tamanho da empresa, o lugar onde ela está ou um caminho. Quando o que interessa está do lado de dentro, como num consultório ou numa loja, o filme fica com as imagens de perto."),
+            ("Dá para voar com chuva ou vento?",
+             "Chuva e vento forte podem impedir o voo. Por isso, a imagem aérea depende de um dia de tempo firme."),
+            ("Existe regra para voar com drone?",
+             "Sim. No Brasil, o voo de drone segue regras da ANAC, a agência que cuida da aviação civil, e do DECEA, que controla o espaço aéreo. Perto de aeroportos, por exemplo, há restrições."),
+        ],
+    },
+    {
         "slug": "como-se-preparar-para-gravar-roupa-fala-teleprompter",
         "data": "2026-11-01",
         "titulo": "Como se preparar para gravar: roupa, fala e teleprompter",
