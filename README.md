@@ -38,3 +38,11 @@ Site da FORSTER · Ateliê de Conteúdo — somosforster.com.br
 - Fonte local: `_fontes/casa-marco-links.html`, com logo e fontes incorporados. Para publicar alterações desta prévia: `cp _fontes/casa-marco-links.html public/previas/casa-marco-b7f4/index.html`.
 - Esta página é independente de `gen_site.py`, de `site.js` e do GA4. A prévia não tem contador de toques; a política CSP no HTML bloqueia scripts e conexões de medição, inclusive o beacon que a hospedagem injeta automaticamente.
 - Os horários por unidade foram confirmados por Samuel em 28/10/2026, a partir dos cards oficiais do Instagram. Dados e decisões editoriais ficam no Briefing e na proposta da Casa Marco no Vault.
+
+## Prévia da página da Constelação da Vanessa Mainardi — 16/11/2026
+
+- Rota temporária: `/previas/vanessa-constelacao-42b5/`, com `noindex`, fora do sitemap e da navegação.
+- Fonte: repositório `forster-vanessamainardi`, ramo `constelacao`, página `constelacao.html`. A pasta é uma cópia da página montada pelo `publicar.sh` de lá, com o CSS, o script, as nove fotos e o vídeo dela.
+- O que muda na cópia: entram o `noindex` e a política CSP (só o script da própria página roda, sem conexão de medição), sai o `ga.js`, e os links para as outras páginas apontam para vanessacostamainardi.com.br.
+- Para atualizar depois de mexer na página: rodar o `publicar.sh` no repositório dela e copiar de novo a página e os arquivos que mudaram para esta pasta.
+- Apagar esta pasta quando a página for para o site da Vanessa.
