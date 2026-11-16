@@ -730,5 +730,25 @@ mark.conferir {
 
 /* Celular: quando a página já mostra WhatsApp e Instagram logo acima (.contatos), o rodapé não repete nome e @ */
 @media (max-width: 719px) {
-  body:has(.contatos) .rodape-grade > div:first-child { display: none; }
+  body:has(.contatos a[href*="instagram.com"]) .rodape-grade > div:first-child { display: none; }
+}
+
+/* ---------- contato único: só o WhatsApp no fim da página (Constelação) ----------
+   O nome do canal vai em itálico e o número em fonte simples, que se lê melhor. O Instagram fica só no rodapé. */
+.contatos-um { display: block; }
+.contato-numero { font: 500 19px/1.4 var(--sem-serifa); letter-spacing: .01em; }
+
+/* ---------- fotos de corpo (Constelação) ----------
+   A moldura fica mais alta e a foto encosta embaixo: aparecem as mãos e sobra pouco teto. */
+.foto.foto-corpo { aspect-ratio: 2 / 3; }
+.foto-corpo img { object-position: 50% 100%; }
+.aurora-corpo img { aspect-ratio: 2 / 3; }
+.aurora-corpo img:first-child { object-position: 50% 85%; }
+.aurora-corpo img:last-child { object-position: 50% 100%; }
+@media (min-width: 960px) {
+  /* presa ao lado do texto, a foto precisa caber inteira na altura da tela */
+  .como > .foto.foto-corpo, .datas > .foto.foto-corpo { width: min(100%, calc((100vh - 80px) * 2 / 3)); width: min(100%, calc((100svh - 80px) * 2 / 3)); }
+  .aurora-corpo img { aspect-ratio: auto; }
+  .aurora-corpo img:first-child { object-position: 50% 45%; }
+  .aurora-corpo img:last-child { object-position: 50% 32%; }
 }
