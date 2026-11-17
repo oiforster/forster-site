@@ -200,3 +200,7 @@ O registro desta inclusão está no Vault, em `_Interno/Micro-produtos/CONTEXTO.
 ## 17/11/2026 — Biografias e história do casal na home
 
 Samuel autorizou enriquecer e publicar a seção Quem atende é quem cria. Fonte atualizada no Claude Design e relida por download antes da portagem. A decisão editorial, o texto aprovado e a conferência em computador e celular estão em `~/Forster-Vault/_Interno/Sites/Proposta da home Forster/CONTEXTO.md`, entrada “Biografias e história do casal na home”. Alteração restrita à seção e ao seu CSS; demais seções, imagens, links e scripts preservados.
+
+## 17/11/2026 — Tempo de parceria sem datas pessoais
+
+A pedido de Samuel, a frase da apresentação passou a informar o tempo juntos. Fonte do Design e página gerada comparadas: somente essa frase mudou. Decisão registrada em `~/Forster-Vault/_Interno/Sites/Proposta da home Forster/CONTEXTO.md`, entrada “Tempo de parceria sem datas pessoais”.
