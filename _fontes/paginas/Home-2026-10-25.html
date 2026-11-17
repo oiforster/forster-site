@@ -36,6 +36,11 @@
 @media(prefers-reduced-motion:no-preference){.giant-s path{stroke-dasharray:400;stroke-dashoffset:400;animation:forster-s-draw 2.4s cubic-bezier(.45,.05,.55,.95) .5s forwards}}
 @media(max-width:760px){.intro-stage{--header-height:73px}.giant-s{top:50svh;height:min(118svh,154vw)}}
 .footer-brand img{display:block;width:105px;height:auto}
+@media(max-width:760px){.topbar{height:96px;gap:6px 15px;align-content:center}.topbar nav{order:3;flex-basis:100%}.topbar nav a{padding-block:6px}.intro-stage{--header-height:96px}}
+.products-invite{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;padding-block:70px;border-bottom:1px solid var(--line)}.products-invite h2{font-size:43px;max-width:520px}.products-invite p{font-size:16px;line-height:1.65;max-width:520px}.products-invite .button{margin-top:26px}
+@media(max-width:1100px){.products-invite{gap:55px}}
+@media(max-width:760px){.products-invite{grid-template-columns:1fr;gap:20px;padding-block:44px}.products-invite h2{font-size:37px}}
+@media(max-width:360px){.products-invite h2{font-size:34px}}
 </style>
 
 </head>
@@ -43,7 +48,7 @@
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
   <header class="topbar wrap">
     <a class="logo" href="#inicio" aria-label="FORSTER, início"><span>FOR</span><svg viewBox="0 0 100 108" aria-hidden="true"><path d="M80 24C76 8 38 0 22 14C8 28 18 46 42 54C66 62 90 66 82 88C74 103 36 107 20 92" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" transform="rotate(-2 50 54)"/></svg><span>TER</span></a>
-    <nav aria-label="Principal"><a href="#trabalhos">Trabalhos</a><a href="#servicos">Serviços</a><a href="#quem-faz">Quem faz</a></nav>
+    <nav aria-label="Principal"><a href="#trabalhos">Trabalhos</a><a href="#servicos">Serviços</a><a href="https://somosforster.com.br/produtos">Produtos</a><a href="#quem-faz">Quem faz</a></nav>
     <a class="nav-contact" href="#contato">Conversar <span aria-hidden="true">↗</span></a>
   </header>
   <main id="conteudo">
@@ -92,6 +97,8 @@
       <a href="https://somosforster.com.br/sites" target="_blank" rel="noopener"><span class="service-number">03</span><div><h3>Criação de sites</h3><p>Do texto à publicação, um site sob medida para apresentar seus serviços e facilitar o contato.</p></div><span class="service-arrow" aria-hidden="true">↗</span></a>
       <a href="https://somosforster.com.br/sob-encomenda" target="_blank" rel="noopener"><span class="service-number">04</span><div><h3>Vídeos sob encomenda</h3><p>Filmes para sua empresa, seus produtos e suas campanhas, com roteiro, direção e edição.</p></div><span class="service-arrow" aria-hidden="true">↗</span></a>
     </div></div></section>
+
+    <section class="products-invite wrap" id="produtos" aria-labelledby="products-title"><h2 id="products-title">Aulas e materiais para aplicar no seu trabalho</h2><div><p>Conheça nossas aulas gravadas de stories e de gravação com o celular e a Pasta da Empresa, com modelos para organizar as informações do seu negócio.</p><a class="button dark" href="https://somosforster.com.br/produtos">Conhecer os produtos <span aria-hidden="true">↗</span></a></div></section>
 
     <section class="about-section wrap" id="quem-faz" aria-labelledby="about-title"><figure class="family-photo"><img src="https://somosforster.com.br/img/samuel-silvana-familia-corrida.jpg" alt="Samuel, Silvana e os filhos na chegada de uma prova de corrida" width="505" height="900" loading="lazy"><figcaption>Samuel, Silvana e a família, numa chegada de corrida.</figcaption></figure><div class="about-copy"><p class="eyebrow">SAMUEL E SILVANA FORSTER</p><h2 id="about-title">Quem atende<br>é quem cria.</h2><p>Forster é sobrenome: o de Samuel e o de Silvana. O ateliê funciona na nossa casa, em Igrejinha, e cada trabalho passa pelas mãos dos dois, do planejamento à entrega.</p><p>A Silvana cuida do planejamento e dos textos. O Samuel trabalha na produção audiovisual e no desenvolvimento dos sites.</p><p class="about-region">A gente atende Igrejinha, o Vale do Paranhana, Novo Hamburgo, Gramado e Canela, e vai até você para gravar.</p></div></section>
 

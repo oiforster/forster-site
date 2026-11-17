@@ -5,6 +5,7 @@
 # + robots/sitemap/_headers + redirect da raiz (forsterfilmes.com via GitHub Pages).
 import json, pathlib
 from urllib.parse import quote
+from produtos import CSS_PRODUTOS, page_produtos
 
 BASE = pathlib.Path(__file__).parent
 PUB = BASE.parent / "public"
@@ -182,7 +183,8 @@ NAV_ITEMS = [("inicio", "In&iacute;cio", "/"),
              ("acompanhamento", "Acompanhamento", "/acompanhamento"),
              ("mentoria", "Mentoria", "/mentoria"),
              ("sites", "Sites", "/sites"),
-             ("encomenda", "V&iacute;deos sob encomenda", "/sob-encomenda")]
+             ("encomenda", "V&iacute;deos sob encomenda", "/sob-encomenda"),
+             ("produtos", "Produtos", "/produtos")]
 
 def nav(active=""):
     links = "".join(
@@ -465,6 +467,15 @@ def service_ld(name, desc, path):
                 {"@type": "ListItem", "position": 2, "name": name, "item": SITE + path}]}]
 
 PAGES = {
+    "produtos.html": {
+        "active": "produtos", "fn": page_produtos, "convite": "", "path": "/produtos",
+        "extra_css": CSS_PRODUTOS,
+        "title": "Aulas e materiais da Forster | Produtos",
+        "desc": "Aulas gravadas de stories e de gravação com o celular e a Pasta da Empresa, com modelos para organizar as informações do seu negócio.",
+        "ld": [{"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Início", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Produtos", "item": SITE + "/produtos"}]}],
+    },
     "index.html": {
         "active": "", "design": "Home-2026-10-25.html", "convite": "", "path": "/",
         "title": "FORSTER · Ateliê de Conteúdo em Igrejinha, RS",
@@ -625,6 +636,8 @@ def head(p):
     robots = "noindex, nofollow" if p.get("noindex") else "index, follow, max-image-preview:large"
     stylesheet = (f'<style>{p["design_doc"]["css"]}</style>' if p.get("design_doc")
                   else f'<link rel="stylesheet" href="/style.css?v={VER}">')
+    if p.get("extra_css"):
+        stylesheet += f'<style>{p["extra_css"]}</style>'
     return f'''<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{p["title"]}</title>

@@ -16,6 +16,20 @@ Site da FORSTER · Ateliê de Conteúdo — somosforster.com.br
 - `_fontes/site.js` reúne o comportamento das páginas auxiliares e os eventos de medição.
   As páginas da revisão usam seu próprio diálogo de vídeo, sem reproduzir antes do clique.
 
+## Produtos
+
+O catálogo `/produtos` reúne as aulas de stories e de gravação e a Pasta da Empresa.
+O conteúdo e o estilo dessa página ficam em `_fontes/produtos.py`, integrados ao gerador.
+As condições completas e os botões de compra continuam nas páginas de venda de cada produto.
+As imagens do catálogo são cópias das capas existentes em `public/img/produtos/`, com hash no nome.
+
+Ao incluir um produto, acrescente sua entrada em `PRODUTOS`, sua imagem e o link da página de venda;
+depois regenere o site e confira a navegação no computador e no celular. O menu e o convite da home
+também estão nas seis fontes do Claude Design, relidas e portadas em 17/11/2026.
+
+O processo editorial e visual está no [Mapa de micro-produtos](</Users/samuelforster/Forster-Vault/_Interno/Micro-produtos/Mapa de micro-produtos.md>),
+na seção “Publicação dos produtos no site”.
+
 ## Medição (Google Analytics 4)
 
 - O ID da propriedade fica em `GA4_ID` no topo de `_fontes/gen_site.py` (formato `G-XXXXXXXXXX`).
