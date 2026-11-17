@@ -18,7 +18,7 @@ Site da FORSTER · Ateliê de Conteúdo — somosforster.com.br
 
 ## Produtos
 
-O catálogo `/produtos` reúne as aulas de stories e de gravação e a Pasta da Empresa.
+O catálogo `/produtos` reúne as aulas de stories e de gravação e os modelos e o guia “Como integrar a IA ao seu negócio”.
 O conteúdo e o estilo dessa página ficam em `_fontes/produtos.py`, integrados ao gerador.
 As condições completas e os botões de compra continuam nas páginas de venda de cada produto.
 As imagens do catálogo são cópias das capas existentes em `public/img/produtos/`, com hash no nome.

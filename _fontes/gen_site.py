@@ -471,7 +471,7 @@ PAGES = {
         "active": "produtos", "fn": page_produtos, "convite": "", "path": "/produtos",
         "extra_css": CSS_PRODUTOS,
         "title": "Aulas e materiais da Forster | Produtos",
-        "desc": "Aulas gravadas de stories e de gravação com o celular e a Pasta da Empresa, com modelos para organizar as informações do seu negócio.",
+        "desc": "Aulas gravadas de stories e de gravação com o celular e modelos com um guia prático para começar a integrar a IA ao seu negócio.",
         "ld": [{"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Início", "item": SITE + "/"},
             {"@type": "ListItem", "position": 2, "name": "Produtos", "item": SITE + "/produtos"}]}],

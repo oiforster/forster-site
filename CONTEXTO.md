@@ -204,3 +204,8 @@ Samuel autorizou enriquecer e publicar a seção Quem atende é quem cria. Fonte
 ## 17/11/2026 — Tempo de parceria sem datas pessoais
 
 A pedido de Samuel, a frase da apresentação passou a informar o tempo juntos. Fonte do Design e página gerada comparadas: somente essa frase mudou. Decisão registrada em `~/Forster-Vault/_Interno/Sites/Proposta da home Forster/CONTEXTO.md`, entrada “Tempo de parceria sem datas pessoais”.
+
+
+## 17/11/2026 — Como integrar a IA ao seu negócio
+
+Nome e apresentação comercial do produto atualizados no catálogo e em seus metadados. A chamada da home para o catálogo foi alinhada na fonte atual do Claude Design e relida antes da portagem. Escopo, redação aprovada e conferências registrados em `~/Forster-Vault/_Interno/Micro-produtos/CONTEXTO.md`, entrada “Publicação do nome e apresentação Como integrar a IA ao seu negócio”. URLs, imagens e demais produtos preservados.

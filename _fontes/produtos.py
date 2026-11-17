@@ -23,14 +23,14 @@ PRODUTOS = [
         "botao": "Conhecer a aula de gravação",
     },
     {
-        "id": "pasta-da-empresa", "tipo": "Modelos e guia para usar no computador", "tema": "areia",
-        "titulo": "A Pasta da Empresa",
-        "texto": "Organize as informações da sua marca, dos clientes e da rotina em uma pasta que a inteligência artificial pode consultar. Você recebe os modelos e o texto de entrevista que orienta a IA a preenchê-los com suas respostas.",
-        "detalhe": "Cinco pastas · Arquivos de modelo · Guia da primeira meia hora",
+        "id": "pasta-da-empresa", "tipo": "Modelos e guia prático", "tema": "areia",
+        "titulo": "Como integrar a IA ao seu negócio",
+        "texto": "Crie a base de informações que a IA precisa consultar para trabalhar com você. Você recebe modelos prontos, uma entrevista que ajuda a preenchê-los e um guia para começar.",
+        "detalhe": "Modelos de arquivos · Entrevista guiada · Guia da primeira meia hora",
         "imagem": "/img/produtos/pasta-da-empresa-a180978f3414.jpg", "largura": 1280, "altura": 720,
-        "alt": "Demonstração da entrevista que preenche os arquivos da Pasta da Empresa",
+        "alt": "Demonstração da entrevista com a IA para preencher os arquivos da empresa",
         "url": "https://materiais.somosforster.com.br/pasta-da-empresa-b58d20f6/",
-        "botao": "Conhecer a Pasta da Empresa",
+        "botao": "Conhecer os modelos e o guia",
     },
 ]
 
@@ -66,8 +66,8 @@ def page_produtos():
     partes = ['''<section class="produtos-abertura" aria-labelledby="titulo-produtos">
 <p class="kick">PRODUTOS DA FORSTER</p>
 <h1 class="h" id="titulo-produtos">Aulas e materiais para aplicar no seu trabalho.</h1>
-<p class="sup t">Aprenda a contar o que faz, prepare seus vídeos e organize as informações da sua empresa. Conheça os conteúdos que você pode comprar e usar no seu ritmo.</p>
-<nav class="produtos-indice" aria-label="Produtos disponíveis"><a href="#stories">Stories</a><a href="#gravacao">Gravação com o celular</a><a href="#pasta-da-empresa">Pasta da Empresa</a></nav>
+<p class="sup t">Aprenda a contar o que faz, prepare seus vídeos e comece a integrar a IA ao seu negócio. Conheça os conteúdos que você pode comprar e usar no seu ritmo.</p>
+<nav class="produtos-indice" aria-label="Produtos disponíveis"><a href="#stories">Stories</a><a href="#gravacao">Gravação com o celular</a><a href="#pasta-da-empresa">IA no negócio</a></nav>
 </section>''']
     for n, produto in enumerate(PRODUTOS):
         p = {chave: escape(str(valor), quote=True) for chave, valor in produto.items()}
