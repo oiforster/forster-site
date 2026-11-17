@@ -209,3 +209,8 @@ A pedido de Samuel, a frase da apresentação passou a informar o tempo juntos. 
 ## 17/11/2026 — Como integrar a IA ao seu negócio
 
 Nome e apresentação comercial do produto atualizados no catálogo e em seus metadados. A chamada da home para o catálogo foi alinhada na fonte atual do Claude Design e relida antes da portagem. Escopo, redação aprovada e conferências registrados em `~/Forster-Vault/_Interno/Micro-produtos/CONTEXTO.md`, entrada “Publicação do nome e apresentação Como integrar a IA ao seu negócio”. URLs, imagens e demais produtos preservados.
+
+
+## 17/11/2026 — Desconto na faixa verde do catálogo
+
+Redação aprovada e conferência da publicação em `~/Forster-Vault/_Interno/Micro-produtos/CONTEXTO.md`, entrada “Desconto na faixa verde do catálogo”. A faixa continua levando à seção de compra das aulas.
