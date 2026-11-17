@@ -195,3 +195,8 @@ Samuel corrigiu a informação de horário comum às quatro lojas e confirmou a 
 ## 17/11/2026 · Produtos no site
 
 O registro desta inclusão está no Vault, em `_Interno/Micro-produtos/CONTEXTO.md`, entrada “Identidade dos produtos e acesso pelo site”. O processo permanente fica no “Mapa de micro-produtos.md”, seção “Publicação dos produtos no site”; o README deste repositório aponta as fontes técnicas e a sincronização do Design.
+
+
+## 17/11/2026 — Biografias e história do casal na home
+
+Samuel autorizou enriquecer e publicar a seção Quem atende é quem cria. Fonte atualizada no Claude Design e relida por download antes da portagem. A decisão editorial, o texto aprovado e a conferência em computador e celular estão em `~/Forster-Vault/_Interno/Sites/Proposta da home Forster/CONTEXTO.md`, entrada “Biografias e história do casal na home”. Alteração restrita à seção e ao seu CSS; demais seções, imagens, links e scripts preservados.
