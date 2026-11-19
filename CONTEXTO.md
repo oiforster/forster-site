@@ -214,3 +214,13 @@ Nome e apresentação comercial do produto atualizados no catálogo e em seus me
 ## 17/11/2026 — Desconto na faixa verde do catálogo
 
 Redação aprovada e conferência da publicação em `~/Forster-Vault/_Interno/Micro-produtos/CONTEXTO.md`, entrada “Desconto na faixa verde do catálogo”. A faixa continua levando à seção de compra das aulas.
+
+## 18/11/2026 — Carrocia Clinic em Sites e na entrada do Instagram
+
+- Pedido do Samuel: incluir o site da Carrocia Clinic (https://carrociaclinic.com.br/, no ar) na página /sites e na página do link da bio (/instagram).
+- /sites: quarto card, "04 / Carrocia Clinic", no desenho do Catarata (imagem à direita, fundo claro). Texto passado pelo Codex; só o título foi ajustado para desfazer uma ambiguidade ("Como é a primeira consulta, antes de marcar."). Linha de autoria igual à dos outros três.
+- /instagram: quarta janela em "Sites no ar"; a grade do computador passou de três para duas colunas (2 × 2), alinhada aos quatro cartões de serviço acima. No celular segue uma coluna.
+- Captura nova `public/img/site-carrocia-clinic.jpg` (760 × 475, da home em 1520 × 950), nome novo por causa do cache imutável de `/img/`.
+- Divergência com o Claude Design: a mudança está só em `_fontes/paginas/Sites-2026-10-25.html` e `_fontes/entrada-instagram-design.html`. Portar ao Design na próxima mudança de arte nessas páginas, senão a portagem seguinte apaga o Carrocia.
+- Ficaram como estavam, sem pedido: Trabalhos ("três sites") e a home (casos de site e faixa de clientes).
+- Conferido em 1440 e 375 px, sem rolagem lateral e sem erro no console. O gerador só alterou sites, instagram e a data de /sites no sitemap.
